@@ -5,9 +5,9 @@
 This project aims to recreate the "Labyrinth" board game, using the resources at our disposal; a change of theme is also planned.
 ## Authors
 
-- [Jade PLANTEROSE](https://github.com/JadePlanECE)  [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
-- [Eugène LAMBERT](https://github.com/EugeneLambertECE)  [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
-- [Anton ADAM](https://github.com/aent0n)  [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
+- [Jade PLANTEROSE](https://github.com/JadePlanECE)    [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
+- [Eugène LAMBERT](https://github.com/EugeneLambertECE)    [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
+- [Anton ADAM](https://github.com/aent0n)    [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
 
 
 ## Reviews

@@ -51,6 +51,19 @@ int main(void) {
 //créer une fct interruption pour créer une new partie à tt moment
 //créer une fct interruption pour stoper la partie
 
-
 //fct pour savoir le nbr de joueur => en déduire le nobr de carte térsor à distribuer pour ne créer un tableau de trésor recherché avec le bon nbr de case? (peut-etre plus pratique)
 
+int testPourBreak() {
+    while (1) {
+        printf("Je sers à rien");
+        int i = 0;
+        i++;
+        if (i < 5) {
+            printf("Tjr inutile");
+        }
+        else {
+            break;
+        }
+        printf("tg");
+    }
+}

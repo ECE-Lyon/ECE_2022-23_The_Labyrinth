@@ -40,7 +40,7 @@ More coming soon...
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+MIT, `see LICENSE.txt` for further informations.
 
 
 ## About the game 

@@ -40,7 +40,7 @@ More coming soon...
 
 ## License
 
-MIT, `see LICENSE.txt` for further informations.
+MIT, see `LICENSE.txt` for further informations.
 
 
 ## About the game 

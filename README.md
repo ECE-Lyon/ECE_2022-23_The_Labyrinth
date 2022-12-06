@@ -6,6 +6,7 @@ This project aims to recreate the "Labyrinth" board game, using the resources at
 ## Authors
 
 - [Jade PLANTEROSE](https://github.com/JadePlanECE) 
+
  [![none](https://img.shields.io/badge/ECE-student-lightgrey)]()
 
 

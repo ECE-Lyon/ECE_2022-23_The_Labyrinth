@@ -14,7 +14,7 @@ This project aims to recreate the "Labyrinth" board game, using the resources at
 
 Project Director reviews are always welcome!
 
-See `reviews.md` for ways to get started :) .
+See  `reviews.md` for ways to get started :) .
 
 
 

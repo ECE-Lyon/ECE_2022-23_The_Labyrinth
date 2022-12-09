@@ -21,7 +21,6 @@ int newGame() {
     //donner des cartes trésors aléatoirement
     //joueur choisi aléatoirement (joueur = x)
     //génération du plateau (sous forme de tableau)
-    // [...]
     return 0;
 }
 

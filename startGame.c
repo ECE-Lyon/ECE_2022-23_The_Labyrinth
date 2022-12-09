@@ -15,12 +15,12 @@ char treasuresCard[24][maxLettersWords] = {"chauve souris", "épée", "dragon", 
                                            "trésor", "serpent", "statut", "or", "souris", "fantome"};
 
 
-void distributeCards(char *player[nbCardByPerson]){
+void distributeCards(char *character[nbCardByPerson]){
     for(int i = 0; i < nbCardByPerson; i++) {
         int randomCard = rand() % nbTreasureCard + 1;
         if(treasuresCard[randomCard] == "0") {
             randomCard = rand() % nbTreasureCard + 1;
-            player[i] = treasuresCard[randomCard];
+            character[i] = treasuresCard[randomCard];
             strcpy(treasuresCard[randomCard], "0");
         }
     }
@@ -32,17 +32,12 @@ void startGame() {
     //----PLAYERS----//
     printf("How many player are you ?\n");
     scanf("%d", &nbPlayer);
-    while(nbPlayer < 2) {
-        printf("Not enough player\n");
+    while((nbPlayer < 2) || (nbPlayer > 4)){
+        printf("Not enough player OR to much players\n");
         printf("How many player are you ?\n");
         scanf("%d", &nbPlayer);
     }
-    while(nbPlayer > 4) {
-        printf("To much players\n");
-        printf("How many player are you ?\n");
-        scanf("%d", &nbPlayer);
-    }
-    for(int i = 1; i < nbPlayer + 1; i++) {
+    for(int i = 1; i < nbPlayer + 1; i++){
         int j = 0;
         printf("Player %d, witch character do you want ?\nPress 1 for theEmperess, 2 for theArchDruid, 3 for theHauntedSeer, 4 for theBrutalWanderer\n", i);
         scanf("%d", &j);
@@ -50,7 +45,7 @@ void startGame() {
             printf("This is not a character\n");
             printf("Player %d, witch character do you want ?\nPress 1 for theEmperess, 2 for theArchDruid, 3 for theHauntedSeer, 4 for theBrutalWanderer\n", i);
             scanf("%d", &j);
-        }
+        }                                       //ERREUR : si +eurs personnes prennent le mm joueur, doit NE PAS fonctionner
         if(j == 1){theEmperess = i;}
         else if(j == 2){theArchDruid = i;}
         else if(j == 3){theHauntedSeer = i;}

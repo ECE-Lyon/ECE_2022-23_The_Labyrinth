@@ -7,22 +7,27 @@
 int player = 0;
 int nbPlayer = 0;
 int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
-char treasureCardTheEmperess[nbCardByPerson][maxLettersWords], treasureCardTheArchDruid[nbCardByPerson][maxLettersWords],
-        treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords], treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords];
-char treasuresCard[24][maxLettersWords] = {"chauve souris", "épée", "dragon", "génie", "livre", "hiboux",
+char treasureCardTheEmperess[nbCardByPerson][maxLettersWords] = {0};
+char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords] = {0};
+char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords] = {0};
+char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords] = {0};
+char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "épée", "dragon", "génie", "livre", "hiboux",
                                            "papillon", "clés", "scarabé", "champignon", "princesse", "diadem",
                                            "géant", "crane", "araignée", "couronne", "chandelier", "carte",
                                            "trésor", "serpent", "statut", "or", "souris", "fantome"};
 
 
-void distributeCards(char *character[nbCardByPerson]){
+void distributeCards(char *character[nbCardByPerson][maxLettersWords]){
+    int res = 0;
     for(int i = 0; i < nbCardByPerson; i++) {
         int randomCard = rand() % nbTreasureCard + 1;
-        if(treasuresCard[randomCard] == "0") {
+        res = strcmp(treasuresCard[randomCard], "0");
+        while(res == 0) {
             randomCard = rand() % nbTreasureCard + 1;
-            character[i] = treasuresCard[randomCard];
-            strcpy(treasuresCard[randomCard], "0");
+            res = strcmp(treasuresCard[randomCard], "0");
         }
+        strcpy(character[i], treasuresCard[randomCard]);
+        strcpy(treasuresCard[randomCard], "0");
     }
 }
 
@@ -54,14 +59,25 @@ void startGame() {
 
 
     //----TREASURES----//
-    distributeCards(*treasureCardTheEmperess[nbCardByPerson]);
-    distributeCards(*treasureCardTheArchDruid[nbCardByPerson]);
-    distributeCards(*treasureCardTheHauntedSeer[nbCardByPerson]);
-    distributeCards(*treasureCardTheBrutalWanderer[nbCardByPerson]);
+    distributeCards(treasureCardTheEmperess[nbCardByPerson][maxLettersWords]);
+    distributeCards(treasureCardTheArchDruid[nbCardByPerson][maxLettersWords]);
+    distributeCards(treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords]);
+    distributeCards(treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords]);
+
+    for (int j = 0; j < nbCardByPerson; j++) {
+        printf("%s ", treasureCardTheArchDruid[j]);
+        printf("\n");
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < nbTreasureCard; i++) {
+        printf("%s", treasuresCard[nbTreasureCard]);
+        printf("\n");
+    }
 
 
     //----WHO START ?----//
-
 
     //joueur choisi aléatoirement pour commencer (player = nbr aléatoire entre 0 et 3)
     //génération du plateau (sous forme de tableau)

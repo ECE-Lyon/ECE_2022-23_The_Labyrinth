@@ -42,7 +42,7 @@ void AfficherPlateau () {
 
 int main(void) {
     srand(time(NULL));
-    Case tableau[LONGUEURPLATEAU][LARGEURPLATEAU] = {{0}};
+    Case tableau[LARGEURPLATEAU][LONGUEURPLATEAU] = {{0}};
     AfficherPlateau();
     return 0;
 }

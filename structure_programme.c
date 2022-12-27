@@ -14,7 +14,7 @@ int carteTresor[nbrCarteTresor] = {0};
 
 typedef struct {int typeCase, orientationCase, theEmperess, theArchDruid, theHauntedSeer, theBurtalWanderer; char tresor;} Case;
 
-typedef struct {int typeCase, orientationCase, tresor, nom, absisse, ordonnee;} placementPion;
+typedef struct {int typeCase, orientationCase, tresor, nom, absisse, ordonnee;} Pawn;
 
 int newGame() {
     //demander nbr joueurs, pions (couleur), noms       /\ mininmum 2 joueurs

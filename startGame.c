@@ -129,7 +129,7 @@ void startGame() {
     //----WHO START ?----//
     player = rand() % nbPlayer - 1;
     boardCreation();
-    //est-ce vraiment nécessaire que les tuile fixes portent toujours les mêmes trésors ?
+    //QUESTION : est-ce vraiment nécessaire que les tuile fixes portent toujours les mêmes trésors ?
 
     //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
 

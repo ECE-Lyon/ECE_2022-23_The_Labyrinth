@@ -7,6 +7,7 @@
 int player = 0;
 int nbPlayer = 0;
 int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
+int tEtreaCard = 0, tADtreaCard = 0, tHStreaCard = 0, tBWtreaCard = 0;
 
 char treasureCardTheEmperess[nbCardByPerson][maxLettersWords] = {{0}};
 char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords] = {{0}};
@@ -74,6 +75,14 @@ void boardCreation() {
     board[BOARDSIDE - 2][BOARDSIDE - 2].boxway = 2;
 }
 
+void soughtAfterTreasures() {
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheEmperess[tEtreaCard]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheArchDruid[tADtreaCard]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheHauntedSeer[tHStreaCard]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheBrutalWanderer[tBWtreaCard]);
+}
+
+
 void startGame() {
     srand(time(NULL));
 
@@ -126,17 +135,23 @@ void startGame() {
     distributeCards(treasureCardTheBrutalWanderer);
 
 
-    //----WHO START ?----//
-    player = rand() % nbPlayer - 1;
+    //----START----//
+    int firstPlayer = rand() % nbPlayer - 1;
     boardCreation();
-    //QUESTION : est-ce vraiment nécessaire que les tuile fixes portent toujours les mêmes trésors ?
+    while(firstPlayer < 3) {
+        soughtAfterTreasures();
+        round();
+        firstPlayer++;
+    }
+    while((tEtreaCard == nbCardByPerson) || (tADtreaCard == nbCardByPerson) || (tHStreaCard == nbCardByPerson) || (tBWtreaCard == nbCardByPerson)) {
+        for(player = 0; player < 3; player++) {
+            soughtAfterTreasures();
+            round();
+        }
+    }
 
     //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
 
-    //while("pas dédection de partie finie") {    //créer une fct d'arret pour détecter quand un jour gagne
-        //while(player, player < 3, player++) {
-        //    //round
-        //}
-        //player = 0;
-    //}
+    //créer une fct d'arret pour détecter quand un jour gagne
+
 }

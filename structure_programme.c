@@ -27,6 +27,7 @@ int newGame() {
 int main(void) {
     srand(time(NULL));
     printf("Bienvenue");
+    newGame();
     while("pas dédection de partie finie") {    //créer une fct d'arret pour détecter quand un jour gagne
         while(joueur, joueur < 3, joueur++) {
             //faire un tour de jeu :

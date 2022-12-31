@@ -14,7 +14,7 @@ int carteTresor[nbrCarteTresor] = {0};
 
 typedef struct {int typeCase, orientationCase, theEmperess, theArchDruid, theHauntedSeer, theBurtalWanderer; char tresor;} Case;
 
-typedef struct {int typeCase, orientationCase, tresor, nom, absisse, ordonnee;} placementPion;
+typedef struct {int typeCase, orientationCase, tresor, nom, absisse, ordonnee;} Pawn;
 
 int newGame() {
     //demander nbr joueurs, pions (couleur), noms       /\ mininmum 2 joueurs
@@ -27,6 +27,7 @@ int newGame() {
 int main(void) {
     srand(time(NULL));
     printf("Bienvenue");
+    newGame();
     while("pas dédection de partie finie") {    //créer une fct d'arret pour détecter quand un jour gagne
         while(joueur, joueur < 3, joueur++) {
             //faire un tour de jeu :

@@ -3,5 +3,25 @@
   "directory": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/build",
   "command": "C:\\MinGW\\bin\\gcc.exe   -g -std=gnu99 -o CMakeFiles\\PROJET.dir\\main.c.obj -c C:\\Users\\Anton\\projet-2022-2023-labyrinthe-aj\\main.c",
   "file": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/main.c"
+},
+{
+  "directory": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -std=gnu99 -o CMakeFiles\\PROJET.dir\\startGame.c.obj -c C:\\Users\\Anton\\projet-2022-2023-labyrinthe-aj\\startGame.c",
+  "file": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/startGame.c"
+},
+{
+  "directory": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -std=gnu99 -o CMakeFiles\\PROJET.dir\\round.c.obj -c C:\\Users\\Anton\\projet-2022-2023-labyrinthe-aj\\round.c",
+  "file": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/round.c"
+},
+{
+  "directory": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -std=gnu99 -o CMakeFiles\\PROJET.dir\\boardCreation.c.obj -c C:\\Users\\Anton\\projet-2022-2023-labyrinthe-aj\\boardCreation.c",
+  "file": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/boardCreation.c"
+},
+{
+  "directory": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -std=gnu99 -o CMakeFiles\\affTabl.dir\\affTabl2.c.obj -c C:\\Users\\Anton\\projet-2022-2023-labyrinthe-aj\\affTabl2.c",
+  "file": "C:/Users/Anton/projet-2022-2023-labyrinthe-aj/affTabl2.c"
 }
 ]

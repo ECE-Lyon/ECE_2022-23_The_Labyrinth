@@ -128,6 +128,67 @@ PROJET/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/build
 .PHONY : PROJET/fast
 
+#=============================================================================
+# Target rules for targets named affTabl
+
+# Build rule for target.
+affTabl: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 affTabl
+.PHONY : affTabl
+
+# fast build rule for target.
+affTabl/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\affTabl.dir\build.make CMakeFiles/affTabl.dir/build
+.PHONY : affTabl/fast
+
+affTabl2.obj: affTabl2.c.obj
+.PHONY : affTabl2.obj
+
+# target to build an object file
+affTabl2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\affTabl.dir\build.make CMakeFiles/affTabl.dir/affTabl2.c.obj
+.PHONY : affTabl2.c.obj
+
+affTabl2.i: affTabl2.c.i
+.PHONY : affTabl2.i
+
+# target to preprocess a source file
+affTabl2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\affTabl.dir\build.make CMakeFiles/affTabl.dir/affTabl2.c.i
+.PHONY : affTabl2.c.i
+
+affTabl2.s: affTabl2.c.s
+.PHONY : affTabl2.s
+
+# target to generate assembly for a file
+affTabl2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\affTabl.dir\build.make CMakeFiles/affTabl.dir/affTabl2.c.s
+.PHONY : affTabl2.c.s
+
+boardCreation.obj: boardCreation.c.obj
+.PHONY : boardCreation.obj
+
+# target to build an object file
+boardCreation.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/boardCreation.c.obj
+.PHONY : boardCreation.c.obj
+
+boardCreation.i: boardCreation.c.i
+.PHONY : boardCreation.i
+
+# target to preprocess a source file
+boardCreation.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/boardCreation.c.i
+.PHONY : boardCreation.c.i
+
+boardCreation.s: boardCreation.c.s
+.PHONY : boardCreation.s
+
+# target to generate assembly for a file
+boardCreation.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/boardCreation.c.s
+.PHONY : boardCreation.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -152,6 +213,54 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/main.c.s
 .PHONY : main.c.s
 
+round.obj: round.c.obj
+.PHONY : round.obj
+
+# target to build an object file
+round.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/round.c.obj
+.PHONY : round.c.obj
+
+round.i: round.c.i
+.PHONY : round.i
+
+# target to preprocess a source file
+round.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/round.c.i
+.PHONY : round.c.i
+
+round.s: round.c.s
+.PHONY : round.s
+
+# target to generate assembly for a file
+round.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/round.c.s
+.PHONY : round.c.s
+
+startGame.obj: startGame.c.obj
+.PHONY : startGame.obj
+
+# target to build an object file
+startGame.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/startGame.c.obj
+.PHONY : startGame.c.obj
+
+startGame.i: startGame.c.i
+.PHONY : startGame.i
+
+# target to preprocess a source file
+startGame.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/startGame.c.i
+.PHONY : startGame.c.i
+
+startGame.s: startGame.c.s
+.PHONY : startGame.s
+
+# target to generate assembly for a file
+startGame.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PROJET.dir\build.make CMakeFiles/PROJET.dir/startGame.c.s
+.PHONY : startGame.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,9 +270,22 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... PROJET
+	@echo ... affTabl
+	@echo ... affTabl2.obj
+	@echo ... affTabl2.i
+	@echo ... affTabl2.s
+	@echo ... boardCreation.obj
+	@echo ... boardCreation.i
+	@echo ... boardCreation.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... round.obj
+	@echo ... round.i
+	@echo ... round.s
+	@echo ... startGame.obj
+	@echo ... startGame.i
+	@echo ... startGame.s
 .PHONY : help
 
 

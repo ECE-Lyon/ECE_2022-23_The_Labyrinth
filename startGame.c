@@ -11,10 +11,10 @@ char treasureCardTheEmperess[nbCardByPerson][maxLettersWords] = {0};
 char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords] = {0};
 char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords] = {0};
 char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords] = {0};
-char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "épée", "dragon", "génie", "livre", "hiboux",
-                                           "papillon", "clés", "scarabé", "champignon", "princesse", "diadem",
-                                           "géant", "crane", "araignée", "couronne", "chandelier", "carte",
-                                           "trésor", "serpent", "statut", "or", "souris", "fantome"};
+char treasuresCard[nbTreasureCard][maxLettersWords] = {"bat", "sword", "dragon", "djin", "book", "owl",
+                                           "moth", "keys", "scarab", "coins", "princess", "gemstone",
+                                           "troll", "skull", "spider", "crown", "chandelier", "map",
+                                           "treasure", "salamander", "helmet", "ring", "mouse", "ghost"};
 
 
 void distributeCards(char *character[nbCardByPerson][maxLettersWords]){

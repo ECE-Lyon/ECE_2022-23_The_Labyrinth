@@ -82,19 +82,67 @@ CMakeFiles/PROJET.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/PROJET.dir/main.c.s"
 	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Anton\projet-2022-2023-labyrinthe-aj\main.c -o CMakeFiles\PROJET.dir\main.c.s
 
+CMakeFiles/PROJET.dir/startGame.c.obj: CMakeFiles/PROJET.dir/flags.make
+CMakeFiles/PROJET.dir/startGame.c.obj: C:/Users/Anton/projet-2022-2023-labyrinthe-aj/startGame.c
+CMakeFiles/PROJET.dir/startGame.c.obj: CMakeFiles/PROJET.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Anton\projet-2022-2023-labyrinthe-aj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/PROJET.dir/startGame.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/PROJET.dir/startGame.c.obj -MF CMakeFiles\PROJET.dir\startGame.c.obj.d -o CMakeFiles\PROJET.dir\startGame.c.obj -c C:\Users\Anton\projet-2022-2023-labyrinthe-aj\startGame.c
+
+CMakeFiles/PROJET.dir/startGame.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/PROJET.dir/startGame.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Anton\projet-2022-2023-labyrinthe-aj\startGame.c > CMakeFiles\PROJET.dir\startGame.c.i
+
+CMakeFiles/PROJET.dir/startGame.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/PROJET.dir/startGame.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Anton\projet-2022-2023-labyrinthe-aj\startGame.c -o CMakeFiles\PROJET.dir\startGame.c.s
+
+CMakeFiles/PROJET.dir/round.c.obj: CMakeFiles/PROJET.dir/flags.make
+CMakeFiles/PROJET.dir/round.c.obj: C:/Users/Anton/projet-2022-2023-labyrinthe-aj/round.c
+CMakeFiles/PROJET.dir/round.c.obj: CMakeFiles/PROJET.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Anton\projet-2022-2023-labyrinthe-aj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/PROJET.dir/round.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/PROJET.dir/round.c.obj -MF CMakeFiles\PROJET.dir\round.c.obj.d -o CMakeFiles\PROJET.dir\round.c.obj -c C:\Users\Anton\projet-2022-2023-labyrinthe-aj\round.c
+
+CMakeFiles/PROJET.dir/round.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/PROJET.dir/round.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Anton\projet-2022-2023-labyrinthe-aj\round.c > CMakeFiles\PROJET.dir\round.c.i
+
+CMakeFiles/PROJET.dir/round.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/PROJET.dir/round.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Anton\projet-2022-2023-labyrinthe-aj\round.c -o CMakeFiles\PROJET.dir\round.c.s
+
+CMakeFiles/PROJET.dir/boardCreation.c.obj: CMakeFiles/PROJET.dir/flags.make
+CMakeFiles/PROJET.dir/boardCreation.c.obj: C:/Users/Anton/projet-2022-2023-labyrinthe-aj/boardCreation.c
+CMakeFiles/PROJET.dir/boardCreation.c.obj: CMakeFiles/PROJET.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Anton\projet-2022-2023-labyrinthe-aj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/PROJET.dir/boardCreation.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/PROJET.dir/boardCreation.c.obj -MF CMakeFiles\PROJET.dir\boardCreation.c.obj.d -o CMakeFiles\PROJET.dir\boardCreation.c.obj -c C:\Users\Anton\projet-2022-2023-labyrinthe-aj\boardCreation.c
+
+CMakeFiles/PROJET.dir/boardCreation.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/PROJET.dir/boardCreation.c.i"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Anton\projet-2022-2023-labyrinthe-aj\boardCreation.c > CMakeFiles\PROJET.dir\boardCreation.c.i
+
+CMakeFiles/PROJET.dir/boardCreation.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/PROJET.dir/boardCreation.c.s"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Anton\projet-2022-2023-labyrinthe-aj\boardCreation.c -o CMakeFiles\PROJET.dir\boardCreation.c.s
+
 # Object files for target PROJET
 PROJET_OBJECTS = \
-"CMakeFiles/PROJET.dir/main.c.obj"
+"CMakeFiles/PROJET.dir/main.c.obj" \
+"CMakeFiles/PROJET.dir/startGame.c.obj" \
+"CMakeFiles/PROJET.dir/round.c.obj" \
+"CMakeFiles/PROJET.dir/boardCreation.c.obj"
 
 # External object files for target PROJET
 PROJET_EXTERNAL_OBJECTS =
 
 PROJET.exe: CMakeFiles/PROJET.dir/main.c.obj
+PROJET.exe: CMakeFiles/PROJET.dir/startGame.c.obj
+PROJET.exe: CMakeFiles/PROJET.dir/round.c.obj
+PROJET.exe: CMakeFiles/PROJET.dir/boardCreation.c.obj
 PROJET.exe: CMakeFiles/PROJET.dir/build.make
 PROJET.exe: CMakeFiles/PROJET.dir/linkLibs.rsp
 PROJET.exe: CMakeFiles/PROJET.dir/objects1
 PROJET.exe: CMakeFiles/PROJET.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Anton\projet-2022-2023-labyrinthe-aj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable PROJET.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Anton\projet-2022-2023-labyrinthe-aj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable PROJET.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PROJET.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

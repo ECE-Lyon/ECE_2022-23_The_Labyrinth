@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "PROJET",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PROJET::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PROJET-Debug-19cf65e345ffabd82a97.json",
+					"jsonFile" : "target-PROJET-Debug-ac7ea9da10cab64b9c80.json",
 					"name" : "PROJET",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "affTabl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-affTabl-Debug-056f059770756be0841b.json",
+					"name" : "affTabl",
 					"projectIndex" : 0
 				}
 			]

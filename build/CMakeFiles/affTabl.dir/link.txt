@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\affTabl.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\affTabl.dir/objects.a @CMakeFiles\affTabl.dir\objects1
+C:\MinGW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\affTabl.dir/objects.a -Wl,--no-whole-archive -o affTabl.exe -Wl,--out-implib,libaffTabl.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\affTabl.dir\linkLibs.rsp

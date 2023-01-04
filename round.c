@@ -7,7 +7,7 @@ int choiceLine = 0;
 int choice = 0;
 int choiceWay = 0;
 
-int oneRound() {
+int oneRound(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     printf("Which row/column do you want to replace ? \n");

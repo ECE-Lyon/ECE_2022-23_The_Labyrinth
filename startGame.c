@@ -7,12 +7,11 @@
 int player = 0;
 int nbPlayer = 0;
 int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
-int tEtreaCard = 0, tADtreaCard = 0, tHStreaCard = 0, tBWtreaCard = 0;
 
-char treasureCardTheEmperess[nbCardByPerson][maxLettersWords] = {{0}};
-char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords] = {{0}};
-char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords] = {{0}};
-char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords] = {{0}};
+extern char treasureCardTheEmperess[nbCardByPerson][maxLettersWords];
+extern char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords];
+extern char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords];
+extern char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords];
 char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
                                            "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
                                            "geant", "crane", "araignee", "couronne", "chandelier", "carte",
@@ -20,6 +19,11 @@ char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "epee", 
 
 Case substituteValue;
 Case board[BOARDSIDE][BOARDSIDE] = {{0}};
+
+Pawn theEmpressPawn = {0};
+Pawn theArchDruidPawn = {0};
+Pawn theHauntedSeerPawn = {0};
+Pawn theBrutalWandererPawn = {0};
 
 
 void distributeCards(char character[nbCardByPerson][maxLettersWords]) {
@@ -39,12 +43,29 @@ void boardCreation() {
     //----CORNERS----//
     strcpy(board[0][0].boxtype, "L");
     board[0][0].boxway = 1;
+    strcpy(theEmpressPawn.boxtype, "L");
+    theEmpressPawn.boxway = 1;
+    theEmpressPawn.x = 0;
+    theEmpressPawn.y = 0;
     strcpy(board[BOARDSIDE][0].boxtype, "L");
     board[BOARDSIDE][0].boxway = 2;
+    strcpy(theArchDruidPawn.boxtype, "L");
+    theArchDruidPawn.boxway = 2;
+    theArchDruidPawn.x = BOARDSIDE;
+    theArchDruidPawn.y = 0;
     strcpy(board[0][BOARDSIDE].boxtype, "L");
     board[0][BOARDSIDE].boxway = 0;
+    strcpy(theHauntedSeerPawn.boxtype, "L");
+    theHauntedSeerPawn.boxway = 0;
+    theHauntedSeerPawn.x = 0;
+    theHauntedSeerPawn.y = BOARDSIDE;
     strcpy(board[BOARDSIDE][BOARDSIDE].boxtype, "L");
     board[BOARDSIDE][BOARDSIDE].boxway = 3;
+    strcpy(theBrutalWandererPawn.boxtype, "L");
+    theBrutalWandererPawn.boxway = 3;
+    theBrutalWandererPawn.x = BOARDSIDE;
+    theBrutalWandererPawn.y = BOARDSIDE;
+
 
     //----OUTLINE----//
     for(int line = 2; line < BOARDSIDE - 2; line += 2) {
@@ -76,10 +97,14 @@ void boardCreation() {
 }
 
 void soughtAfterTreasures() {
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheEmperess[tEtreaCard]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheArchDruid[tADtreaCard]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheHauntedSeer[tHStreaCard]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheBrutalWanderer[tBWtreaCard]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheEmperess[theEmpressPawn.treasure]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheArchDruid[theArchDruidPawn.treasure]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheHauntedSeer[theHauntedSeerPawn.treasure]);
+    printf("Your The treasure you are currently looking for is : %s", treasureCardTheBrutalWanderer[theBrutalWandererPawn.treasure]);
+}
+
+void returnMainMenu(void) {
+    //goto main;
 }
 
 
@@ -140,18 +165,20 @@ void startGame() {
     boardCreation();
     while(firstPlayer < 3) {
         soughtAfterTreasures();
-        round();
+        //round();
         firstPlayer++;
     }
-    while((tEtreaCard == nbCardByPerson) || (tADtreaCard == nbCardByPerson) || (tHStreaCard == nbCardByPerson) || (tBWtreaCard == nbCardByPerson)) {
+    while(1) {
         for(player = 0; player < 3; player++) {
             soughtAfterTreasures();
-            round();
+            //round();
+            if (((theEmpressPawn.treasure == nbCardByPerson) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == nbCardByPerson) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == nbCardByPerson) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == nbCardByPerson) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
+                printf("END");
+                returnMainMenu();
+            }
         }
     }
 
     //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
-
-    //créer une fct d'arret pour détecter quand un jour gagne
-
+    //mettre un return 0 pour arreter le programme si on veut qu'il s'arrete (dans la fct où on demande à un joueur qqc
 }

@@ -11,7 +11,7 @@
 
 typedef struct {char *boxtype, *treasure; int boxway, theEmperess, theArchDruid, theHauntedSeer, theBrutalWanderer;} Case;
 
-typedef struct {char *boxtype, *treasure; int boxway, character, x, y;} Pawn;
+typedef struct {char *boxtype; int treasure, boxway, character, x, y;} Pawn;
 
 void startGame();
 

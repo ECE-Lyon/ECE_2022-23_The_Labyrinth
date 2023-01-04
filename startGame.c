@@ -8,17 +8,10 @@ int player = 0;
 int nbPlayer = 0;
 int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
 
-extern char treasureCardTheEmperess[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords];
 char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
                                            "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
                                            "geant", "crane", "araignee", "couronne", "chandelier", "carte",
                                            "tresor", "serpent", "statut", "or", "souris", "fantome"};
-
-Case substituteValue;
-Case board[BOARDSIDE][BOARDSIDE] = {{0}};
 
 Pawn theEmpressPawn = {0};
 Pawn theArchDruidPawn = {0};
@@ -97,10 +90,10 @@ void boardCreation() {
 }
 
 void soughtAfterTreasures() {
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheEmperess[theEmpressPawn.treasure]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheArchDruid[theArchDruidPawn.treasure]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheHauntedSeer[theHauntedSeerPawn.treasure]);
-    printf("Your The treasure you are currently looking for is : %s", treasureCardTheBrutalWanderer[theBrutalWandererPawn.treasure]);
+    printf("The treasure that the Empress is currently looking for is : %s \n", treasureCardTheEmperess[theEmpressPawn.treasure]);
+    printf("The treasure that the Arch Druid is currently looking for is : %s \n", treasureCardTheArchDruid[theArchDruidPawn.treasure]);
+    printf("The treasure that the Haunted Seer is currently looking for is : %s \n", treasureCardTheHauntedSeer[theHauntedSeerPawn.treasure]);
+    printf("The treasure that the Brutal Wanderer is currently looking for is : %s \n", treasureCardTheBrutalWanderer[theBrutalWandererPawn.treasure]);
 }
 
 void returnMainMenu(void) {
@@ -163,17 +156,49 @@ void startGame() {
     //----START----//
     int firstPlayer = rand() % nbPlayer - 1;
     boardCreation();
-    while(firstPlayer < 3) {
+    while(firstPlayer < nbPlayer + 1) {
         soughtAfterTreasures();
-        //round();
+        if(firstPlayer == 0) {
+            printf("It's the turn of the Empress\n");
+        }
+        else if(firstPlayer == 1) {
+            printf("It's the turn of the Arch Druid\n");
+        }
+        else if(firstPlayer == 2) {
+            printf("It's the turn of the Haunted Seer\n");
+        }
+        else if(firstPlayer == 3) {
+            printf("It's the turn of the Brutal Wanderer\n");
+        }
+        else {
+            printf("ERROR");
+            returnMainMenu();
+        }
+        oneRound();
         firstPlayer++;
     }
     while(1) {
-        for(player = 0; player < 3; player++) {
+        for(player = 0; player < nbPlayer + 1; player++) {
             soughtAfterTreasures();
-            //round();
+            if(firstPlayer == 0) {
+                printf("It's the turn of the Empress\n");
+            }
+            else if(firstPlayer == 1) {
+                printf("It's the turn of the Arch Druid\n");
+            }
+            else if(firstPlayer == 2) {
+                printf("It's the turn of the Haunted Seer\n");
+            }
+            else if(firstPlayer == 3) {
+                printf("It's the turn of the Brutal Wanderer\n");
+            }
+            else {
+                printf("ERROR");
+                returnMainMenu();
+            }
+            oneRound();
             if (((theEmpressPawn.treasure == nbCardByPerson) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == nbCardByPerson) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == nbCardByPerson) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == nbCardByPerson) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
-                printf("END");
+                printf("\n\n    THE END \n\n");
                 returnMainMenu();
             }
         }

@@ -20,6 +20,9 @@ extern int main(void) {
                 break;
             case 2 :
                 return 0;
+            default:
+                printf("ERROR");
+                return 0;
         }
     }
 }

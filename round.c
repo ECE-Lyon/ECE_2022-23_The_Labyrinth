@@ -8,14 +8,6 @@ int choice = 0;
 int choiceWay = 0;
 
 int oneRound() {
-    for (horizontal = 0; horizontal < BOARDSIDE; horizontal++) {
-        for(vertical = 0; vertical < BOARDSIDE; vertical++) {
-            printf("%s ", board[horizontal][vertical].boxtype);
-            printf("%d ", board[horizontal][vertical].boxway);
-        }
-        printf("\n");
-    }
-
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     printf("Which row/column do you want to replace ? \n");
@@ -76,14 +68,7 @@ int oneRound() {
         }
     }
 
-
-    for (horizontal = 0; horizontal < BOARDSIDE; horizontal++) {
-        for(vertical = 0; vertical < BOARDSIDE; vertical++) {
-            printf("%s ", board[horizontal][vertical].boxtype);
-            printf("%d ", board[horizontal][vertical].boxway);
-        }
-        printf("\n");
-    }
+    //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
 
 
     //faire bouger pion

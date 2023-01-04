@@ -203,7 +203,4 @@ void startGame() {
             }
         }
     }
-
-    //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
-    //mettre un return 0 pour arreter le programme si on veut qu'il s'arrete (dans la fct où on demande à un joueur qqc
 }

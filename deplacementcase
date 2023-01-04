@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+#define COTEPLATEAU 2
+
+typedef struct{int typeCase, orientationCase;} Case ;
+Case valeurremplacente;
+Case tableau[COTEPLATEAU][COTEPLATEAU] = {3,5,4,6,4,5,5,5};
+int horizontal = 0, vertical = 0;
+int choixligne = 0;
+int choix = 0;
+int choixsens = 0;
+
+int main(){
+
+    for (horizontal = 0; horizontal < COTEPLATEAU; horizontal++) {
+        for(vertical = 0; vertical < COTEPLATEAU; vertical++) {
+            printf("%d ", tableau[horizontal][vertical].typeCase);
+            printf("%d ", tableau[horizontal][vertical].orientationCase);
+        }
+        printf("\n");
+    }
+
+    printf("Par quelle valeur voulez vous remplacer?\n");
+    scanf("%d",&valeurremplacente);
+    printf("voulez vous vertical(1) ou horizontal(2)?\n");
+    scanf("%d",&choix);
+    printf("quelle ligne voulez replacer ?\n");
+    scanf("%d",&choixligne);
+    printf("dans quel sens? droite bas 1 gauche haut 2\n");
+    scanf("%d",&choixsens);
+
+    if(choixsens == 1) {
+        if (choix == 1) {
+            for (vertical = COTEPLATEAU - 1; vertical > 0; vertical--) {
+                tableau[vertical][choixligne - 1] = tableau[vertical - 1][choixligne - 1];
+            }
+            tableau[0][choixligne - 1] = valeurremplacente;
+        } else if (choix == 2) {
+            for (horizontal = COTEPLATEAU - 1; horizontal > 0; horizontal--) {
+                tableau[choixligne - 1][horizontal] = tableau[choixligne - 1][horizontal - 1];
+            }
+            tableau[choixligne - 1][0] = valeurremplacente;
+        }
+    }
+
+    if(choixsens == 2) {
+        if (choix == 1) {
+            for (vertical = 0; vertical < COTEPLATEAU - 1; vertical++) {
+                tableau[vertical][choixligne - 1] = tableau[vertical + 1][choixligne - 1];
+            }
+            tableau[COTEPLATEAU - 1][choixligne - 1] = valeurremplacente;
+        } else if (choix == 2) {
+            for (horizontal = 0; horizontal < COTEPLATEAU - 1; horizontal++) {
+                tableau[choixligne - 1][horizontal] = tableau[choixligne - 1][horizontal + 1];
+            }
+            tableau[choixligne - 1][COTEPLATEAU - 1] = valeurremplacente;
+        }
+    }
+
+
+    for (horizontal = 0; horizontal < COTEPLATEAU; horizontal++) {
+        for(vertical = 0; vertical < COTEPLATEAU; vertical++) {
+            printf("%d ", tableau[horizontal][vertical].typeCase);
+            printf("%d ", tableau[horizontal][vertical].orientationCase);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}

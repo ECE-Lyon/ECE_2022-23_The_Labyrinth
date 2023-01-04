@@ -156,6 +156,7 @@ void startGame() {
     //----START----//
     int firstPlayer = rand() % nbPlayer - 1;
     boardCreation();
+    initializeBoard();
     while(firstPlayer < nbPlayer + 1) {
         soughtAfterTreasures();
         if(firstPlayer == 0) {

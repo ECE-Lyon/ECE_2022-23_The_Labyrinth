@@ -15,7 +15,6 @@ int oneRound() {
     printf("Do you want to move to the right/down(1), or to the left/up(2) ? \n");
     scanf("%d", &choiceWay);
 
-    //char *boxtype, *treasure; int boxway, theEmperess, theArchDruid, theHauntedSeer, theBrutalWanderer;
     if(choiceWay == 1) {
         if (choice == 1) {
             for (vertical = BOARDSIDE - 1; vertical > 0; vertical--) {

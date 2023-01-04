@@ -3,6 +3,7 @@
 
 #include "boardCreation.h"
 #include "round.h"
+#include "initializeBoard.h"
 
 #define nbTreasureCard 24
 #define nbCardByPerson 6

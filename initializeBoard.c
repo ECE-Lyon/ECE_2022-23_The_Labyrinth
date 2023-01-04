@@ -1,19 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-//#include "resetLABressources.c"
-
-// Constants for the size of the game board and number of game pieces
-#define BOARD_SIZE 7
-#define NUM_STATIC_PIECES 16
-#define NUM_MOVABLE_PIECES 33
-
-// Struct to represent a game piece with x and y coordinates
-typedef struct {
-  int x;
-  int y;
-  int number;
-} GamePiece;
+#include "initializeBoard.h"
 
 // Array to store the starting positions of the static pieces
 GamePiece staticGamePieces[NUM_STATIC_PIECES] = {
@@ -122,7 +110,7 @@ void initializeGame(int board[][BOARD_SIZE], GamePiece staticGamePieces[], GameP
  }
 
 
-int main() {
+void initializaBoard() {
   // Initialize the game
   initializeGame(board, staticGamePieces, movableGamePieces);
 
@@ -133,6 +121,4 @@ int main() {
     }
     printf("\n");
   }
-
-  return 0;
 }

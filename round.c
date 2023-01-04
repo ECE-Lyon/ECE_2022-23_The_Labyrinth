@@ -8,10 +8,13 @@ int choice = 0;
 int choiceWay = 0;
 
 int oneRound(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
+
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
-    printf("Which row/column do you want to replace ? \n");
-    scanf("%d", &choiceLine);
+    while(!((choiceLine == 1) || (choiceLine == 3) || (choiceLine == 5))) {
+        printf("Which row/column do you want to replace ? \n");
+        scanf("%d", &choiceLine);
+    }
     printf("Do you want to move to the right/down(1), or to the left/up(2) ? \n");
     scanf("%d", &choiceWay);
 
@@ -67,10 +70,8 @@ int oneRound(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], P
         }
     }
 
-    //pour les tuiles à ne pas faire coulisser, faire une condition genre "si la ligne/colonne choisie != 1, 3 ou 5" alors on repose la question
-
-
     //faire bouger pion
     //vérifier si le pion gagne un trésor
-}
 
+    return 0;
+}

@@ -1,6 +1,0 @@
-First file of the repo, just testing things w/ GitHub
-
---> Is pushing working fine ?
-est ce ca marche pour EUGENE ?
-oui. fonctionnel.
-ae.

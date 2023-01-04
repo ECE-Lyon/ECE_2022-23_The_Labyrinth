@@ -5,9 +5,9 @@
 #include "round.h"
 #include "initializeBoard.h"
 
-#define nbTreasureCard 24
-#define nbCardByPerson 6
-#define maxLettersWords 50
+#define NB_TREASURE_CARD 24
+#define NB_CARD_BY_PERSON 6
+#define MAX_LETTERS_WORDS 50
 #define BOARDSIDE 7
 
 typedef struct {char *boxtype, *treasure; int boxway, theEmperess, theArchDruid, theHauntedSeer, theBrutalWanderer;} Case;
@@ -16,10 +16,10 @@ typedef struct {char *boxtype; int treasure, boxway, character, x, y;} Pawn;
 
 void startGame();
 
-extern char treasureCardTheEmperess[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheArchDruid[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheHauntedSeer[nbCardByPerson][maxLettersWords];
-extern char treasureCardTheBrutalWanderer[nbCardByPerson][maxLettersWords];
+extern char treasureCardTheEmperess[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+extern char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+extern char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+extern char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 
 extern Case substituteValue;
 extern Case board[BOARDSIDE][BOARDSIDE] = {{0}};

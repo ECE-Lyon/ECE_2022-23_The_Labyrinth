@@ -1,10 +1,10 @@
 #ifndef PROJET_INITIALIZEBOARD_H
 #define PROJET_INITIALIZEBOARD_H
 
+#include "startGame.h"
 //#include "resetLABressources.c"
 
 //Constants for the size of the game board and number of game pieces
-#define BOARD_SIZE 7
 #define NUM_STATIC_PIECES 16
 #define NUM_MOVABLE_PIECES 33
 

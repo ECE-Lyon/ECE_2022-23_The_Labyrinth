@@ -8,7 +8,7 @@ int player = 0;
 int nbPlayer = 0;
 int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
 
-char treasuresCard[nbTreasureCard][maxLettersWords] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
+char treasuresCard[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
                                            "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
                                            "geant", "crane", "araignee", "couronne", "chandelier", "carte",
                                            "tresor", "serpent", "statut", "or", "souris", "fantome"};
@@ -19,12 +19,12 @@ Pawn theHauntedSeerPawn = {0};
 Pawn theBrutalWandererPawn = {0};
 
 
-void distributeCards(char character[nbCardByPerson][maxLettersWords]) {
-    for(int i = 0; i < nbCardByPerson; i++) {
+void distributeCards(char character[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+    for(int i = 0; i < NB_CARD_BY_PERSON; i++) {
         int res = 0;
         int randomCard = 0;
         while(res == 0) {
-            randomCard = rand() % nbTreasureCard;
+            randomCard = rand() % NB_TREASURE_CARD;
             res = strcmp(treasuresCard[randomCard], "0");
         }
         strcpy(character[i], treasuresCard[randomCard]);
@@ -181,16 +181,16 @@ void startGame() {
     while(1) {
         for(player = 0; player < nbPlayer + 1; player++) {
             soughtAfterTreasures();
-            if(firstPlayer == 0) {
+            if(player == 0) {
                 printf("It's the turn of the Empress\n");
             }
-            else if(firstPlayer == 1) {
+            else if(player == 1) {
                 printf("It's the turn of the Arch Druid\n");
             }
-            else if(firstPlayer == 2) {
+            else if(player == 2) {
                 printf("It's the turn of the Haunted Seer\n");
             }
-            else if(firstPlayer == 3) {
+            else if(player == 3) {
                 printf("It's the turn of the Brutal Wanderer\n");
             }
             else {
@@ -198,7 +198,7 @@ void startGame() {
                 returnMainMenu();
             }
             oneRound();
-            if (((theEmpressPawn.treasure == nbCardByPerson) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == nbCardByPerson) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == nbCardByPerson) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == nbCardByPerson) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
+            if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == NB_CARD_BY_PERSON) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == NB_CARD_BY_PERSON) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == NB_CARD_BY_PERSON) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
                 printf("\n\n    THE END \n\n");
                 returnMainMenu();
             }

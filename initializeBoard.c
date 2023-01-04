@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "initializeBoard.h"
+#include "startGame.h"
 
 // Array to store the starting positions of the static pieces
 GamePiece staticGamePieces[NUM_STATIC_PIECES] = {
@@ -37,7 +38,7 @@ GamePiece movableGamePieces[NUM_MOVABLE_PIECES] = {
   {6, 1, 26},  // Piece 10 starting position
   {1, 2, 27},  // Piece 11 starting position
   {3, 2, 28},  // Piece 12 starting position
-  {5, 2, 29}, // Piece 13 starting position
+  {5, 2, 29},  // Piece 13 starting position
   {0, 3, 30},  // Piece 14 starting position
   {1, 3, 31},  // Piece 15 starting position
   {2, 3, 32},  // Piece 16 starting position
@@ -61,38 +62,38 @@ GamePiece movableGamePieces[NUM_MOVABLE_PIECES] = {
 };
 
 // Two-dimensional array to represent the game board
-int board[BOARD_SIZE][BOARD_SIZE];
+int boardPieces[BOARDSIDE][BOARDSIDE];
 
 // Initializes the game board and places the game pieces in their starting positions
-void initializeGame(int board[][BOARD_SIZE], GamePiece staticGamePieces[], GamePiece movableGamePieces[]) {
+void initializeGame(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece movableGameP[]) {
   // Initialize the game board to all zeros
-  for (int i = 0; i < BOARD_SIZE; i++) {
-    for (int j = 0; j < BOARD_SIZE; j++) {
-      board[i][j] = 0;
+  for (int i = 0; i < BOARDSIDE; i++) {
+    for (int j = 0; j < BOARDSIDE; j++) {
+      boardP[i][j] = 0;
     }
   }
  
 
   // Place the static pieces in their fixed positions
   for (int i = 0; i < NUM_STATIC_PIECES; i++) {
-    int x = staticGamePieces[i].x;
-    int y = staticGamePieces[i].y;
-    int number = staticGamePieces[i].number;
-    board[x][y] = number;
+    int x = staticGameP[i].x;
+    int y = staticGameP[i].y;
+    int number = staticGameP[i].number;
+    boardP[x][y] = number;
   }
 
 
   // Place the movable pieces in their starting positions
   for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
-    int x = movableGamePieces[i].x;
-    int y = movableGamePieces[i].y;
-    int number = movableGamePieces[i].number;
-    board[x][y] = number;
+    int x = movableGameP[i].x;
+    int y = movableGameP[i].y;
+    int number = movableGameP[i].number;
+    boardP[x][y] = number;
   }
 }
 
 
- void shuffleMovablePieces(int board[][BOARD_SIZE], GamePiece staticGamePieces[], GamePiece movableGamePieces[]) {
+ void shuffleMovablePieces(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece movableGameP[]) {
    // Seed the random number generator based on the time
    srand(time(NULL));
 
@@ -103,21 +104,21 @@ void initializeGame(int board[][BOARD_SIZE], GamePiece staticGamePieces[], GameP
      int index2 = rand() % NUM_MOVABLE_PIECES;
 
      // Swap the pieces at the two indices
-     GamePiece temp = movableGamePieces[index1];
-     movableGamePieces[index1] = movableGamePieces[index2];
-     movableGamePieces[index2] = temp;
+     GamePiece temp = movableGameP[index1];
+     movableGameP[index1] = movableGameP[index2];
+     movableGameP[index2] = temp;
     }
  }
 
 
 void initializaBoard() {
   // Initialize the game
-  initializeGame(board, staticGamePieces, movableGamePieces);
+  initializeGame(boardPieces, staticGamePieces, movableGamePieces);
 
   // Print the game board
-  for (int i = 0; i < BOARD_SIZE; i++) {
-    for (int j = 0; j < BOARD_SIZE; j++) {
-      printf("%d ", board[i][j]);
+  for (int i = 0; i < BOARDSIDE; i++) {
+    for (int j = 0; j < BOARDSIDE; j++) {
+      printf("%d ", boardPieces[i][j]);
     }
     printf("\n");
   }

@@ -173,7 +173,7 @@ void startGame() {
     //----START----//
     int firstPlayer = rand() % nbPlayer - 1;
     boardCreation();
-    initializeBoard();
+    //initializeBoard();
     while(firstPlayer < nbPlayer + 1) {
         switch (firstPlayer) {
             case 0:

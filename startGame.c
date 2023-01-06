@@ -18,7 +18,7 @@ Pawn theArchDruidPawn = {0};
 Pawn theHauntedSeerPawn = {0};
 Pawn theBrutalWandererPawn = {0};
 
-char treasureCardTheEmperess[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+char treasureCardTheEmpress[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
@@ -47,67 +47,67 @@ void boardCreation() {
     theEmpressPawn.boxway = 1;
     theEmpressPawn.x = 0;
     theEmpressPawn.y = 0;
-    strcpy(board[BOARDSIDE][0].boxtype, "L");
-    board[BOARDSIDE][0].boxway = 2;
+    strcpy(board[BOARDSIDE - 1][0].boxtype, "L");
+    board[BOARDSIDE - 1][0].boxway = 2;
     strcpy(theArchDruidPawn.boxtype, "L");
     theArchDruidPawn.boxway = 2;
-    theArchDruidPawn.x = BOARDSIDE;
+    theArchDruidPawn.x = BOARDSIDE - 1;
     theArchDruidPawn.y = 0;
-    strcpy(board[0][BOARDSIDE].boxtype, "L");
-    board[0][BOARDSIDE].boxway = 0;
+    strcpy(board[0][BOARDSIDE - 1].boxtype, "L");
+    board[0][BOARDSIDE - 1].boxway = 0;
     strcpy(theHauntedSeerPawn.boxtype, "L");
     theHauntedSeerPawn.boxway = 0;
     theHauntedSeerPawn.x = 0;
-    theHauntedSeerPawn.y = BOARDSIDE;
-    strcpy(board[BOARDSIDE][BOARDSIDE].boxtype, "L");
-    board[BOARDSIDE][BOARDSIDE].boxway = 3;
+    theHauntedSeerPawn.y = BOARDSIDE - 1;
+    strcpy(board[BOARDSIDE - 1][BOARDSIDE - 1].boxtype, "L");
+    board[BOARDSIDE - 1][BOARDSIDE - 1].boxway = 3;
     strcpy(theBrutalWandererPawn.boxtype, "L");
     theBrutalWandererPawn.boxway = 3;
-    theBrutalWandererPawn.x = BOARDSIDE;
-    theBrutalWandererPawn.y = BOARDSIDE;
+    theBrutalWandererPawn.x = BOARDSIDE - 1;
+    theBrutalWandererPawn.y = BOARDSIDE - 1;
 
 
     //----OUTLINE----//
-    for(int line = 2; line < BOARDSIDE - 2; line += 2) {
+    for(int line = 2; line < BOARDSIDE - 3; line += 2) {
         strcpy(board[line][0].boxtype, "T");
         board[line][0].boxway = 0;
     }
-    for(int line = 2; line < BOARDSIDE - 2; line += 2) {
-        strcpy(board[line][BOARDSIDE].boxtype, "T");
-        board[line][BOARDSIDE].boxway = 2;
+    for(int line = 2; line < BOARDSIDE - 3; line += 2) {
+        strcpy(board[line][BOARDSIDE - 1].boxtype, "T");
+        board[line][BOARDSIDE - 1].boxway = 2;
     }
-    for(int column = 2; column < BOARDSIDE; column += 2) {
+    for(int column = 2; column < BOARDSIDE - 1; column += 2) {
         strcpy(board[0][column].boxtype, "T");
         board[0][column].boxway = 3;
     }
-    for(int column = 2; column < BOARDSIDE; column += 2) {
-        strcpy(board[BOARDSIDE][column].boxtype, "T");
-        board[BOARDSIDE][column].boxway = 1;
+    for(int column = 2; column < BOARDSIDE - 1; column += 2) {
+        strcpy(board[BOARDSIDE - 1][column].boxtype, "T");
+        board[BOARDSIDE - 1][column].boxway = 1;
     }
 
 
     //----CENTER----//
     strcpy(board[2][2].boxtype, "T");
     board[2][2].boxway = 3;
-    strcpy(board[BOARDSIDE - 2][2].boxtype, "T");
-    board[BOARDSIDE - 2][2].boxway = 0;
-    strcpy(board[2][BOARDSIDE - 2].boxtype, "T");
+    strcpy(board[BOARDSIDE - 3][2].boxtype, "T");
+    board[BOARDSIDE - 3][2].boxway = 0;
+    strcpy(board[2][BOARDSIDE - 3].boxtype, "T");
     board[2][BOARDSIDE - 2].boxway = 1;
-    strcpy(board[BOARDSIDE - 2][BOARDSIDE - 2].boxtype, "T");
-    board[BOARDSIDE - 2][BOARDSIDE - 2].boxway = 2;
+    strcpy(board[BOARDSIDE - 3][BOARDSIDE - 3].boxtype, "T");
+    board[BOARDSIDE - 3][BOARDSIDE - 3].boxway = 2;
 
     //----MOBILES----//       ***************A CHANGER CAR COPIE COLLE***************
-    Case movableGameP;
-    for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
+    //Case movableGameP;
+    //for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
         // Generate two random indices to swap
-        int index1 = rand() % NUM_MOVABLE_PIECES;
-        int index2 = rand() % NUM_MOVABLE_PIECES;
+        //int index1 = rand() % NUM_MOVABLE_PIECES;
+        //int index2 = rand() % NUM_MOVABLE_PIECES;
 
         // Swap the pieces at the two indices
         //GamePiece temp = movableGameP[index1];
         //movableGameP[index1] = movableGameP[index2];
         //movableGameP[index2] = temp;
-    }
+    //}
 }
 
 void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
@@ -160,37 +160,45 @@ void startGame() {
 
 
     //----TREASURES----//
-    distributeCards(treasureCardTheEmperess);
+    distributeCards(treasureCardTheEmpress);
     distributeCards(treasureCardTheArchDruid);
     distributeCards(treasureCardTheHauntedSeer);
     distributeCards(treasureCardTheBrutalWanderer);
 
 
     //----START----//
-    int firstPlayer = rand() % nbPlayer - 1;
-    boardCreation();
+    int firstPlayer = rand() % nbPlayer;
+    //boardCreation();
     initializeBoard();
     while(firstPlayer < nbPlayer + 1) {
         switch (firstPlayer) {
             case 0:
-                printf("It's the turn of the Empress\n");
-                soughtAfterTreasures(treasureCardTheEmperess, theEmpressPawn);
-                oneRound(board, theEmpressPawn, treasureCardTheEmperess);
+                if(theEmperess != 0){
+                    printf("It's the turn of the Empress\n");
+                    soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
+                    oneRound(board, theEmpressPawn, treasureCardTheEmpress);
+                }
                 break;
             case 1 :
-                printf("It's the turn of the Arch Druid\n");
-                soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                oneRound(board, theArchDruidPawn, treasureCardTheArchDruid);
+                if(theArchDruid != 0) {
+                    printf("It's the turn of the Arch Druid\n");
+                    soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
+                    oneRound(board, theArchDruidPawn, treasureCardTheArchDruid);
+                }
                 break;
             case 2 :
-                printf("It's the turn of the Haunted Seer\n");
-                soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                oneRound(board, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                if(theHauntedSeer != 0) {
+                    printf("It's the turn of the Haunted Seer\n");
+                    soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                    oneRound(board, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                }
                 break;
             case 3 :
-                printf("It's the turn of the Brutal Wanderer\n");
-                soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                oneRound(board, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                if(theBrutalWanderer != 0) {
+                    printf("It's the turn of the Brutal Wanderer\n");
+                    soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                    oneRound(board, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                }
                 break;
             default:
                 goto returnMainMenu;
@@ -201,24 +209,32 @@ void startGame() {
         for(player = 0; player < nbPlayer + 1; player++) {
             switch (player) {
                 case 0:
-                    printf("It's the turn of the Empress\n");
-                    soughtAfterTreasures(treasureCardTheEmperess, theEmpressPawn);
-                    oneRound(board, theEmpressPawn, treasureCardTheEmperess);
+                    if(theEmperess != 0) {
+                        printf("It's the turn of the Empress\n");
+                        soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
+                        oneRound(board, theEmpressPawn, treasureCardTheEmpress);
+                    }
                     break;
                 case 1 :
-                    printf("It's the turn of the Arch Druid\n");
-                    soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                    oneRound(board, theArchDruidPawn, treasureCardTheArchDruid);
+                    if(theArchDruid != 0) {
+                        printf("It's the turn of the Arch Druid\n");
+                        soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
+                        oneRound(board, theArchDruidPawn, treasureCardTheArchDruid);
+                    }
                     break;
                 case 2 :
-                    printf("It's the turn of the Haunted Seer\n");
-                    soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                    oneRound(board, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                    if(theHauntedSeer != 0) {
+                        printf("It's the turn of the Haunted Seer\n");
+                        soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                        oneRound(board, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                    }
                     break;
                 case 3 :
-                    printf("It's the turn of the Brutal Wanderer\n");
-                    soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                    oneRound(board, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                    if(theBrutalWanderer != 0) {
+                        printf("It's the turn of the Brutal Wanderer\n");
+                        soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                        oneRound(board, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                    }
                     break;
                 default:
                     goto returnMainMenu;

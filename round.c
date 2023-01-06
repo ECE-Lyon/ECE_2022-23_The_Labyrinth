@@ -9,11 +9,12 @@ int choiceWay = 0;
 Case substituteValue;
 
 int oneRound(Case board[BOARDSIDE][BOARDSIDE], Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
-    printf("pour voir si ça fctionne : %d", board[0][0].boxway);
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
-    while(!((choiceLine == 1) || (choiceLine == 3) || (choiceLine == 5))) {
-        printf("Which row/column do you want to replace ? \n");
+    printf("Which row/column do you want to replace ? \n");
+    scanf("%d", &choiceLine);
+    while(!((choiceLine == 1 + 1) || (choiceLine == 3 + 1) || (choiceLine == 5 + 1))) {
+        printf("You can't move the row/column, only 2, 4 and 6 are available. Which row/column do you want to replace ? \n");
         scanf("%d", &choiceLine);
     }
     printf("Do you want to move to the right/down(1), or to the left/up(2) ? \n");

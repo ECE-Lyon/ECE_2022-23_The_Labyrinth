@@ -2,7 +2,6 @@
 #define PROJET_INITIALIZEBOARD_H
 
 #include "startGame.h"
-//#include "resetLABressources.c"
 
 // Struct to represent a game piece with x and y coordinates
 typedef struct {

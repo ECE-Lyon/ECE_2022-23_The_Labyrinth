@@ -114,6 +114,8 @@ void initializeBoard() {
   // Initialize the game
   initializeGame();
 
+  shuffleMovablePieces();
+
   // Print the game board
   for (int i = 0; i < BOARDSIDE; i++) {
     for (int j = 0; j < BOARDSIDE; j++) {

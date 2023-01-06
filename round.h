@@ -11,6 +11,6 @@ typedef struct {char *boxtype, *treasure; int boxway, theEmperess, theArchDruid,
 
 typedef struct {char *boxtype; int treasure, boxway, character, x, y;} Pawn;
 
-int oneRound(Case board[BOARDSIDE][BOARDSIDE], char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character);
+int oneRound(Case board[BOARDSIDE][BOARDSIDE], Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]);
 
 #endif //PROJET_ROUND_H

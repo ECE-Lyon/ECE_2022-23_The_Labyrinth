@@ -8,7 +8,7 @@ int choiceWay = 0;
 
 Case substituteValue;
 
-int oneRound(Case board[BOARDSIDE][BOARDSIDE], char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
+int oneRound(Case board[BOARDSIDE][BOARDSIDE], Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
     printf("pour voir si ça fctionne : %d", board[0][0].boxway);
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);

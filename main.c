@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "startGame.h"
 
-extern int main(void) {
+int main(void) {
     printf("Welcome + explain games's rules\n\n");
 
     while(1) {

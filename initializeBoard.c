@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "initializeBoard.h"
-#include "startGame.h"
 
 // Array to store the starting positions of the static pieces
 GamePiece staticGamePieces[NUM_STATIC_PIECES] = {
@@ -111,7 +110,7 @@ void initializeGame(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece 
  }
 
 
-void initializaBoard() {
+void initializeBoard() {
   // Initialize the game
   initializeGame(boardPieces, staticGamePieces, movableGamePieces);
 

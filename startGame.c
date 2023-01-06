@@ -18,6 +18,13 @@ Pawn theArchDruidPawn = {0};
 Pawn theHauntedSeerPawn = {0};
 Pawn theBrutalWandererPawn = {0};
 
+char treasureCardTheEmperess[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+
+Case board[BOARDSIDE][BOARDSIDE];
+
 
 void distributeCards(char character[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
     for(int i = 0; i < NB_CARD_BY_PERSON; i++) {
@@ -78,6 +85,7 @@ void boardCreation() {
         board[BOARDSIDE][column].boxway = 1;
     }
 
+
     //----CENTER----//
     strcpy(board[2][2].boxtype, "T");
     board[2][2].boxway = 3;
@@ -87,6 +95,19 @@ void boardCreation() {
     board[2][BOARDSIDE - 2].boxway = 1;
     strcpy(board[BOARDSIDE - 2][BOARDSIDE - 2].boxtype, "T");
     board[BOARDSIDE - 2][BOARDSIDE - 2].boxway = 2;
+
+    //----MOBILES----//       ***************A CHANGER CAR COPIE COLLE***************
+    Case movableGameP;
+    for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
+        // Generate two random indices to swap
+        int index1 = rand() % NUM_MOVABLE_PIECES;
+        int index2 = rand() % NUM_MOVABLE_PIECES;
+
+        // Swap the pieces at the two indices
+        //GamePiece temp = movableGameP[index1];
+        //movableGameP[index1] = movableGameP[index2];
+        //movableGameP[index2] = temp;
+    }
 }
 
 void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
@@ -100,7 +121,6 @@ void returnMainMenu(void) {
 
 void startGame() {
     srand(time(NULL));
-
 
     //----PLAYERS----//
     printf("How many player are you ?\n");
@@ -159,22 +179,22 @@ void startGame() {
             case 0:
                 printf("It's the turn of the Empress\n");
                 soughtAfterTreasures(treasureCardTheEmperess, theEmpressPawn);
-                oneRound(treasureCardTheEmperess, theEmpressPawn);
+                oneRound(board, treasureCardTheEmperess, theEmpressPawn);
                 break;
             case 1 :
                 printf("It's the turn of the Arch Druid\n");
                 soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                oneRound(treasureCardTheArchDruid, theArchDruidPawn);
+                oneRound(board, treasureCardTheArchDruid, theArchDruidPawn);
                 break;
             case 2 :
                 printf("It's the turn of the Haunted Seer\n");
                 soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                oneRound(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                oneRound(board, treasureCardTheHauntedSeer, theHauntedSeerPawn);
                 break;
             case 3 :
                 printf("It's the turn of the Brutal Wanderer\n");
                 soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                oneRound(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                oneRound(board, treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                 break;
             default:
                 printf("ERROR");
@@ -189,22 +209,22 @@ void startGame() {
                 case 0:
                     printf("It's the turn of the Empress\n");
                     soughtAfterTreasures(treasureCardTheEmperess, theEmpressPawn);
-                    oneRound(treasureCardTheEmperess, theEmpressPawn);
+                    oneRound(board, treasureCardTheEmperess, theEmpressPawn);
                     break;
                 case 1 :
                     printf("It's the turn of the Arch Druid\n");
                     soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                    oneRound(treasureCardTheArchDruid, theArchDruidPawn);
+                    oneRound(board, treasureCardTheArchDruid, theArchDruidPawn);
                     break;
                 case 2 :
                     printf("It's the turn of the Haunted Seer\n");
                     soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                    oneRound(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                    oneRound(board, treasureCardTheHauntedSeer, theHauntedSeerPawn);
                     break;
                 case 3 :
                     printf("It's the turn of the Brutal Wanderer\n");
                     soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                    oneRound(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                    oneRound(board, treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                     break;
                 default:
                     printf("ERROR");

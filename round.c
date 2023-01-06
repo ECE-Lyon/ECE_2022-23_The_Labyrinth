@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include "round.h"
-#include "startGame.h"
 
 int horizontal = 0, vertical = 0;
 int choiceLine = 0;
 int choice = 0;
 int choiceWay = 0;
 
-int oneRound(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
+Case substituteValue;
 
+int oneRound(Case board[BOARDSIDE][BOARDSIDE], char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
+    printf("pour voir si ça fctionne : %d", board[0][0].boxway);
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     while(!((choiceLine == 1) || (choiceLine == 3) || (choiceLine == 5))) {

@@ -10,7 +10,7 @@
 #define NB_TREASURE_CARD 24
 #define NB_CARD_BY_PERSON 6
 #define MAX_LETTERS_WORDS 50
-#define BOARDSIDE 7
+#define BOARDSIZE 7
 
 void startGame();
 

@@ -23,7 +23,7 @@ char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
 
-Case board[BOARDSIDE][BOARDSIDE];
+Case board[BOARDSIZE][BOARDSIZE];
 
 
 void distributeCards(char character[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
@@ -47,54 +47,54 @@ void boardCreation() {
     theEmpressPawn.boxway = 1;
     theEmpressPawn.x = 0;
     theEmpressPawn.y = 0;
-    strcpy(board[BOARDSIDE - 1][0].boxtype, "L");
-    board[BOARDSIDE - 1][0].boxway = 2;
+    strcpy(board[BOARDSIZE - 1][0].boxtype, "L");
+    board[BOARDSIZE - 1][0].boxway = 2;
     strcpy(theArchDruidPawn.boxtype, "L");
     theArchDruidPawn.boxway = 2;
-    theArchDruidPawn.x = BOARDSIDE - 1;
+    theArchDruidPawn.x = BOARDSIZE - 1;
     theArchDruidPawn.y = 0;
-    strcpy(board[0][BOARDSIDE - 1].boxtype, "L");
-    board[0][BOARDSIDE - 1].boxway = 0;
+    strcpy(board[0][BOARDSIZE - 1].boxtype, "L");
+    board[0][BOARDSIZE - 1].boxway = 0;
     strcpy(theHauntedSeerPawn.boxtype, "L");
     theHauntedSeerPawn.boxway = 0;
     theHauntedSeerPawn.x = 0;
-    theHauntedSeerPawn.y = BOARDSIDE - 1;
-    strcpy(board[BOARDSIDE - 1][BOARDSIDE - 1].boxtype, "L");
-    board[BOARDSIDE - 1][BOARDSIDE - 1].boxway = 3;
+    theHauntedSeerPawn.y = BOARDSIZE - 1;
+    strcpy(board[BOARDSIZE - 1][BOARDSIZE - 1].boxtype, "L");
+    board[BOARDSIZE - 1][BOARDSIZE - 1].boxway = 3;
     strcpy(theBrutalWandererPawn.boxtype, "L");
     theBrutalWandererPawn.boxway = 3;
-    theBrutalWandererPawn.x = BOARDSIDE - 1;
-    theBrutalWandererPawn.y = BOARDSIDE - 1;
+    theBrutalWandererPawn.x = BOARDSIZE - 1;
+    theBrutalWandererPawn.y = BOARDSIZE - 1;
 
 
     //----OUTLINE----//
-    for(int line = 2; line < BOARDSIDE - 3; line += 2) {
+    for(int line = 2; line < BOARDSIZE - 3; line += 2) {
         strcpy(board[line][0].boxtype, "T");
         board[line][0].boxway = 0;
     }
-    for(int line = 2; line < BOARDSIDE - 3; line += 2) {
-        strcpy(board[line][BOARDSIDE - 1].boxtype, "T");
-        board[line][BOARDSIDE - 1].boxway = 2;
+    for(int line = 2; line < BOARDSIZE - 3; line += 2) {
+        strcpy(board[line][BOARDSIZE - 1].boxtype, "T");
+        board[line][BOARDSIZE - 1].boxway = 2;
     }
-    for(int column = 2; column < BOARDSIDE - 1; column += 2) {
+    for(int column = 2; column < BOARDSIZE - 1; column += 2) {
         strcpy(board[0][column].boxtype, "T");
         board[0][column].boxway = 3;
     }
-    for(int column = 2; column < BOARDSIDE - 1; column += 2) {
-        strcpy(board[BOARDSIDE - 1][column].boxtype, "T");
-        board[BOARDSIDE - 1][column].boxway = 1;
+    for(int column = 2; column < BOARDSIZE - 1; column += 2) {
+        strcpy(board[BOARDSIZE - 1][column].boxtype, "T");
+        board[BOARDSIZE - 1][column].boxway = 1;
     }
 
 
     //----CENTER----//
     strcpy(board[2][2].boxtype, "T");
     board[2][2].boxway = 3;
-    strcpy(board[BOARDSIDE - 3][2].boxtype, "T");
-    board[BOARDSIDE - 3][2].boxway = 0;
-    strcpy(board[2][BOARDSIDE - 3].boxtype, "T");
-    board[2][BOARDSIDE - 2].boxway = 1;
-    strcpy(board[BOARDSIDE - 3][BOARDSIDE - 3].boxtype, "T");
-    board[BOARDSIDE - 3][BOARDSIDE - 3].boxway = 2;
+    strcpy(board[BOARDSIZE - 3][2].boxtype, "T");
+    board[BOARDSIZE - 3][2].boxway = 0;
+    strcpy(board[2][BOARDSIZE - 3].boxtype, "T");
+    board[2][BOARDSIZE - 2].boxway = 1;
+    strcpy(board[BOARDSIZE - 3][BOARDSIZE - 3].boxtype, "T");
+    board[BOARDSIZE - 3][BOARDSIZE - 3].boxway = 2;
 
     //----MOBILES----//       ***************A CHANGER CAR COPIE COLLE***************
     //Case movableGameP;
@@ -168,7 +168,7 @@ void startGame() {
 
     //----START----//
     int firstPlayer = rand() % nbPlayer;
-    //boardCreation();
+    boardCreation();
     initializeBoard();
     while(firstPlayer < nbPlayer + 1) {
         switch (firstPlayer) {
@@ -239,7 +239,7 @@ void startGame() {
                 default:
                     goto returnMainMenu;
             }
-            if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == NB_CARD_BY_PERSON) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == NB_CARD_BY_PERSON) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == NB_CARD_BY_PERSON) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
+            if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == NB_CARD_BY_PERSON) && (theArchDruidPawn.x == BOARDSIZE - 1) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == NB_CARD_BY_PERSON) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == BOARDSIZE - 1)) || ((theBrutalWandererPawn.treasure == NB_CARD_BY_PERSON) && (theBrutalWandererPawn.x == BOARDSIZE - 1) && (theBrutalWandererPawn.y == BOARDSIZE - 1))) {
                 printf("\n\n    THE END \n\n");
             }
         }

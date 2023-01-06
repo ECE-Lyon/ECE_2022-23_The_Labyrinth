@@ -61,13 +61,13 @@ GamePiece movableGamePieces[NUM_MOVABLE_PIECES] = {
 };
 
 // Two-dimensional array to represent the game board
-int boardPieces[BOARDSIDE][BOARDSIDE];
+int boardPieces[BOARDSIZE][BOARDSIZE];
 
 // Initializes the game board and places the game pieces in their starting positions
 void initializeGame() {
   // Initialize the game board to all zeros
-  for (int i = 0; i < BOARDSIDE; i++) {
-    for (int j = 0; j < BOARDSIDE; j++) {
+  for (int i = 0; i < BOARDSIZE; i++) {
+    for (int j = 0; j < BOARDSIZE; j++) {
       boardPieces[i][j] = 0;
     }
   }
@@ -117,8 +117,8 @@ void initializeBoard() {
   shuffleMovablePieces();
 
   // Print the game board
-  //for (int i = 0; i < BOARDSIDE; i++) {
-    //for (int j = 0; j < BOARDSIDE; j++) {
+  //for (int i = 0; i < BOARDSIZE; i++) {
+    //for (int j = 0; j < BOARDSIZE; j++) {
       //printf("%d ", boardPieces[i][j]);
     //}
     //printf("\n");

@@ -1,7 +1,7 @@
 #ifndef PROJET_STARTGAME_H
 #define PROJET_STARTGAME_H
 
-//#include "initializeBoard.h"
+#include "initializeBoard.h"
 #include "round.h"
 
 //Constants for the size of the game board and number of game pieces

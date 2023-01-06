@@ -114,10 +114,6 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
     printf("The treasure you are currently looking for is : %s \n", treasureCardCharacter[character.treasure]);
 }
 
-void returnMainMenu(void) {
-    //goto main;
-}
-
 
 void startGame() {
     srand(time(NULL));
@@ -197,9 +193,7 @@ void startGame() {
                 oneRound(board, treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                 break;
             default:
-                printf("ERROR");
-                returnMainMenu();
-                break;
+                goto returnMainMenu;
         }
         firstPlayer++;
     }
@@ -227,14 +221,14 @@ void startGame() {
                     oneRound(board, treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                     break;
                 default:
-                    printf("ERROR");
-                    returnMainMenu();
-                    break;
+                    goto returnMainMenu;
             }
             if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) && (theEmpressPawn.y == 0)) || ((theArchDruidPawn.treasure == NB_CARD_BY_PERSON) && (theArchDruidPawn.x == 0) && (theArchDruidPawn.y == 0)) || ((theHauntedSeerPawn.treasure == NB_CARD_BY_PERSON) && (theHauntedSeerPawn.x == 0) && (theHauntedSeerPawn.y == 0)) || ((theBrutalWandererPawn.treasure == NB_CARD_BY_PERSON) && (theBrutalWandererPawn.x == 0) && (theBrutalWandererPawn.y == 0))) {
                 printf("\n\n    THE END \n\n");
-                returnMainMenu();
             }
         }
     }
+
+returnMainMenu:
+    printf ("ERROR");
 }

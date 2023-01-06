@@ -64,35 +64,35 @@ GamePiece movableGamePieces[NUM_MOVABLE_PIECES] = {
 int boardPieces[BOARDSIDE][BOARDSIDE];
 
 // Initializes the game board and places the game pieces in their starting positions
-void initializeGame(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece movableGameP[]) {
+void initializeGame() {
   // Initialize the game board to all zeros
   for (int i = 0; i < BOARDSIDE; i++) {
     for (int j = 0; j < BOARDSIDE; j++) {
-      boardP[i][j] = 0;
+      boardPieces[i][j] = 0;
     }
   }
  
 
   // Place the static pieces in their fixed positions
   for (int i = 0; i < NUM_STATIC_PIECES; i++) {
-    int x = staticGameP[i].x;
-    int y = staticGameP[i].y;
-    int number = staticGameP[i].number;
-    boardP[x][y] = number;
+    int x = staticGamePieces[i].x;
+    int y = staticGamePieces[i].y;
+    int number = staticGamePieces[i].number;
+    boardPieces[x][y] = number;
   }
 
 
   // Place the movable pieces in their starting positions
   for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
-    int x = movableGameP[i].x;
-    int y = movableGameP[i].y;
-    int number = movableGameP[i].number;
-    boardP[x][y] = number;
+    int x = movableGamePieces[i].x;
+    int y = movableGamePieces[i].y;
+    int number = movableGamePieces[i].number;
+    boardPieces[x][y] = number;
   }
 }
 
 
- void shuffleMovablePieces(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece movableGameP[]) {
+ void shuffleMovablePieces() {
    // Seed the random number generator based on the time
    srand(time(NULL));
 
@@ -103,16 +103,16 @@ void initializeGame(int boardP[][BOARDSIDE], GamePiece staticGameP[], GamePiece 
      int index2 = rand() % NUM_MOVABLE_PIECES;
 
      // Swap the pieces at the two indices
-     GamePiece temp = movableGameP[index1];
-     movableGameP[index1] = movableGameP[index2];
-     movableGameP[index2] = temp;
+     GamePiece temp = movableGamePieces[index1];
+     movableGamePieces[index1] = movableGamePieces[index2];
+     movableGamePieces[index2] = temp;
     }
  }
 
 
 void initializeBoard() {
   // Initialize the game
-  initializeGame(boardPieces, staticGamePieces, movableGamePieces);
+  initializeGame();
 
   // Print the game board
   for (int i = 0; i < BOARDSIDE; i++) {

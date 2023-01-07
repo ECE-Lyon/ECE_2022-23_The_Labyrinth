@@ -1,10 +1,118 @@
 #include <stdio.h>
+#include <string.h>
 #include "round.h"
 
 int horizontal = 0, vertical = 0;
 int choiceLine = 0;
 int choice = 0;
 int choiceWay = 0;
+
+int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
+    int check = 0;
+    if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
+        if(board[character.x][character.y].boxway == 0) {
+            if(arrow == 1) {
+                check = 0;
+            }
+            else {
+                check = 1;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 1){
+            if(arrow == 3) {
+                check = 0;
+            }
+            else {
+                check = 1;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 2) {
+            if(arrow == 2) {
+                check = 0;
+            }
+            else {
+                check = 1;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 3){
+            if(arrow == 4) {
+                check = 0;
+            }
+            else {
+                check = 1;
+            }
+        }
+        else {
+            goto error;
+        }
+    }
+    else if(strcmp(board[character.x][character.y].boxtype, "L") == 1) {
+        if(board[character.x][character.y].boxway == 0) {
+            if((arrow == 1) || (arrow == 3)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 1){
+            if((arrow == 3) || (arrow == 2)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 2) {
+            if((arrow == 2) || (arrow == 4)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 3){
+            if((arrow == 4) || (arrow == 1)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else {
+            goto error;
+        }
+    }
+    else if(strcmp(board[character.x][character.y].boxtype, "I") == 1) {
+        if(board[character.x][character.y].boxway == 0) {
+            if((arrow == 1) || (arrow == 2)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else if(board[character.x][character.y].boxway == 1){
+            if((arrow == 3) || (arrow == 4)) {
+                check = 1;
+            }
+            else {
+                check = 0;
+            }
+        }
+        else {
+            goto error;
+        }
+    }
+    else {
+        goto error;
+    }
+    return check;
+
+    error:
+    printf("ERROR");
+}
+
 
 int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
@@ -76,17 +184,46 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     //----MOVE PAWN----//
     printf("Move your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
     while("enter" != 1) {
+        int arrow = 0;
         if("top arrow" == 1) {
-            //vérifier si mur + déplacer pion
+            arrow = 1;
+            int check = checkWall(board, character, arrow);
+            if(check == 1) {
+                character.y -= 1;
+            }
+            else {
+                printf("Impossible to go top\n");
+            }
         }
         if("bottom arrow" == 1) {
-            //vérifier si mur + déplacer pion
+            arrow = 2;
+            int check = checkWall(board, character, arrow);
+            if(check == 1) {
+                character.y += 1;
+            }
+            else {
+                printf("Impossible to go down\n");
+            }
         }
         if("right arrow" == 1) {
-            //vérifier si mur + déplacer pion
+            arrow = 3;
+            int check = checkWall(board, character, arrow);
+            if(check == 1) {
+                character.x += 1;
+            }
+            else {
+                printf("Impossible to go right\n");
+            }
         }
         if("left arrow" == 1) {
-            //vérifier si mur + déplacer pion
+            arrow = 4;
+            int check = checkWall(board, character, arrow);
+            if(check == 1) {
+                character.x -= 1;
+            }
+            else {
+                printf("Impossible to go left\n");
+            }
         }
     }
 

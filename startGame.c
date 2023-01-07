@@ -8,15 +8,15 @@ int player = 0;
 int nbPlayer = 0;
 int chooseTheEmperess = 0, chooseTheArchDruid = 0, chooseTheHauntedSeer = 0, chooseTheBrutalWanderer = 0;
 
-char treasuresCard[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
-                                           "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
-                                           "geant", "crane", "araignee", "couronne", "chandelier", "carte",
-                                           "tresor", "serpent", "statut", "or", "souris", "fantome"};
+char treasuresCard[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre",
+                                                 "salamander", "spider", "mouse", "owl", "beetle", "moth",
+                                                "book", "golden hood", "map", "crown", "keys", "skull",
+                                                "ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
-char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
-                                                           "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
-                                                           "geant", "crane", "araignee", "couronne", "chandelier", "carte",
-                                                           "tresor", "serpent", "statut", "or", "souris", "fantome"};
+char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre",
+                                                       "salamander", "spider", "mouse", "owl", "beetle", "moth",
+                                                       "book", "golden hood", "map", "crown", "keys", "skull",
+                                                       "ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
 Pawn theEmpressPawn = {0};
 Pawn theArchDruidPawn = {0};

@@ -6,9 +6,7 @@ int choiceLine = 0;
 int choice = 0;
 int choiceWay = 0;
 
-Case substituteValue;
-
-int oneRound(Case board[BOARDSIZE][BOARDSIZE], Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     printf("Which row/column do you want to replace ? \n");

@@ -3,13 +3,6 @@
 
 #include "startGame.h"
 
-// Struct to represent a game piece with x and y coordinates
-typedef struct {
-    int x;
-    int y;
-    int number;
-} GamePiece;
-
-void initializeBoard();
+void initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHauntedSeerPawn, Pawn theBrutalWandererPawn, Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS]);
 
 #endif //PROJET_INITIALIZEBOARD_H

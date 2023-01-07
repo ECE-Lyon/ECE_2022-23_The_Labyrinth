@@ -7,6 +7,8 @@ int choice = 0;
 int choiceWay = 0;
 
 int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+
+    //----MOVE ROW / COLUMN----//
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     printf("Which row/column do you want to replace ? \n");
@@ -70,8 +72,36 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
         }
     }
 
-    //faire bouger pion
-    //vérifier si le pion gagne un trésor
+
+    //----MOVE PAWN----//
+    printf("Move your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
+    while("enter" != 1) {
+        if("top arrow" == 1) {
+            //vérifier si mur + déplacer pion
+        }
+        if("bottom arrow" == 1) {
+            //vérifier si mur + déplacer pion
+        }
+        if("right arrow" == 1) {
+            //vérifier si mur + déplacer pion
+        }
+        if("left arrow" == 1) {
+            //vérifier si mur + déplacer pion
+        }
+    }
+
+
+    //----TREASURE----//
+    if(treasureCardCharacter[character.treasure] == board[character.x][character.y].treasure) {
+        printf("Your have won the treasure you were looking for \n");
+        character.treasure += 1;
+        if(character.treasure == NB_TREASURE_CARD) {
+            printf("You have won all the treasures you were looking for, now return to your starting point to win \n");
+        }
+        else {
+            printf("Now, you are looking for %s\n", treasureCardCharacter[character.treasure]);
+        }
+    }
 
     return 0;
 }

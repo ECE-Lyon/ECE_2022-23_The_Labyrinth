@@ -6,7 +6,7 @@
 
 int player = 0;
 int nbPlayer = 0;
-int theEmperess = 0, theArchDruid = 0, theHauntedSeer = 0, theBrutalWanderer = 0;
+int chooseTheEmperess = 0, chooseTheArchDruid = 0, chooseTheHauntedSeer = 0, chooseTheBrutalWanderer = 0;
 
 char treasuresCard[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"chauve souris", "epee", "dragon", "genie", "livre", "hiboux",
                                            "papillon", "cles", "scarabe", "champignon", "princesse", "diadem",
@@ -206,7 +206,7 @@ void boardCreation() {
     substituteValue.mobile = 1;
 
 
-    //----MOBILES----//
+    //----SHUFFLE MOBILES----//
     for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
         // Generate two random indices to swap
         int indexA1 = rand() % NUM_MOVABLE_PIECES;
@@ -214,7 +214,7 @@ void boardCreation() {
         int indexB1 = rand() % NUM_MOVABLE_PIECES;
         int indexB2 = rand() % NUM_MOVABLE_PIECES;
 
-        if((board[indexA1][indexA2].mobile == 1) || (board[indexB1][indexB2] == 1)) {
+        if((board[indexA1][indexA2].mobile == 1) || (board[indexB1][indexB2].mobile == 1)) {
             // Swap the pieces at the two indices
             Case temp = board[indexA1][indexA2];
             board[indexA1][indexA2] = board[indexB1][indexB2];
@@ -254,20 +254,20 @@ void startGame() {
                        i);
                 scanf("%d", &chooseCharacter);
             }
-            if ((chooseCharacter == 1) && (theEmperess == 0)) {
-                theEmperess = i;
+            if ((chooseCharacter == 1) && (chooseTheEmperess == 0)) {
+                chooseTheEmperess = i;
                 differentCharacters = 1;
             }
-            else if ((chooseCharacter == 2) && (theArchDruid == 0)) {
-                theArchDruid = i;
+            else if ((chooseCharacter == 2) && (chooseTheArchDruid == 0)) {
+                chooseTheArchDruid = i;
                 differentCharacters = 1;
             }
-            else if ((chooseCharacter == 3) && (theHauntedSeer == 0)) {
-                theHauntedSeer = i;
+            else if ((chooseCharacter == 3) && (chooseTheHauntedSeer == 0)) {
+                chooseTheHauntedSeer = i;
                 differentCharacters = 1;
             }
-            else if ((chooseCharacter == 4) && (theBrutalWanderer == 0)) {
-                theBrutalWanderer = i;
+            else if ((chooseCharacter == 4) && (chooseTheBrutalWanderer == 0)) {
+                chooseTheBrutalWanderer = i;
                 differentCharacters = 1;
             }
             else {printf("This character has already been chosen\n");}
@@ -289,28 +289,28 @@ void startGame() {
     while(firstPlayer < nbPlayer + 1) {
         switch (firstPlayer) {
             case 0:
-                if(theEmperess != 0){
+                if(chooseTheEmperess != 0){
                     printf("It's the turn of the Empress\n");
                     soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
                     oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                 }
                 break;
             case 1 :
-                if(theArchDruid != 0) {
+                if(chooseTheArchDruid != 0) {
                     printf("It's the turn of the Arch Druid\n");
                     soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
                     oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                 }
                 break;
             case 2 :
-                if(theHauntedSeer != 0) {
+                if(chooseTheHauntedSeer != 0) {
                     printf("It's the turn of the Haunted Seer\n");
                     soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
                     oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                 }
                 break;
             case 3 :
-                if(theBrutalWanderer != 0) {
+                if(chooseTheBrutalWanderer != 0) {
                     printf("It's the turn of the Brutal Wanderer\n");
                     soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                     oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
@@ -325,28 +325,28 @@ void startGame() {
         for(player = 0; player < nbPlayer + 1; player++) {
             switch (player) {
                 case 0:
-                    if(theEmperess != 0) {
+                    if(chooseTheEmperess != 0) {
                         printf("It's the turn of the Empress\n");
                         soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
                         oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                     }
                     break;
                 case 1 :
-                    if(theArchDruid != 0) {
+                    if(chooseTheArchDruid != 0) {
                         printf("It's the turn of the Arch Druid\n");
                         soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
                         oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                     }
                     break;
                 case 2 :
-                    if(theHauntedSeer != 0) {
+                    if(chooseTheHauntedSeer != 0) {
                         printf("It's the turn of the Haunted Seer\n");
                         soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
                         oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                     }
                     break;
                 case 3 :
-                    if(theBrutalWanderer != 0) {
+                    if(chooseTheBrutalWanderer != 0) {
                         printf("It's the turn of the Brutal Wanderer\n");
                         soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
                         oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);

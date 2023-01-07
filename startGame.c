@@ -118,12 +118,15 @@ void boardCreation() {
 
     //----CREATION MOBILES----//
     for(int i = 0; i < BOARDSIZE - 1; i++) {
+        board[i][1].boxway = rand() % 3;
         board[i][1].mobile = 1;
     }
     for(int i = 0; i < BOARDSIZE - 1; i++) {
+        board[i][3].boxway = rand() % 3;
         board[i][3].mobile = 1;
     }
     for(int i = 0; i < BOARDSIZE - 1; i++) {
+        board[i][5].boxway = rand() % 3;
         board[i][5].mobile = 1;
     }
     board[1][0].boxtype = "T";
@@ -138,26 +141,19 @@ void boardCreation() {
     board[5][0].boxway = rand() % 3;
     board[5][0].treasure = treasures[2];
     board[0][1].boxtype = "T";
-    board[0][1].boxway = rand() % 3;
     board[0][1].treasure = treasures[3];
     board[1][1].boxtype = "T";
-    board[1][1].boxway = rand() % 3;
     board[1][1].treasure = treasures[4];
     board[2][1].boxtype = "T";
-    board[2][1].boxway = rand() % 3;
     board[2][1].treasure = treasures[5];
 
     board[3][1].boxtype = "L";
-    board[3][1].boxway = rand() % 3;
     board[3][1].treasure = treasures[6];
     board[4][1].boxtype = "L";
-    board[4][1].boxway = rand() % 3;
     board[4][1].treasure = treasures[7];
     board[5][1].boxtype = "L";
-    board[5][1].boxway = rand() % 3;
     board[5][1].treasure = treasures[8];
     board[6][1].boxtype = "L";
-    board[6][1].boxway = rand() % 3;
     board[6][1].treasure = treasures[9];
     board[6][1].mobile = 1;
     board[1][2].boxtype = "L";
@@ -172,20 +168,13 @@ void boardCreation() {
     board[5][2].boxway = rand() % 3;
     board[5][2].mobile = 1;
     board[0][3].boxtype = "L";
-    board[0][3].boxway = rand() % 3;
     board[0][3].mobile = 1;
     board[1][3].boxtype = "L";
-    board[1][3].boxway = rand() % 3;
     board[2][3].boxtype = "L";
-    board[2][3].boxway = rand() % 3;
     board[3][3].boxtype = "L";
-    board[3][3].boxway = rand() % 3;
     board[4][3].boxtype = "L";
-    board[4][3].boxway = rand() % 3;
     board[5][3].boxtype = "L";
-    board[5][3].boxway = rand() % 3;
     board[6][3].boxtype = "L";
-    board[6][3].boxway = rand() % 3;
     board[1][4].boxtype = "L";
     board[1][4].boxway = rand() % 3;
     board[1][4].mobile = 1;
@@ -197,19 +186,12 @@ void boardCreation() {
     board[5][4].boxway = rand() % 3;
     board[5][4].mobile = 1;
     board[0][5].boxtype = "I";
-    board[0][5].boxway = rand() % 3;
     board[1][5].boxtype = "I";
-    board[1][5].boxway = rand() % 3;
     board[2][5].boxtype = "I";
-    board[2][5].boxway = rand() % 3;
     board[3][5].boxtype = "I";
-    board[3][5].boxway = rand() % 3;
     board[4][5].boxtype = "I";
-    board[4][5].boxway = rand() % 3;
     board[5][5].boxtype = "I";
-    board[5][5].boxway = rand() % 3;
     board[6][5].boxtype = "I";
-    board[6][5].boxway = rand() % 3;
     board[1][6].boxtype = "I";
     board[1][6].boxway = rand() % 3;
     board[1][6].mobile = 1;

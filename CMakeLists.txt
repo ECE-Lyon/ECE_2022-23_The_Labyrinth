@@ -3,5 +3,11 @@ project(PROJET C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(PROJET main.c startGame.h startGame.c round.h round.c initializeBoard.h initializeBoard.c)
-add_executable(affTabl affTabl2.c)
+INCLUDE_DIRECTORIES("C:/Users/jadep/Downloads/allegro-5.0.11//allegro/5.2.6.0/include")
+LINK_DIRECTORIES("C:/Users/jadep/Downloads/allegro-5.0.11//allegro/5.2.6.0/lib")
+file(GLOB LIBRARIES "C:/Users/jadep/Downloads/allegro-5.0.11/allegro/5.2.6.0/lib/*.dylib")
+message("LIBRARIES = ${LIBRARIES}")
+TARGET_LINK_LIBRARIES(main.c ${LIBRARIES})
+
+add_executable(PROJET main.c startGame.h startGame.c round.h round.c initializeBoard.h initializeBoard.c struct_macro.h)
+target_link_libraries(PROJET ${ALLEGRO_LIBRARY})

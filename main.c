@@ -1,9 +1,14 @@
 #include <stdio.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_native_dialog.h>
 #include "startGame.h"
 
 char letter;
 
 int main(void) {
+    assert(al_init());
+
     printf("Welcome + explain games's rules\n\n");
 
     while(1) {

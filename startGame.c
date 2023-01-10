@@ -112,28 +112,28 @@ void startGame() {
                 if(chooseTheEmperess != 0){
                     printf("It's the turn of the Empress\n");
                     soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
-                    oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
+                    //oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                 }
                 break;
             case 1 :
                 if(chooseTheArchDruid != 0) {
                     printf("It's the turn of the Arch Druid\n");
                     soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                    oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
+                    //oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                 }
                 break;
             case 2 :
                 if(chooseTheHauntedSeer != 0) {
                     printf("It's the turn of the Haunted Seer\n");
                     soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                    oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                    //oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                 }
                 break;
             case 3 :
                 if(chooseTheBrutalWanderer != 0) {
                     printf("It's the turn of the Brutal Wanderer\n");
                     soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                    oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                    //oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
                 }
                 break;
             default:
@@ -148,28 +148,28 @@ void startGame() {
                     if(chooseTheEmperess != 0) {
                         printf("It's the turn of the Empress\n");
                         soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
-                        oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
+                        //oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                     }
                     break;
                 case 1 :
                     if(chooseTheArchDruid != 0) {
                         printf("It's the turn of the Arch Druid\n");
                         soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                        oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
+                        //oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                     }
                     break;
                 case 2 :
                     if(chooseTheHauntedSeer != 0) {
                         printf("It's the turn of the Haunted Seer\n");
                         soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                        oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                        //oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                     }
                     break;
                 case 3 :
                     if(chooseTheBrutalWanderer != 0) {
                         printf("It's the turn of the Brutal Wanderer\n");
                         soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                        oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                        //oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
                     }
                     break;
                 default:

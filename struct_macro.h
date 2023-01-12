@@ -1,7 +1,17 @@
 #ifndef PROJET_STRUCT_MACRO_H
 #define PROJET_STRUCT_MACRO_H
 
-//Constants for the size of the game board and number of game pieces
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_native_dialog.h>
+#include "startGame.h"
+
+//Constants for Allegro
+#define NB_IMAGES 21
+#define DISPLAY_WIDTH 1920
+#define DISPLAY_HEIGHT 1080
+
+//Constants for C
 #define NUM_MOVABLE_PIECES 33
 #define NB_TREASURE_CARD 24
 #define NB_CARD_BY_PERSON 6

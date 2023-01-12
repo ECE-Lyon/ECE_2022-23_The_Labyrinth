@@ -3,10 +3,7 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_native_dialog.h>
 #include "startGame.h"
-
-#define NB_IMAGES 21
-#define DISPLAY_WIDTH 1920
-#define DISPLAY_HEIGHT 1080
+#include "struct_macro.h"
 
 char letter;
 
@@ -29,16 +26,15 @@ int main(void) {
     int x = (display_mode.width - DISPLAY_WIDTH) / 2;
     int y = (display_mode.height - DISPLAY_HEIGHT) / 2;
 
-
     //create the display
     display=al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
     al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW | ALLEGRO_RESIZABLE | ALLEGRO_NOFRAME); //window specs
     al_set_window_title(display, "LABYRINTH: Extended version"); //window name
     al_set_window_position(display, x, y); // Set the window's position
 
-
     // Create an event queue
     event_queue = al_create_event_queue();
+
 
     printf("Welcome + explain games's rules\n\n");
 

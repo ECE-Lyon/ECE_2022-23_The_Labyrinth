@@ -4,13 +4,17 @@
 #include <allegro5/allegro_native_dialog.h>
 #include "startGame.h"
 
+#define NB_IMAGES 21
+#define DISPLAY_WIDTH 1920
+#define DISPLAY_HEIGHT 1080
+
 char letter;
 
 int main(void) {
 
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-    ALLEGRO_BITMAP *images[NOMBRE_IMAGES];
+    ALLEGRO_BITMAP *images[NB_IMAGES];
 
     // Initialize Allegro
     al_init();

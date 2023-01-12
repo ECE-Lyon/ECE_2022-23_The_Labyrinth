@@ -9,7 +9,7 @@ int choiceWay = 0;
 
 int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
     int check = 0;
-    if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
+    /*if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
         if(board[character.x][character.y].boxway == 0) {
             if(arrow == 1) {
                 check = 0;
@@ -111,6 +111,7 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 
     error:
     printf("ERROR");
+     */
 }
 
 

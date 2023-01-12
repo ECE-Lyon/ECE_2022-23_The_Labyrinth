@@ -27,10 +27,11 @@ int main(void) {
     int y = (display_mode.height - DISPLAY_HEIGHT) / 2;
 
     //create the display
-    display=al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    /*display=al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
     al_set_new_display_flags(ALLEGRO_FULLSCREEN_WINDOW | ALLEGRO_RESIZABLE | ALLEGRO_NOFRAME); //window specs
     al_set_window_title(display, "LABYRINTH: Extended version"); //window name
     al_set_window_position(display, x, y); // Set the window's position
+    */
 
     // Create an event queue
     event_queue = al_create_event_queue();

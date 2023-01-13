@@ -141,7 +141,6 @@ void initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunted
 
     //----EXTRA PIECE----//
     substituteValue.boxtype = "I";
-    substituteValue.boxway = rand() % 3;
     substituteValue.mobile = 1;
 
 

@@ -119,7 +119,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     initializeAllegro();
 
     //----MOVE ROW / COLUMN----//
-    printf("\nThe extra piece is type %s and way %d\n", substituteValue.boxtype, substituteValue.boxway);
+    printf("\nThe extra piece is type %s\n", substituteValue.boxtype);
 
     printf("\nDo you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);

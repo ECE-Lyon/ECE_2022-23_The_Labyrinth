@@ -2,6 +2,7 @@
 #define PROJET_STARTGAME_H
 
 #include "struct_macro.h"
+#include "initializeAllegro.h"
 #include "initializeBoard.h"
 #include "round.h"
 

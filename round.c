@@ -9,7 +9,7 @@ int choiceWay = 0;
 
 int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
     int check = 0;
-    /*if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
+    if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
         if(board[character.x][character.y].boxway == 0) {
             if(arrow == 1) {
                 check = 0;
@@ -111,7 +111,6 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 
     error:
     printf("ERROR");
-     */
 }
 
 
@@ -181,11 +180,21 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
         }
     }
 
+    while (!fin) { // Boucle d'événements
+        al_get_keyboard_state(&keyboard_state); // Récupération de l'état du clavier
+        if(al_key_down(&keyboard_state, ALLEGRO_KEY_ESCAPE)) { fin = 1; }
+        if(al_key_down(&keyboard_state, ALLEGRO_KEY_ENTER)) {
+            al_clear_to_color(al_map_rgb(rand()%256, rand()%256, rand()%256));
+            al_flip_display(); // on actualise l'affichage que si nécessaire
+        }
+    }
+    al_destroy_display(display);
 
     //----MOVE PAWN----//
     printf("Move your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
     while("enter" != 1) {
-        int arrow = 0;
+        int arrow;
+        if(event.keyboard.TOP_ARROW == 1)
         if("top arrow" == 1) {
             arrow = 1;
             int check = checkWall(board, character, arrow);

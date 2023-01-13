@@ -1,0 +1,6 @@
+#ifndef PROJET_INITIALIZEALLEGRO_H
+#define PROJET_INITIALIZEALLEGRO_H
+
+#include "struct_macro.h"
+
+#endif //PROJET_INITIALIZEALLEGRO_H

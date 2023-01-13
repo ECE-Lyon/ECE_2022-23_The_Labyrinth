@@ -50,7 +50,7 @@ void distributeCards(char character[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
 
 void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], Pawn character) {
-    printf("The treasure you are currently looking for is : %s \n", treasureCardCharacter[character.treasure]);
+    printf("\nThe treasure you are currently looking for is : %s \n\n", treasureCardCharacter[character.treasure]);
 }
 
 
@@ -108,35 +108,40 @@ void startGame() {
 
 
     //----START----//
-    int firstPlayer = rand() % nbPlayer;
     initializeBoard(theEmpressPawn, theArchDruidPawn, theHauntedSeerPawn, theBrutalWandererPawn, board, substituteValue, treasures);
+
+    int firstPlayer = rand() % nbPlayer;
     while(firstPlayer < nbPlayer + 1) {
         switch (firstPlayer) {
             case 0:
                 if(chooseTheEmperess != 0){
-                    printf("It's the turn of the Empress\n");
+                    printf("\nIt's the turn of the Empress\n");
                     soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
+                    printBoard(board);
                     oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                 }
                 break;
             case 1 :
                 if(chooseTheArchDruid != 0) {
-                    printf("It's the turn of the Arch Druid\n");
+                    printf("\nIt's the turn of the Arch Druid\n");
                     soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
+                    printBoard(board);
                     oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                 }
                 break;
             case 2 :
                 if(chooseTheHauntedSeer != 0) {
-                    printf("It's the turn of the Haunted Seer\n");
+                    printf("\nIt's the turn of the Haunted Seer\n");
                     soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                    printBoard(board);
                     oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                 }
                 break;
             case 3 :
                 if(chooseTheBrutalWanderer != 0) {
-                    printf("It's the turn of the Brutal Wanderer\n");
+                    printf("\nIt's the turn of the Brutal Wanderer\n");
                     soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                    printBoard(board);
                     oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
                 }
                 break;
@@ -150,29 +155,33 @@ void startGame() {
             switch (player) {
                 case 0:
                     if(chooseTheEmperess != 0) {
-                        printf("It's the turn of the Empress\n");
+                        printf("\nIt's the turn of the Empress\n");
                         soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
+                        printBoard(board);
                         oneRound(board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
                     }
                     break;
                 case 1 :
                     if(chooseTheArchDruid != 0) {
-                        printf("It's the turn of the Arch Druid\n");
+                        printf("\nIt's the turn of the Arch Druid\n");
                         soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
+                        printBoard(board);
                         oneRound(board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
                     }
                     break;
                 case 2 :
                     if(chooseTheHauntedSeer != 0) {
-                        printf("It's the turn of the Haunted Seer\n");
+                        printf("\nIt's the turn of the Haunted Seer\n");
                         soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                        printBoard(board);
                         oneRound(board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
                     }
                     break;
                 case 3 :
                     if(chooseTheBrutalWanderer != 0) {
-                        printf("It's the turn of the Brutal Wanderer\n");
+                        printf("\nIt's the turn of the Brutal Wanderer\n");
                         soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                        printBoard(board);
                         oneRound(board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
                     }
                     break;
@@ -186,5 +195,6 @@ void startGame() {
     }
 
 returnMainMenu:
-    printf ("ERROR");
+    printf ("\nERROR\n");
+    al_rest(2.2);
 }

@@ -3,6 +3,7 @@
 
 #include "struct_macro.h"
 #include "initializeAllegro.h"
+#include "printBoard.h"
 #include "initializeBoard.h"
 #include "round.h"
 

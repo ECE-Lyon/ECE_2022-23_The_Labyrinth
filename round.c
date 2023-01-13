@@ -119,7 +119,9 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     initializeAllegro();
 
     //----MOVE ROW / COLUMN----//
-    printf("Do you want to move a row(1) or a column(2) ? \n");
+    printf("\nThe extra piece is type %s and way %d\n", substituteValue.boxtype, substituteValue.boxway);
+
+    printf("\nDo you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
     printf("Which row/column do you want to replace ? \n");
     scanf("%d", &choiceLine);
@@ -184,7 +186,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
 
 
     //----MOVE PAWN----//
-    printf("Move your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
+    printf("\nMove your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
 
     //Allegro
     ALLEGRO_DISPLAY* display = NULL;
@@ -196,6 +198,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
 
     while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER == 1)) {
         int arrow;
+        printBoard(board);
         if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_UP == 1)) {
             arrow = 1;
             int check = checkWall(board, character, arrow);

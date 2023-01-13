@@ -116,6 +116,8 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 
 int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
+    initializeAllegro();
+
     //----MOVE ROW / COLUMN----//
     printf("Do you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
@@ -180,22 +182,21 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
         }
     }
 
-    while (!fin) { // Boucle d'événements
-        al_get_keyboard_state(&keyboard_state); // Récupération de l'état du clavier
-        if(al_key_down(&keyboard_state, ALLEGRO_KEY_ESCAPE)) { fin = 1; }
-        if(al_key_down(&keyboard_state, ALLEGRO_KEY_ENTER)) {
-            al_clear_to_color(al_map_rgb(rand()%256, rand()%256, rand()%256));
-            al_flip_display(); // on actualise l'affichage que si nécessaire
-        }
-    }
-    al_destroy_display(display);
 
     //----MOVE PAWN----//
     printf("Move your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
-    while("enter" != 1) {
+
+    //Allegro
+    ALLEGRO_DISPLAY* display = NULL;
+    ALLEGRO_KEYBOARD_STATE keyboard_state; // Etat du clavier (touches)
+    srand(time(NULL));
+    assert(al_init());
+    al_get_keyboard_state(&keyboard_state);
+    ALLEGRO_EVENT event = {0};
+
+    while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER == 1)) {
         int arrow;
-        if(event.keyboard.TOP_ARROW == 1)
-        if("top arrow" == 1) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_UP == 1)) {
             arrow = 1;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -205,7 +206,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go top\n");
             }
         }
-        if("bottom arrow" == 1) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_DOWN == 1)) {
             arrow = 2;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -215,7 +216,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go down\n");
             }
         }
-        if("right arrow" == 1) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_RIGHT == 1)) {
             arrow = 3;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -225,7 +226,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go right\n");
             }
         }
-        if("left arrow" == 1) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_LEFT == 1)) {
             arrow = 4;
             int check = checkWall(board, character, arrow);
             if(check == 1) {

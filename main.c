@@ -6,6 +6,8 @@ char letter;
 
 int main(void) {
 
+    initializeAllegro();
+
     printf("Welcome + explain games's rules\n\n");
 
     while(1) {

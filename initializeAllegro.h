@@ -3,4 +3,6 @@
 
 #include "struct_macro.h"
 
+void initializeAllegro();
+
 #endif //PROJET_INITIALIZEALLEGRO_H

@@ -121,9 +121,11 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     //----MOVE ROW / COLUMN----//
     printf("\nThe extra piece is type %s\n", substituteValue.boxtype);
 
+    //on ne demand pas dans quel sens on veut mettre la extra piece
+
     printf("\nDo you want to move a row(1) or a column(2) ? \n");
     scanf("%d", &choice);
-    printf("Which row/column do you want to replace ? \n");
+    printf("Which row/column do you want to replace ? (2, 4 or 6)\n");
     scanf("%d", &choiceLine);
     while(!((choiceLine == 1 + 1) || (choiceLine == 3 + 1) || (choiceLine == 5 + 1))) {
         printf("You can't move the row/column, only 2, 4 and 6 are available. Which row/column do you want to replace ? \n");

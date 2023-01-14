@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "initializeBoard.h"
 
-void initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHauntedSeerPawn, Pawn theBrutalWandererPawn, Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS]) {
+
+char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHauntedSeerPawn, Pawn theBrutalWandererPawn, Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS]) {
 
     srand(time(NULL));
 
@@ -145,17 +146,17 @@ void initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunted
 
 
     //----SHUFFLE MOBILES----//
-    /*int index1 = rand() % NUM_MOVABLE_PIECES;
+    int index1 = rand() % NUM_MOVABLE_PIECES;
     int index2 = rand() % NUM_MOVABLE_PIECES;
     while (board[index1][index2].mobile != 1) {
-        int index1 = rand() % NUM_MOVABLE_PIECES;
-        int index2 = rand() % NUM_MOVABLE_PIECES;
+        index1 = rand() % NUM_MOVABLE_PIECES;
+        index2 = rand() % NUM_MOVABLE_PIECES;
     }
     Case temp = board[index1][index2];
     board[index1][index2] = substituteValue;
-    substituteValue = temp;*/
+    substituteValue = temp;
 
-    for (int i = 0; i < NUM_MOVABLE_PIECES; i++) {
+    for (int i = 0; i < NUM_MOVABLE_PIECES * 2; i++) {
         // Generate two random indices to swap
         int indexA1 = rand() % NUM_MOVABLE_PIECES;
         int indexA2 = rand() % NUM_MOVABLE_PIECES;
@@ -176,4 +177,5 @@ void initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunted
             i--;
         }
     }
+    return (substituteValue.boxtype);
 }

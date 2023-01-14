@@ -8,43 +8,42 @@ int player = 0;
 int nbPlayer = 0;
 int chooseTheEmperess = 0, chooseTheArchDruid = 0, chooseTheHauntedSeer = 0, chooseTheBrutalWanderer = 0;
 
-char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre",
-                                                       "salamander", "spider", "mouse", "owl", "beetle", "moth",
-                                                       "book", "golden hood", "map", "crown", "keys", "skull",
-                                                       "ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
-
 Pawn theEmpressPawn = {0};
 Pawn theArchDruidPawn = {0};
 Pawn theHauntedSeerPawn = {0};
 Pawn theBrutalWandererPawn = {0};
 
-char treasureCardTheEmpress[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
-char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
-char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
-char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS];
+char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre",
+                                                       "salamander", "spider", "mouse", "owl", "beetle", "moth",
+                                                       "book", "golden hood", "map", "crown", "keys", "skull",
+                                                       "ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
-Case board[BOARDSIZE][BOARDSIZE];
+char treasureCardTheEmpress[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre"};
+char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"salamander", "spider", "mouse", "owl", "beetle", "moth"};
+char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"book", "golden hood", "map", "crown", "keys", "skull"};
+char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
-Case substituteValue;
+Case board[BOARDSIZE][BOARDSIZE] = {{0}};
+
+Case substituteValue = {0};
 
 
-void distributeCards(char character[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
-    for(int i = 0; i < NB_CARD_BY_PERSON; i++) {
+void shuffleCards() {
+    for(int i = 0; i < NB_CARD_BY_PERSON * 2; i++) {
         // Generate two random number to swap
         int nbA = rand() % NB_CARD_BY_PERSON;
         int nbB = rand() % NB_CARD_BY_PERSON;
+        int nbC = rand() % NB_CARD_BY_PERSON;
+        int nbD = rand() % NB_CARD_BY_PERSON;
 
         char randomCard[MAX_LETTERS_WORDS] = {0};
 
-        if(character[nbA] != character[nbB]) {
-            // Swap the cards
-            strcpy(randomCard, character[nbA]);
-            strcpy(character[nbA], character[nbB]);
-            strcpy(character[nbB], randomCard);
-        }
-        else {
-            i--;
-        }
+        // Swap the cards
+        strcpy(randomCard, treasureCardTheEmpress[nbA]);
+        strcpy(treasureCardTheEmpress[nbA], treasureCardTheArchDruid[nbB]);
+        strcpy(treasureCardTheArchDruid[nbB], treasureCardTheHauntedSeer[nbC]);
+        strcpy(treasureCardTheHauntedSeer[nbC], treasureCardTheBrutalWanderer[nbD]);
+        strcpy(treasureCardTheBrutalWanderer[nbD], randomCard);
     }
 }
 
@@ -100,15 +99,12 @@ void startGame() {
     }
 
 
-    //----TREASURES----//
-    distributeCards(treasureCardTheEmpress);
-    distributeCards(treasureCardTheArchDruid);
-    distributeCards(treasureCardTheHauntedSeer);
-    distributeCards(treasureCardTheBrutalWanderer);
+    //----TREASURES / CARDS----//
+    shuffleCards();
 
 
     //----START----//
-    initializeBoard(theEmpressPawn, theArchDruidPawn, theHauntedSeerPawn, theBrutalWandererPawn, board, substituteValue, treasures);
+    substituteValue.boxtype = initializeBoard(theEmpressPawn, theArchDruidPawn, theHauntedSeerPawn, theBrutalWandererPawn, board, substituteValue, treasures);
 
     int firstPlayer = rand() % nbPlayer;
     while(firstPlayer < nbPlayer + 1) {

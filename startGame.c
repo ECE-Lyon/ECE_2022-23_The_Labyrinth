@@ -80,18 +80,22 @@ void startGame() {
             }
             if ((chooseCharacter == 1) && (chooseTheEmperess == 0)) {
                 chooseTheEmperess = i;
+                board[0][0].theEmperess = 1;
                 differentCharacters = 1;
             }
             else if ((chooseCharacter == 2) && (chooseTheArchDruid == 0)) {
                 chooseTheArchDruid = i;
+                board[0][BOARDSIZE - 1].theArchDruid = 1;
                 differentCharacters = 1;
             }
             else if ((chooseCharacter == 3) && (chooseTheHauntedSeer == 0)) {
                 chooseTheHauntedSeer = i;
+                board[BOARDSIZE - 1][0].theHauntedSeer = 1;
                 differentCharacters = 1;
             }
             else if ((chooseCharacter == 4) && (chooseTheBrutalWanderer == 0)) {
                 chooseTheBrutalWanderer = i;
+                board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
                 differentCharacters = 1;
             }
             else {printf("This character has already been chosen\n");}

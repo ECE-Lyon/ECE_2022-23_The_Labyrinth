@@ -2,7 +2,7 @@
 #include <string.h>
 #include "round.h"
 
-Case tempValue;
+Case tempValue = {0};
 
 int horizontal = 0, vertical = 0;
 int choiceLine = 0;
@@ -155,7 +155,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
         }
     }
 
-    if(choiceWay == 2) {
+    else if(choiceWay == 2) {
         if (choice == 1) {
             tempValue = board[0][choiceLine - 1];
             for (vertical = 0; vertical < BOARDSIZE - 1; vertical++) {

@@ -5,4 +5,8 @@
 
 void initializeAllegro();
 
+void screenUpdate();
+
+void cleanUp();
+
 #endif //PROJET_INITIALIZEALLEGRO_H

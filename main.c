@@ -1,16 +1,17 @@
 #include <stdio.h>
-#include "startGame.h"
+#include "struct_macro.h"
 #include "initializeAllegro.h"
+#include "startGame.h"
 
 char letter;
 
 int main(void) {
 
-    initializeAllegro();
-
-    printf("Welcome + explain games's rules\n\n");
+    printf("\nWELCOME\n\n");
 
     while(1) {
+        initializeAllegro();
+        screenUpdate();
         printf("Main menu:\n");
         printf("1) Start game\n");
         printf("2) Rules\n");
@@ -26,6 +27,7 @@ int main(void) {
                 startGame();
                 break;
             case 2 :
+                screenUpdate();
                 while(letter != *"m") {
                     scanf("%c", &letter);
                 }
@@ -37,4 +39,5 @@ int main(void) {
                 return 0;
         }
     }
+    cleanUp();
 }

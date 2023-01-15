@@ -8,9 +8,6 @@ int coordSTx[16];
 int coordSTy[16];
 
 int current_index = 0;
-int current_char = 0;
-int current_X = 0;
-int current_Y = 0;
 
 
 int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
@@ -152,20 +149,23 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
 }
 
 
-int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], int current_char, int first) {
     // Ensure the current index is within bounds
     if (current_screen < 0) current_screen = 0;
     if (current_screen >= NB_IMAGES) current_screen = NB_IMAGES - 1;
 
     // Render the current image
-    al_draw_bitmap(images[current_screen], 0, 0, 0);
-
     // check if a character is being selected, and grey it if so
-    /*
     if (current_screen == 15) {
-        al_draw_bitmap(charSelect[current_char], coordX[current_X], coordY[current_Y], 0);
+        if(first == 1) {
+            al_draw_bitmap(images[current_screen], 0, 0, 0);
+        }
+        al_draw_bitmap(charSelect[current_char], coordX[current_char], coordY[current_char], 0);
     }
-    if (current_screen == 22) {
+    else if (current_screen == 22) {
+        if(first == 1) {
+            al_draw_bitmap(images[current_screen], 0, 0, 0);
+        }
         for (int i = 0; i < NB_ST_TILES; i++) {
             al_draw_bitmap(staticTiles[i], coordSTx[i], coordSTy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
@@ -176,7 +176,10 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
             }
         }
     }
-     */
+    else {
+        al_draw_bitmap(images[current_screen], 0, 0, 0);
+    }
+
     al_flip_display();
     return 0;
 }

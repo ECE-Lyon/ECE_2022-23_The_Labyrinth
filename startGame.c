@@ -53,54 +53,88 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
 }
 
 
-int startGame(ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     srand(time(NULL));
 
-    screenUpdate(3, images, charSelect,  staticTiles);
+    screenUpdate(3, images, charSelect,  staticTiles, 0, 0);
 
     //----PLAYERS----//
     printf("How many player are you ?\n");
-    scanf("%d", &nbPlayer);
-    while((nbPlayer < 2) || (nbPlayer > 4)){
-        screenUpdate(20, images, charSelect,  staticTiles);
-        printf("Not enough player OR to much players\n");
-        printf("How many player are you ?\n");
-        scanf("%d", &nbPlayer);
+
+    while(nbPlayer == 0){
+
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
+
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            if(event.keyboard.keycode == ALLEGRO_KEY_2) {
+                nbPlayer = 2;
+            }
+            if(event.keyboard.keycode == ALLEGRO_KEY_3) {
+                nbPlayer = 3;
+            }
+            if(event.keyboard.keycode == ALLEGRO_KEY_4) {
+                nbPlayer = 4;
+            }
+            if(event.keyboard.keycode == ALLEGRO_KEY_M) {
+                goto returnMainMenu;
+            }
+            if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
+                return 0;
+            }
+            else {
+                screenUpdate(20, images, charSelect,  staticTiles, 0, 0);
+            }
+        }
     }
+
+    screenUpdate(15, images, charSelect,  staticTiles, 5, 1);
+
     for(int i = 1; i < nbPlayer + 1; i++){
         int differentCharacters = 0;
+        printf("Player %d, witch character do you want ?\nPress 1 for the Emperess, 2 for the Arch Druid, 3 for the Haunted Seer, 4 for the Brutal Wanderer\n", i);
+
         while(differentCharacters == 0) {
-            int chooseCharacter = 0;
-            screenUpdate(23, images, charSelect,  staticTiles);
-            printf("Player %d, witch character do you want ?\nPress 1 for the Emperess, 2 for the Arch Druid, 3 for the Haunted Seer, 4 for the Brutal Wanderer\n", i);
-            scanf("%d", &chooseCharacter);
-            while ((chooseCharacter > 4) || (chooseCharacter < 1)) {
-                printf("This is not a character\n");
-                printf("Player %d, witch character do you want ?\nPress 1 for the Emperess, 2 for the Arch Druid, 3 for the Haunted Seer, 4 for the Brutal Wanderer\n",
-                       i);
-                scanf("%d", &chooseCharacter);
+
+            ALLEGRO_EVENT event;
+            al_wait_for_event(event_queue, &event);
+
+            if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+                if((event.keyboard.keycode == ALLEGRO_KEY_1) && (chooseTheEmperess == 0)) {
+                    chooseTheEmperess = i;
+                    board[0][0].theEmperess = 1;
+                    differentCharacters = 1;
+                    screenUpdate(15, images, charSelect,  staticTiles, 0, 0);
+                    al_rest(1.0);
+                }
+                if((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
+                    chooseTheArchDruid = i;
+                    board[0][BOARDSIZE - 1].theArchDruid = 1;
+                    differentCharacters = 1;
+                    screenUpdate(15, images, charSelect,  staticTiles, 1, 0);
+                    al_rest(1.0);
+                }
+                if((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
+                    chooseTheHauntedSeer = i;
+                    board[BOARDSIZE - 1][0].theHauntedSeer = 1;
+                    differentCharacters = 1;
+                    screenUpdate(15, images, charSelect,  staticTiles, 2, 0);
+                    al_rest(1.0);
+                }
+                if((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
+                    chooseTheBrutalWanderer = i;
+                    board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
+                    differentCharacters = 1;
+                    screenUpdate(15, images, charSelect,  staticTiles, 3, 0);
+                    al_rest(1.0);
+                }
+                if(event.keyboard.keycode == ALLEGRO_KEY_M) {
+                    goto returnMainMenu;
+                }
+                if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
+                    return 0;
+                }
             }
-            if ((chooseCharacter == 1) && (chooseTheEmperess == 0)) {
-                chooseTheEmperess = i;
-                board[0][0].theEmperess = 1;
-                differentCharacters = 1;
-            }
-            else if ((chooseCharacter == 2) && (chooseTheArchDruid == 0)) {
-                chooseTheArchDruid = i;
-                board[0][BOARDSIZE - 1].theArchDruid = 1;
-                differentCharacters = 1;
-            }
-            else if ((chooseCharacter == 3) && (chooseTheHauntedSeer == 0)) {
-                chooseTheHauntedSeer = i;
-                board[BOARDSIZE - 1][0].theHauntedSeer = 1;
-                differentCharacters = 1;
-            }
-            else if ((chooseCharacter == 4) && (chooseTheBrutalWanderer == 0)) {
-                chooseTheBrutalWanderer = i;
-                board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
-                differentCharacters = 1;
-            }
-            else {printf("This character has already been chosen\n");}
         }
     }
 
@@ -111,6 +145,8 @@ int startGame(ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], 
 
     //----START----//
     substituteValue.boxtype = initializeBoard(theEmpressPawn, theArchDruidPawn, theHauntedSeerPawn, theBrutalWandererPawn, board, substituteValue, treasures);
+
+    screenUpdate(22, images, charSelect,  staticTiles, 0, 1);
 
     int firstPlayer = rand() % nbPlayer;
     while(firstPlayer < nbPlayer + 1) {

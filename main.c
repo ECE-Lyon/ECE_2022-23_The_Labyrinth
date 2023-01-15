@@ -14,7 +14,7 @@ int main(void) {
 
 
     event_queue = initializeAllegro(display, event_queue, images, charSelect, staticTiles);
-    screenUpdate(0, images, charSelect,  staticTiles);
+    screenUpdate(0, images, charSelect,  staticTiles, 0, 0);
 
     while (1) {
         ALLEGRO_EVENT event;
@@ -24,17 +24,17 @@ int main(void) {
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-                screenUpdate(3, images, charSelect,  staticTiles);
-                startGame(images, charSelect,  staticTiles);
+                screenUpdate(3, images, charSelect,  staticTiles, 0, 0);
+                startGame(display, event_queue, images, charSelect,  staticTiles);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_M) {
-                screenUpdate(0, images, charSelect,  staticTiles);
+                screenUpdate(0, images, charSelect,  staticTiles, 0, 0);
             }
             if((event.keyboard.keycode == ALLEGRO_KEY_A) || (event.keyboard.keycode == ALLEGRO_KEY_R)) {
-                screenUpdate(1, images, charSelect,  staticTiles);
+                screenUpdate(1, images, charSelect,  staticTiles, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(2, images, charSelect,  staticTiles);
+                screenUpdate(2, images, charSelect,  staticTiles, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
                 return 0;

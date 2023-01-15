@@ -56,7 +56,7 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
 void startGame() {
     srand(time(NULL));
 
-    initializeAllegro();
+    screenUpdate(4);
 
     //----PLAYERS----//
     printf("How many player are you ?\n");

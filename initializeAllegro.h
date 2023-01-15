@@ -5,7 +5,7 @@
 
 void initializeAllegro();
 
-void screenUpdate();
+int screenUpdate(int current_screen);
 
 void cleanUp();
 

@@ -3,41 +3,42 @@
 #include "initializeAllegro.h"
 #include "startGame.h"
 
-char letter;
-
 int main(void) {
 
     printf("\nWELCOME\n\n");
 
-    while(1) {
+    while (1) {
         initializeAllegro();
-        screenUpdate();
-        printf("Main menu:\n");
-        printf("1) Start game\n");
-        printf("2) Rules\n");
-        printf("3) Quit\n");
-        printf("Enter the number of your selection: ");
+        screenUpdate(0);
 
-        // Prompt the user to enter their selection
-        int selection;
-        scanf("%d", &selection);
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
 
-        switch (selection) {
-            case 1:
-                startGame();
-                break;
-            case 2 :
-                screenUpdate();
-                while(letter != *"m") {
-                    scanf("%c", &letter);
-                }
-                break;
-            case 3 :
-                return 0;
-            default:
-                printf("ERROR");
-                return 0;
+        // Check for events
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            switch (event.keyboard.keycode) {
+                case ALLEGRO_KEY_ENTER:
+                    startGame();
+                    break;
+                case ALLEGRO_KEY_M :
+                    screenUpdate(0);
+                    break;
+                case ALLEGRO_KEY_A :
+                    screenUpdate(1);
+                    break;
+                case ALLEGRO_KEY_D :
+                    screenUpdate(2);
+                    break;
+                case ALLEGRO_KEY_TAB :
+                    return 0;
+                default:
+                    printf("ERROR");
+                    return 0;
+            }
         }
+        else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            break;
+        }
+        cleanUp();
     }
-    cleanUp();
 }

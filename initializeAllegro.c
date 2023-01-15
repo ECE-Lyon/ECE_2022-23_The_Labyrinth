@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include "initializeAllegro.h"
-
-ALLEGRO_DISPLAY *display = NULL;
-ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-ALLEGRO_EVENT_QUEUE *charEventQueue = NULL;
-ALLEGRO_BITMAP *images[NB_IMAGES];
-ALLEGRO_BITMAP *charSelect[4]; //remettre 4 sinon
-ALLEGRO_BITMAP *staticTiles[16];
+#include "struct_macro.h"
 
 int coordX[3];
 int coordY[3];
@@ -21,7 +15,6 @@ int current_Y = 0;
 
 
 void initializeAllegro() {
-
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -156,19 +149,19 @@ void initializeAllegro() {
 }
 
 
-void screenUpdate() {
+int screenUpdate(int current_screen) {
     // Ensure the current index is within bounds
-    if (current_index < 0) current_index = 0;
-    if (current_index >= NB_IMAGES) current_index = NB_IMAGES - 1;
+    if (current_screen < 0) current_screen = 0;
+    if (current_screen >= NB_IMAGES) current_screen = NB_IMAGES - 1;
 
     // Render the current image
-    al_draw_bitmap(images[current_index], 0, 0, 0);
+    al_draw_bitmap(images[current_screen], 0, 0, 0);
 
-    // check if a charcter is being selected, and grey it if so
-    if (current_index == 15) {
+    // check if a character is being selected, and grey it if so
+    if (current_screen == 15) {
         al_draw_bitmap(charSelect[current_char], coordX[current_X], coordY[current_Y], 0);
     }
-    if (current_index == 22) {
+    if (current_screen == 22) {
         for (int i = 0; i < NB_ST_TILES; i++) {
             al_draw_bitmap(staticTiles[i], coordSTx[i], coordSTy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
@@ -180,7 +173,9 @@ void screenUpdate() {
         }
     }
     al_flip_display();
+    return 0;
 }
+
 
 void cleanUp() {
     for (int i = 0; i < NB_IMAGES; i++) al_destroy_bitmap(images[i]);

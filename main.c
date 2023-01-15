@@ -13,16 +13,12 @@ int main(void) {
     ALLEGRO_BITMAP *staticTiles[16];
 
 
-    initializeAllegro(display, event_queue, images, charSelect, staticTiles);
-    printf("init\n");
+    event_queue = initializeAllegro(display, event_queue, images, charSelect, staticTiles);
     screenUpdate(0, images, charSelect,  staticTiles);
-    printf("screen\n");
 
     while (1) {
         ALLEGRO_EVENT event;
-        printf("ALLEGRO_EVENT event %d\n", event_queue);
         al_wait_for_event(event_queue, &event);
-        printf("al_wait_for_event\n");
 
 
         // Check for events

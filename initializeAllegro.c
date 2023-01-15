@@ -147,7 +147,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     /*al_register_event_source(charEventQueue, al_get_display_event_source(display));
     al_register_event_source(charEventQueue, al_get_keyboard_event_source());*/
 
-    return 0;
+    return event_queue;
 }
 
 

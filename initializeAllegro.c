@@ -261,8 +261,8 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
         for (int i = 0; i < NB_MV_TILES; i++) {
             al_draw_bitmap(movableTiles[i], coordMVx[i], coordMVy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
+            al_flip_display();
         }
-        al_rest(2.0);
         printf("full bitmap drawn x time\n");
     }
     else {

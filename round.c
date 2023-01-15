@@ -4,10 +4,7 @@
 
 Case tempValue = {0};
 
-int horizontal = 0, vertical = 0;
-int choiceLine = 0;
 int choice = 0;
-int choiceWay = 0;
 
 int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
     int check = 0;
@@ -123,55 +120,52 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
 
     //on ne demand pas dans quel sens on veut mettre la extra piece
 
-    printf("\nDo you want to move a row(1) or a column(2) ? \n");
+    printf("\nChoose the emplacement of the extra pieces (1 -> 12)\n");
     scanf("%d", &choice);
-    printf("Which row/column do you want to replace ? (2, 4 or 6)\n");
-    scanf("%d", &choiceLine);
-    while(!((choiceLine == 1 + 1) || (choiceLine == 3 + 1) || (choiceLine == 5 + 1))) {
-        printf("You can't move the row/column, only 2, 4 and 6 are available. Which row/column do you want to replace ? \n");
-        scanf("%d", &choiceLine);
+    while((choice < 0) || (choice > 12)) {
+        printf("This choice is not offered, choose the emplacement of the extra pieces (1 -> 12)\n");
+        scanf("%d", &choice);
     }
-    printf("Do you want to move to the right/down(1), or to the left/up(2) ? \n");
-    scanf("%d", &choiceWay);
 
-    if(choiceWay == 1) {
-        if (choice == 1) {
-            tempValue = board[BOARDSIZE - 1][choiceLine - 1];
-            for (vertical = BOARDSIZE - 1; vertical > 0; vertical--) {
-                board[vertical][choiceLine - 1] = board[vertical - 1][choiceLine - 1];
+    if(choice < 7) {
+        if (choice < 4) {
+            tempValue = board[(choice * 2) - 1][BOARDSIZE - 1];
+            for (int horizontal = BOARDSIZE - 1; horizontal > 0; horizontal--) {
+                board[(choice * 2) - 1][horizontal] = board[(choice * 2) - 1][horizontal - 1];
             }
-            board[0][choiceLine - 1] = substituteValue;
+            board[(choice * 2) - 1][0] = substituteValue;
             substituteValue = tempValue;
         }
-        else if (choice == 2) {
-            tempValue = board[choiceLine - 1][BOARDSIZE - 1];
-            for (horizontal = BOARDSIZE - 1; horizontal > 0; horizontal--) {
-                board[choiceLine - 1][horizontal] = board[choiceLine - 1][horizontal - 1];
+        else if (choice > 3) {
+            tempValue = board[BOARDSIZE - 1][((choice - 3) * 2) - 1];
+            for (int vertical = BOARDSIZE - 1; vertical > 0; vertical--) {
+                board[vertical][((choice - 3) * 2) - 1] = board[vertical - 1][((choice - 3) * 2) - 1];
             }
-            board[choiceLine - 1][0] = substituteValue;
+            board[0][((choice - 3) * 2) - 1] = substituteValue;
             substituteValue = tempValue;
         }
     }
 
-    else if(choiceWay == 2) {
-        if (choice == 1) {
-            tempValue = board[0][choiceLine - 1];
-            for (vertical = 0; vertical < BOARDSIZE - 1; vertical++) {
-                board[vertical][choiceLine - 1] = board[vertical + 1][choiceLine - 1];
+    else if(choice > 6) {
+        if (choice < 10) {
+            tempValue = board[((choice - 6) * 2) - 1][0];
+            for (int horizontal = 0; horizontal < BOARDSIZE - 1; horizontal++) {
+                board[((choice - 6) * 2) - 1][horizontal] = board[((choice - 6) * 2) - 1][horizontal + 1];
             }
-            board[BOARDSIZE - 1][choiceLine - 1]= substituteValue;
+            board[((choice - 6) * 2) - 1][BOARDSIZE - 1] = substituteValue;
             substituteValue = tempValue;
         }
-        else if (choice == 2) {
-            tempValue = board[choiceLine - 1][0];
-            for (horizontal = 0; horizontal < BOARDSIZE - 1; horizontal++) {
-                board[choiceLine - 1][horizontal] = board[choiceLine - 1][horizontal + 1];
+        else if (choice > 9) {
+            tempValue = board[0][((choice - 9) * 2) - 1];
+            for (int vertical = 0; vertical < BOARDSIZE - 1; vertical++) {
+                board[vertical][((choice - 9) * 2) - 1] = board[vertical + 1][((choice - 9) * 2) - 1];
             }
-            board[choiceLine - 1][BOARDSIZE - 1] = substituteValue;
+            board[BOARDSIZE - 1][((choice - 9) * 2) - 1]= substituteValue;
             substituteValue = tempValue;
         }
     }
 
+    printBoard(board);
 
     //----MOVE PAWN----//
     printf("\nMove your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");

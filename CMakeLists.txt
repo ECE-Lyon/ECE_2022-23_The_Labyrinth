@@ -10,3 +10,7 @@ target_link_libraries(main -lmingw32 -lallegro-5.0.10-monolith-md-debug)
 add_executable(allegro ALLEGRO_GUI.c)
 target_link_libraries(allegro ${ALLEGRO_LIBRARY})
 target_link_libraries(allegro -lmingw32 -lallegro-5.0.10-monolith-md-debug)
+
+add_executable(allegroTest ALLEGRO_FONT_TEST.c)
+target_link_libraries(allegroTest ${ALLEGRO_LIBRARY})
+target_link_libraries(allegroTest -lmingw32 -lallegro-5.0.10-monolith-md-debug)

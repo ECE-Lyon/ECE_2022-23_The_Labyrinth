@@ -173,7 +173,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
     }
 
     int firstPlayer = rand() % nbPlayer;
-    while (firstPlayer < nbPlayer + 1) {
+    while (firstPlayer < nbPlayer) {
         switch (firstPlayer) {
             case 0:
                 if (chooseTheEmperess != 0) {
@@ -214,7 +214,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
     }
 
     while (1) {
-        for (player = 0; player < nbPlayer + 1; player++) {
+        for (player = 0; player < nbPlayer; player++) {
             switch (player) {
                 case 0:
                     if (chooseTheEmperess != 0) {

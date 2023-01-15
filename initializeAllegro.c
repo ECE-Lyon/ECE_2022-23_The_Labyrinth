@@ -7,14 +7,13 @@ int coordY[3];
 int coordSTx[16];
 int coordSTy[16];
 
-int menu_flag = 0;
 int current_index = 0;
 int current_char = 0;
 int current_X = 0;
 int current_Y = 0;
 
 
-int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_EVENT_QUEUE *charEventQueue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -38,9 +37,10 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     al_set_window_position(display, x, y); // Set the window's position
 
 
-    // Create two event queues for the menu and the character selection
+
+    // Create event queue for the menu
     event_queue = al_create_event_queue();
-    charEventQueue = al_create_event_queue();
+    //charEventQueue = al_create_event_queue();
 
 
     // Load the images
@@ -140,12 +140,14 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     coordSTy[15] = 792;
 
 
-    // Register event sources for the two queues
+    // Register event sources for the queue
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
 
-    al_register_event_source(charEventQueue, al_get_display_event_source(display));
-    al_register_event_source(charEventQueue, al_get_keyboard_event_source());
+    /*al_register_event_source(charEventQueue, al_get_display_event_source(display));
+    al_register_event_source(charEventQueue, al_get_keyboard_event_source());*/
+
+    return 0;
 }
 
 
@@ -177,11 +179,13 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
 }
 
 
-void cleanUp(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_EVENT_QUEUE *charEventQueue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+int cleanUp(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
 for (int i = 0; i < NB_IMAGES; i++) al_destroy_bitmap(images[i]);
     for (int i = 0; i < 4; i++) al_destroy_bitmap(charSelect[i]);
     for (int i = 0; i < 16; i++) al_destroy_bitmap(staticTiles[i]);
     al_destroy_event_queue(event_queue);
-    al_destroy_event_queue(charEventQueue);
+    //al_destroy_event_queue(charEventQueue);
     al_destroy_display(display);
+
+    return 0;
 }

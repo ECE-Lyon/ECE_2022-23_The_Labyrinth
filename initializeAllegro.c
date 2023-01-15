@@ -246,9 +246,7 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
         }
     }
     else if (current_screen == 9) {
-        if(first == 1) {
-            al_draw_bitmap(images[current_screen], 0, 0, 0);
-        }
+        al_draw_bitmap(images[current_screen], 0, 0, 0);
         for (int i = 0; i < NB_ST_TILES; i++) {
             al_draw_bitmap(staticTiles[i], coordSTx[i], coordSTy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
@@ -256,14 +254,12 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
             if (i == 15) {
                 break;
             }
-            printf("boucle x%d\n", i);
         }
         for (int i = 0; i < NB_MV_TILES; i++) {
             al_draw_bitmap(movableTiles[i], coordMVx[i], coordMVy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
             al_flip_display();
         }
-        printf("full bitmap drawn x time\n");
     }
     else {
         al_draw_bitmap(images[current_screen], 0, 0, 0);

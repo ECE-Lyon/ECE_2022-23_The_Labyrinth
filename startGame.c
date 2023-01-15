@@ -53,6 +53,62 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
 }
 
 
+void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33]) {
+    switch (var) {
+        case 0:
+            if (chooseTheEmperess != 0) {
+                printf("\nIt's the turn of the Empress\n");
+                soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
+                printBoard(board);
+                board[theEmpressPawn.x][theEmpressPawn.y].theEmperess = 0;
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
+                board[theEmpressPawn.x][theEmpressPawn.y].theEmperess = 1;
+            }
+            break;
+        case 1 :
+            if (chooseTheArchDruid != 0) {
+                printf("\nIt's the turn of the Arch Druid\n");
+                soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
+                printBoard(board);
+                board[theArchDruidPawn.x][theArchDruidPawn.y].theArchDruid = 0;
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
+                board[theArchDruidPawn.x][theArchDruidPawn.y].theArchDruid = 1;
+            }
+            break;
+        case 2 :
+            if (chooseTheHauntedSeer != 0) {
+                printf("\nIt's the turn of the Haunted Seer\n");
+                soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
+                printBoard(board);
+                board[theHauntedSeerPawn.x][theHauntedSeerPawn.y].theHauntedSeer = 0;
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                board[theHauntedSeerPawn.x][theHauntedSeerPawn.y].theHauntedSeer = 0;
+            }
+            break;
+        case 3 :
+            if (chooseTheBrutalWanderer != 0) {
+                printf("\nIt's the turn of the Brutal Wanderer\n");
+                soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
+                printBoard(board);
+                board[theBrutalWandererPawn.x][theBrutalWandererPawn.y].theBrutalWanderer = 0;
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                board[theBrutalWandererPawn.x][theBrutalWandererPawn.y].theBrutalWanderer = 0;
+            }
+            break;
+        default :
+            goto returnMainMenu;
+    }
+
+    returnMainMenu:
+        printf("\nERROR\n");
+        al_rest(2.2);
+}
+
+
 int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33]) {
     srand(time(NULL));
 
@@ -158,7 +214,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
 
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if (event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 1);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
                 k = 1;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
@@ -172,83 +228,17 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
 
     int firstPlayer = rand() % nbPlayer;
     while (firstPlayer < nbPlayer) {
-        switch (firstPlayer) {
-            case 0:
-                if (chooseTheEmperess != 0) {
-                    printf("\nIt's the turn of the Empress\n");
-                    soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
-                    printBoard(board);
-                    oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
-                }
-                break;
-            case 1 :
-                if (chooseTheArchDruid != 0) {
-                    printf("\nIt's the turn of the Arch Druid\n");
-                    soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                    printBoard(board);
-                    oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
-                }
-                break;
-            case 2 :
-                if (chooseTheHauntedSeer != 0) {
-                    printf("\nIt's the turn of the Haunted Seer\n");
-                    soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                    printBoard(board);
-                    oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
-                }
-                break;
-            case 3 :
-                if (chooseTheBrutalWanderer != 0) {
-                    printf("\nIt's the turn of the Brutal Wanderer\n");
-                    soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                    printBoard(board);
-                    oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
-                }
-                break;
-            default:
-                goto returnMainMenu;
-        }
+
+        loop(firstPlayer, display, event_queue, images, charSelect,  staticTiles, movableTiles);
+
         firstPlayer++;
     }
 
     while (1) {
         for (player = 0; player < nbPlayer; player++) {
-            switch (player) {
-                case 0:
-                    if (chooseTheEmperess != 0) {
-                        printf("\nIt's the turn of the Empress\n");
-                        soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
-                        printBoard(board);
-                        oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theEmpressPawn, treasureCardTheEmpress);
-                    }
-                    break;
-                case 1 :
-                    if (chooseTheArchDruid != 0) {
-                        printf("\nIt's the turn of the Arch Druid\n");
-                        soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                        printBoard(board);
-                        oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
-                    }
-                    break;
-                case 2 :
-                    if (chooseTheHauntedSeer != 0) {
-                        printf("\nIt's the turn of the Haunted Seer\n");
-                        soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                        printBoard(board);
-                        oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
-                    }
-                    break;
-                case 3 :
-                    if (chooseTheBrutalWanderer != 0) {
-                        printf("\nIt's the turn of the Brutal Wanderer\n");
-                        soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                        printBoard(board);
-                        oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
-                    }
-                    break;
-                default:
-                    goto returnMainMenu;
-            }
+
+            loop(player, display, event_queue, images, charSelect,  staticTiles, movableTiles);
+
             if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) &&
                  (theEmpressPawn.y == 0)) ||
                 ((theArchDruidPawn.treasure == NB_CARD_BY_PERSON) && (theArchDruidPawn.x == BOARDSIZE - 1) &&

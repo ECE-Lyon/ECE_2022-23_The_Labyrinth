@@ -4,6 +4,7 @@
 
 Case tempValue = {0};
 
+
 int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
     int check = 0;
     if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
@@ -125,8 +126,8 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
         ALLEGRO_EVENT event;
         al_wait_for_event(event_queue, &event);
 
-        if (event.keyboard.keycode == ALLEGRO_EVENT_KEY_DOWN) {
-            switch (event.type) {
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            switch (event.keyboard.keycode) {
                 case ALLEGRO_KEY_A :
                     choice = 1;
                     printf("%d", choice);
@@ -230,7 +231,6 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
     int k = 0;
     while(k == 0) {
         int arrow;
-        printBoard(board);
 
         ALLEGRO_EVENT event;
         al_wait_for_event(event_queue, &event);
@@ -241,6 +241,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
                     character.y -= 1;
+                    printBoard(board);
                 } else {
                     printf("Impossible to go top\n");
                 }
@@ -250,6 +251,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
                     character.y += 1;
+                    printBoard(board);
                 } else {
                     printf("Impossible to go down\n");
                 }
@@ -259,6 +261,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
                     character.x += 1;
+                    printBoard(board);
                 } else {
                     printf("Impossible to go right\n");
                 }
@@ -268,11 +271,20 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
                     character.x -= 1;
+                    printBoard(board);
                 } else {
                     printf("Impossible to go left\n");
                 }
             }
-            if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {k = 1;}
+            if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
+                k = 1;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_M) {
+                goto returnMainMenu;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
+                return 0;
+            }
         }
     }
 

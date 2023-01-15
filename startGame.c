@@ -95,48 +95,47 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                i);
 
         while (differentCharacters == 0) {
-            while (differentCharacters == 0) {
 
-                ALLEGRO_EVENT event;
-                al_wait_for_event(event_queue, &event);
+            ALLEGRO_EVENT event;
+            al_wait_for_event(event_queue, &event);
 
-                if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
-                    if ((event.keyboard.keycode == ALLEGRO_KEY_1) && (chooseTheEmperess == 0)) {
-                        chooseTheEmperess = i;
-                        board[0][0].theEmperess = 1;
-                        differentCharacters = 1;
-                        screenUpdate(4, images, charSelect, staticTiles, movableTiles, 0, 0);
-                        al_rest(1.0);
-                    }
-                    if ((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
-                        chooseTheArchDruid = i;
-                        board[0][BOARDSIZE - 1].theArchDruid = 1;
-                        differentCharacters = 1;
-                        screenUpdate(4, images, charSelect, staticTiles, movableTiles, 1, 0);
-                        al_rest(1.0);
-                    }
-                    if ((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
-                        chooseTheHauntedSeer = i;
-                        board[BOARDSIZE - 1][0].theHauntedSeer = 1;
-                        differentCharacters = 1;
-                        screenUpdate(4, images, charSelect, staticTiles, movableTiles, 2, 0);
-                        al_rest(1.0);
-                    }
-                    if ((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
-                        chooseTheBrutalWanderer = i;
-                        board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
-                        differentCharacters = 1;
-                        screenUpdate(4, images, charSelect, staticTiles, movableTiles, 3, 0);
-                        al_rest(1.0);
-                    }
-                    if (event.keyboard.keycode == ALLEGRO_KEY_M) {
-                        goto returnMainMenu;
-                    }
-                    if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
-                        return 0;
-                    }
+            if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+                if ((event.keyboard.keycode == ALLEGRO_KEY_1) && (chooseTheEmperess == 0)) {
+                    chooseTheEmperess = i;
+                    board[0][0].theEmperess = 1;
+                    differentCharacters = 1;
+                    screenUpdate(4, images, charSelect, staticTiles, movableTiles, 0, 0);
+                    al_rest(1.0);
+                }
+                if ((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
+                    chooseTheArchDruid = i;
+                    board[0][BOARDSIZE - 1].theArchDruid = 1;
+                    differentCharacters = 1;
+                    screenUpdate(4, images, charSelect, staticTiles, movableTiles, 1, 0);
+                    al_rest(1.0);
+                }
+                if ((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
+                    chooseTheHauntedSeer = i;
+                    board[BOARDSIZE - 1][0].theHauntedSeer = 1;
+                    differentCharacters = 1;
+                    screenUpdate(4, images, charSelect, staticTiles, movableTiles, 2, 0);
+                    al_rest(1.0);
+                }
+                if ((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
+                    chooseTheBrutalWanderer = i;
+                    board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
+                    differentCharacters = 1;
+                    screenUpdate(4, images, charSelect, staticTiles, movableTiles, 3, 0);
+                    al_rest(1.0);
+                }
+                if (event.keyboard.keycode == ALLEGRO_KEY_M) {
+                    goto returnMainMenu;
+                }
+                if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
+                    return 0;
                 }
             }
+
         }
     }
 

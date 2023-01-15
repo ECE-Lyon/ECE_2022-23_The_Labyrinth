@@ -34,7 +34,6 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     al_set_window_position(display, x, y); // Set the window's position
 
 
-
     // Create event queue for the menu
     event_queue = al_create_event_queue();
 
@@ -257,13 +256,14 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
             if (i == 15) {
                 break;
             }
+            printf("boucle x%d\n", i);
         }
-        for (int i = 0; i < NB_MV_TILES; i++)
-        {
+        for (int i = 0; i < NB_MV_TILES; i++) {
             al_draw_bitmap(movableTiles[i], coordMVx[i], coordMVy[i], 0);
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
-            al_flip_display();
         }
+        al_rest(2.0);
+        printf("full bitmap drawn x time\n");
     }
     else {
         al_draw_bitmap(images[current_screen], 0, 0, 0);

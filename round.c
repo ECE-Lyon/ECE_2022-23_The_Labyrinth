@@ -116,7 +116,7 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 }
 
 
-int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33], Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
     //----MOVE ROW / COLUMN----//
     printf("\nThe extra piece is type %s\n", substituteValue.boxtype);
@@ -176,7 +176,9 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     //----MOVE PAWN----//
     printf("\nMove your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
 
-    /*
+    ALLEGRO_EVENT event;
+    al_wait_for_event(event_queue, &event);
+
     while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER)) {
         int arrow;
         printBoard(board);
@@ -221,7 +223,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
             }
         }
     }
-    */
+
 
     //----TREASURE----//
     if(treasureCardCharacter[character.treasure] == board[character.x][character.y].treasure) {

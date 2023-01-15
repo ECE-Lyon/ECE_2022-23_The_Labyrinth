@@ -59,8 +59,8 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
 
     //Load the images needed for the character selection screen as well as their coordinates
     charSelect[0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BnWEMPERESS.png");
-    coordX[0] = 0;
-    coordY[0] = 297;
+    coordX[0] = 297;
+    coordY[0] = 331;
     charSelect[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BnWARCHDRUID.png");
     coordX[1] = 653;
     coordY[1] = 325;
@@ -242,7 +242,9 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
         if(first == 1) {
             al_draw_bitmap(images[current_screen], 0, 0, 0);
         }
-        al_draw_bitmap(charSelect[current_char], coordX[current_char], coordY[current_char], 0);
+        else {
+            al_draw_bitmap(charSelect[current_char], coordX[current_char], coordY[current_char], 0);
+        }
     }
     else if (current_screen == 9) {
         if(first == 1) {

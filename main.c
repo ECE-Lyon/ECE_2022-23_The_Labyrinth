@@ -24,7 +24,6 @@ int main(void) {
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-                screenUpdate(3, images, charSelect,  staticTiles, movableTiles, 0, 0);
                 startGame(display, event_queue, images, charSelect,  staticTiles, movableTiles);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_M) {

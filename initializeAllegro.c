@@ -7,8 +7,6 @@ int coordY[3];
 int coordSTx[16];
 int coordSTy[16];
 
-int current_index = 0;
-
 
 int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     // Initialize Allegro
@@ -45,7 +43,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     images[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/2.png");
     images[2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/3.png");
     images[3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/4.png");
-    images[4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/5.png");
+    /*images[4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/5.png");
     images[5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/6.png");
     images[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/7.png");
     images[7] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/8.png");
@@ -55,7 +53,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     images[11] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/12.png");
     images[12] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/13.png");
     images[13] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/14.png");
-    images[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/15.png");
+    images[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/15.png");*/
     images[15] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/16.png");
     images[16] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/17.png");
     images[17] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/18.png");
@@ -64,7 +62,6 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     images[20] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/21.png");
     images[21] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARD0.png");
     images[22] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARDblank.png");
-    images[23] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/16bis.png");
     for (int i = 0; i < NB_IMAGES; i++) {
         if (images[i] == NULL) {
             printf("Error occured while loading image %d \n", i);
@@ -171,7 +168,6 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
             al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
             al_flip_display();
             if (i == 15) {
-                printf("i reached 15"); //ici, un bug fait que l'affichage est performé 3 fois.. à régler
                 break;
             }
         }

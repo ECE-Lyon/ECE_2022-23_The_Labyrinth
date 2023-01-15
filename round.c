@@ -177,10 +177,10 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
     printf("\nMove your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
 
     /*
-    while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER == 1)) {
+    while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER)) {
         int arrow;
         printBoard(board);
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_UP == 1)) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_UP)) {
             arrow = 1;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -190,7 +190,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go top\n");
             }
         }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_DOWN == 1)) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_DOWN)) {
             arrow = 2;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -200,7 +200,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go down\n");
             }
         }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_RIGHT == 1)) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_RIGHT)) {
             arrow = 3;
             int check = checkWall(board, character, arrow);
             if(check == 1) {
@@ -210,7 +210,7 @@ int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn charac
                 printf("Impossible to go right\n");
             }
         }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_LEFT == 1)) {
+        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_LEFT)) {
             arrow = 4;
             int check = checkWall(board, character, arrow);
             if(check == 1) {

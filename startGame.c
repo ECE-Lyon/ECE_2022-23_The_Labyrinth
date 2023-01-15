@@ -138,15 +138,40 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         }
     }
 
+    screenUpdate(16, images, charSelect,  staticTiles, 0, 0);
+
 
     //----TREASURES / CARDS----//
     shuffleCards();
 
 
-    //----START----//
+    //----BOARD----//
     substituteValue.boxtype = initializeBoard(theEmpressPawn, theArchDruidPawn, theHauntedSeerPawn, theBrutalWandererPawn, board, substituteValue, treasures);
 
-    screenUpdate(22, images, charSelect,  staticTiles, 0, 1);
+
+    //----START----//
+
+    int i = 0;
+    while (i == 0) {
+
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
+
+        if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            if (event.keyboard.keycode == ALLEGRO_KEY_D) {
+                i = 1;
+                screenUpdate(22, images, charSelect, staticTiles, 0, 1);
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_M) {
+                goto returnMainMenu;
+            }
+            if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
+                return 0;
+            }
+        }
+    }
+
+    //screenUpdate(22, images, charSelect,  staticTiles, 0, 1);
 
     int firstPlayer = rand() % nbPlayer;
     while(firstPlayer < nbPlayer + 1) {

@@ -43,25 +43,12 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     images[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/2.png");
     images[2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/3.png");
     images[3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/4.png");
-    /*images[4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/5.png");
-    images[5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/6.png");
-    images[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/7.png");
-    images[7] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/8.png");
-    images[8] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/9.png");
-    images[9] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/10.png");
-    images[10] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/11.png");
-    images[11] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/12.png");
-    images[12] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/13.png");
-    images[13] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/14.png");
-    images[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/15.png");*/
-    images[15] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/16.png");
-    images[16] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/17.png");
-    images[17] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/18.png");
-    images[18] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/19.png");
-    images[19] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/20.png");
-    images[20] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/21.png");
-    images[21] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARD0.png");
-    images[22] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARDblank.png");
+    images[4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/16.png");
+    images[5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/17.png");
+    images[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/20.png");
+    images[7] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/21.png");
+    images[8] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/22.png");
+    images[9] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARDblank.png");
     for (int i = 0; i < NB_IMAGES; i++) {
         if (images[i] == NULL) {
             printf("Error occured while loading image %d \n", i);
@@ -153,13 +140,13 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
 
     // Render the current image
     // check if a character is being selected, and grey it if so
-    if (current_screen == 15) {
+    if (current_screen == 4) {
         if(first == 1) {
             al_draw_bitmap(images[current_screen], 0, 0, 0);
         }
         al_draw_bitmap(charSelect[current_char], coordX[current_char], coordY[current_char], 0);
     }
-    else if (current_screen == 22) {
+    else if (current_screen == 9) {
         if(first == 1) {
             al_draw_bitmap(images[current_screen], 0, 0, 0);
         }

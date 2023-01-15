@@ -83,12 +83,12 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 return 0;
             }
             else {
-                screenUpdate(20, images, charSelect,  staticTiles, 0, 0);
+                screenUpdate(7, images, charSelect,  staticTiles, 0, 0);
             }
         }
     }
 
-    screenUpdate(15, images, charSelect,  staticTiles, 5, 1);
+    screenUpdate(4, images, charSelect,  staticTiles, 5, 1);
 
     for(int i = 1; i < nbPlayer + 1; i++){
         int differentCharacters = 0;
@@ -104,28 +104,28 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     chooseTheEmperess = i;
                     board[0][0].theEmperess = 1;
                     differentCharacters = 1;
-                    screenUpdate(15, images, charSelect,  staticTiles, 0, 0);
+                    screenUpdate(4, images, charSelect,  staticTiles, 0, 0);
                     al_rest(1.0);
                 }
                 if((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
                     chooseTheArchDruid = i;
                     board[0][BOARDSIZE - 1].theArchDruid = 1;
                     differentCharacters = 1;
-                    screenUpdate(15, images, charSelect,  staticTiles, 1, 0);
+                    screenUpdate(4, images, charSelect,  staticTiles, 1, 0);
                     al_rest(1.0);
                 }
                 if((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
                     chooseTheHauntedSeer = i;
                     board[BOARDSIZE - 1][0].theHauntedSeer = 1;
                     differentCharacters = 1;
-                    screenUpdate(15, images, charSelect,  staticTiles, 2, 0);
+                    screenUpdate(4, images, charSelect,  staticTiles, 2, 0);
                     al_rest(1.0);
                 }
                 if((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
                     chooseTheBrutalWanderer = i;
                     board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
                     differentCharacters = 1;
-                    screenUpdate(15, images, charSelect,  staticTiles, 3, 0);
+                    screenUpdate(4, images, charSelect,  staticTiles, 3, 0);
                     al_rest(1.0);
                 }
                 if(event.keyboard.keycode == ALLEGRO_KEY_M) {
@@ -138,7 +138,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         }
     }
 
-    screenUpdate(16, images, charSelect,  staticTiles, 0, 0);
+    screenUpdate(5, images, charSelect,  staticTiles, 0, 0);
 
 
     //----TREASURES / CARDS----//
@@ -160,7 +160,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if (event.keyboard.keycode == ALLEGRO_KEY_D) {
                 i = 1;
-                screenUpdate(22, images, charSelect, staticTiles, 0, 1);
+                screenUpdate(9, images, charSelect, staticTiles, 0, 1);
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
                 goto returnMainMenu;
@@ -170,8 +170,6 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
             }
         }
     }
-
-    //screenUpdate(22, images, charSelect,  staticTiles, 0, 1);
 
     int firstPlayer = rand() % nbPlayer;
     while(firstPlayer < nbPlayer + 1) {

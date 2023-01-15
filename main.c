@@ -24,12 +24,13 @@ int main(void) {
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-                startGame();
+                screenUpdate(3, images, charSelect,  staticTiles);
+                startGame(images, charSelect,  staticTiles);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_M) {
                 screenUpdate(0, images, charSelect,  staticTiles);
             }
-            if(event.keyboard.keycode == ALLEGRO_KEY_A) {
+            if((event.keyboard.keycode == ALLEGRO_KEY_A) || (event.keyboard.keycode == ALLEGRO_KEY_R)) {
                 screenUpdate(1, images, charSelect,  staticTiles);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_D) {
@@ -38,24 +39,6 @@ int main(void) {
             if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
                 return 0;
             }
-            /*switch (event.keyboard.keycode) {
-                case ALLEGRO_KEY_ENTER:
-                    startGame();
-                    break;
-                case ALLEGRO_KEY_M :
-                    screenUpdate(0, images, charSelect,  staticTiles);
-                    break;
-                case ALLEGRO_KEY_A :
-                    screenUpdate(1, images, charSelect,  staticTiles);
-                    break;
-                case ALLEGRO_KEY_D :
-                    screenUpdate(2, images, charSelect,  staticTiles);
-                    break;
-                case ALLEGRO_KEY_TAB :
-                    return 0;
-                default:
-                    break;
-            }*/
         }
         else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             break;

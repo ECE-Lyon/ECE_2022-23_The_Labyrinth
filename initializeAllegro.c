@@ -67,6 +67,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     images[20] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/21.png");
     images[21] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARD0.png");
     images[22] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BOARDblank.png");
+    images[23] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/16bis.png");
     for (int i = 0; i < NB_IMAGES; i++) {
         if (images[i] == NULL) {
             printf("Error occured while loading image %d \n", i);
@@ -160,6 +161,7 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
     al_draw_bitmap(images[current_screen], 0, 0, 0);
 
     // check if a character is being selected, and grey it if so
+    /*
     if (current_screen == 15) {
         al_draw_bitmap(charSelect[current_char], coordX[current_X], coordY[current_Y], 0);
     }
@@ -174,6 +176,7 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
             }
         }
     }
+     */
     al_flip_display();
     return 0;
 }

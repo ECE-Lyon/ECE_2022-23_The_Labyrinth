@@ -53,15 +53,16 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
 }
 
 
-void startGame() {
+int startGame(ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     srand(time(NULL));
 
-    //screenUpdate(4, images, charSelect,  staticTiles);
+    screenUpdate(3, images, charSelect,  staticTiles);
 
     //----PLAYERS----//
     printf("How many player are you ?\n");
     scanf("%d", &nbPlayer);
     while((nbPlayer < 2) || (nbPlayer > 4)){
+        screenUpdate(20, images, charSelect,  staticTiles);
         printf("Not enough player OR to much players\n");
         printf("How many player are you ?\n");
         scanf("%d", &nbPlayer);
@@ -70,6 +71,7 @@ void startGame() {
         int differentCharacters = 0;
         while(differentCharacters == 0) {
             int chooseCharacter = 0;
+            screenUpdate(23, images, charSelect,  staticTiles);
             printf("Player %d, witch character do you want ?\nPress 1 for the Emperess, 2 for the Arch Druid, 3 for the Haunted Seer, 4 for the Brutal Wanderer\n", i);
             scanf("%d", &chooseCharacter);
             while ((chooseCharacter > 4) || (chooseCharacter < 1)) {
@@ -193,8 +195,8 @@ void startGame() {
             }
         }
     }
-
-returnMainMenu:
-    printf ("\nERROR\n");
-    al_rest(2.2);
+    returnMainMenu:
+        printf ("\nERROR\n");
+        al_rest(2.2);
+    return 0;
 }

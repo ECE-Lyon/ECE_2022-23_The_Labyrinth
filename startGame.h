@@ -7,6 +7,6 @@
 #include "initializeBoard.h"
 #include "round.h"
 
-void startGame();
+int startGame(ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]);
 
 #endif //PROJET_STARTGAME_H

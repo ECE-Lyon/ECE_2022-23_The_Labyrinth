@@ -4,8 +4,6 @@
 
 Case tempValue = {0};
 
-int choice = 0;
-
 int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
     int check = 0;
     if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
@@ -120,11 +118,69 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
 
     //on ne demand pas dans quel sens on veut mettre la extra piece
 
+    int choice = 0;
     printf("\nChoose the emplacement of the extra pieces (1 -> 12)\n");
-    scanf("%d", &choice);
-    while((choice < 0) || (choice > 12)) {
-        printf("This choice is not offered, choose the emplacement of the extra pieces (1 -> 12)\n");
-        scanf("%d", &choice);
+    while(choice == 0) {
+
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
+
+        if (event.keyboard.keycode == ALLEGRO_EVENT_KEY_DOWN) {
+            switch (event.type) {
+                case ALLEGRO_KEY_A :
+                    choice = 1;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_B :
+                    choice = 2;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_C :
+                    choice = 3;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_D :
+                    choice = 4;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_E :
+                    choice = 5;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_F :
+                    choice = 6;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_G :
+                    choice = 7;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_H :
+                    choice = 8;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_I :
+                    choice = 9;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_J :
+                    choice = 10;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_K :
+                    choice = 11;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_L :
+                    choice = 12;
+                    printf("%d", choice);
+                    break;
+                case ALLEGRO_KEY_M :
+                    goto returnMainMenu;
+                case ALLEGRO_KEY_TAB :
+                    return 0;
+            }
+        }
     }
 
     if(choice < 7) {
@@ -170,51 +226,53 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
     //----MOVE PAWN----//
     printf("\nMove your pawn with the arrows of the keyboard, and press enter when you have finished your move \n");
 
-    ALLEGRO_EVENT event;
-    al_wait_for_event(event_queue, &event);
 
-    while((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_ENTER)) {
+    int k = 0;
+    while(k == 0) {
         int arrow;
         printBoard(board);
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_UP)) {
-            arrow = 1;
-            int check = checkWall(board, character, arrow);
-            if(check == 1) {
-                character.y -= 1;
+
+        ALLEGRO_EVENT event;
+        al_wait_for_event(event_queue, &event);
+
+        if(event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            if(event.keyboard.keycode == ALLEGRO_KEY_UP) {
+                arrow = 1;
+                int check = checkWall(board, character, arrow);
+                if (check == 1) {
+                    character.y -= 1;
+                } else {
+                    printf("Impossible to go top\n");
+                }
             }
-            else {
-                printf("Impossible to go top\n");
+            if(event.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+                arrow = 2;
+                int check = checkWall(board, character, arrow);
+                if (check == 1) {
+                    character.y += 1;
+                } else {
+                    printf("Impossible to go down\n");
+                }
             }
-        }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_DOWN)) {
-            arrow = 2;
-            int check = checkWall(board, character, arrow);
-            if(check == 1) {
-                character.y += 1;
+            if(event.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+                arrow = 3;
+                int check = checkWall(board, character, arrow);
+                if (check == 1) {
+                    character.x += 1;
+                } else {
+                    printf("Impossible to go right\n");
+                }
             }
-            else {
-                printf("Impossible to go down\n");
+            if(event.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+                arrow = 4;
+                int check = checkWall(board, character, arrow);
+                if (check == 1) {
+                    character.x -= 1;
+                } else {
+                    printf("Impossible to go left\n");
+                }
             }
-        }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_RIGHT)) {
-            arrow = 3;
-            int check = checkWall(board, character, arrow);
-            if(check == 1) {
-                character.x += 1;
-            }
-            else {
-                printf("Impossible to go right\n");
-            }
-        }
-        if((event.type == ALLEGRO_EVENT_KEY_DOWN) && (event.keyboard.keycode == ALLEGRO_KEY_LEFT)) {
-            arrow = 4;
-            int check = checkWall(board, character, arrow);
-            if(check == 1) {
-                character.x -= 1;
-            }
-            else {
-                printf("Impossible to go left\n");
-            }
+            if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {k = 1;}
         }
     }
 
@@ -232,4 +290,9 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
     }
 
     return 0;
+
+    returnMainMenu:
+        printf("\nERROR\n");
+        al_rest(2.2);
+        return 0;
 }

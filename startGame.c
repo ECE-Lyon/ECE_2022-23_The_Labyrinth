@@ -135,7 +135,6 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     return 0;
                 }
             }
-
         }
     }
 

@@ -179,5 +179,15 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
             i--;
         }
     }
+
+    //board allegro
+    int boxway[33] ={0};
+
+    for(int i = 0; i < BOARDSIZE; i++) {
+        for(int j = 0; j < BOARDSIZE; j++) {
+            boxway[i] = board[i][j].boxway;
+        }
+    }
+
     return (substituteValue.boxtype);
 }

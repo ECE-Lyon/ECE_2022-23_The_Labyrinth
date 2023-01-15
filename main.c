@@ -20,9 +20,10 @@ int main(void) {
 
     while (1) {
         ALLEGRO_EVENT event;
-        printf("ALLEGRO_EVENT event\n");
+        printf("ALLEGRO_EVENT event %d\n", event_queue);
         al_wait_for_event(event_queue, &event);
         printf("al_wait_for_event\n");
+
 
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
@@ -63,7 +64,9 @@ int main(void) {
         else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             break;
         }
-
-        cleanUp(display, event_queue, images, charSelect, staticTiles);
     }
+
+    cleanUp(display, event_queue, images, charSelect, staticTiles);
+
+    return 0;
 }

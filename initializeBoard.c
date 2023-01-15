@@ -146,6 +146,7 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
 
 
     //----SHUFFLE MOBILES----//
+    // For the substituteValue
     int index1 = rand() % NUM_MOVABLE_PIECES;
     int index2 = rand() % NUM_MOVABLE_PIECES;
     while (board[index1][index2].mobile != 1) {
@@ -156,6 +157,7 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
     board[index1][index2] = substituteValue;
     substituteValue = temp;
 
+    // For the board
     for (int i = 0; i < NUM_MOVABLE_PIECES * 2; i++) {
         // Generate two random indices to swap
         int indexA1 = rand() % NUM_MOVABLE_PIECES;

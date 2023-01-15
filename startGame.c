@@ -214,7 +214,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
 
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if (event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
+                screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 1);
                 k = 1;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {

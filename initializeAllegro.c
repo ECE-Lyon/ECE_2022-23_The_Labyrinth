@@ -58,8 +58,8 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
 
     //Load the images needed for the character selection screen as well as their coordinates
     charSelect[0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BnWEMPERESS.png");
-    coordX[0] = 297;
-    coordY[0] = 331;
+    coordX[0] = 300;
+    coordY[0] = 335;
     charSelect[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/BnWARCHDRUID.png");
     coordX[1] = 653;
     coordY[1] = 325;
@@ -139,7 +139,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     movableTiles[5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV6.jpg");
     coordMVx[5] = 453;
     coordMVy [5] = 285;
-    movableTiles[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV6.jpg");
+    movableTiles[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV34.jpg");
     coordMVx[6] = 555;
     coordMVy [6] = 285;
     movableTiles[7] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV7.jpg");
@@ -249,16 +249,17 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
         al_draw_bitmap(images[current_screen], 0, 0, 0);
         for (int i = 0; i < NB_ST_TILES; i++) {
             al_draw_bitmap(staticTiles[i], coordSTx[i], coordSTy[i], 0);
-            al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
-            al_flip_display();
-            if (i == 15) {
-                break;
+            if(first == 1) {
+                al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
+                al_flip_display();
             }
         }
         for (int i = 0; i < NB_MV_TILES; i++) {
             al_draw_bitmap(movableTiles[i], coordMVx[i], coordMVy[i], 0);
-            al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
-            al_flip_display();
+            if(first == 1) {
+                al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
+                al_flip_display();
+            }
         }
     }
     else {

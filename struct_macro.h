@@ -6,10 +6,11 @@
 #include <allegro5/allegro_native_dialog.h>
 
 //Constants for Allegro
-#define NB_IMAGES 11
+#define NB_IMAGES 10
 #define DISPLAY_WIDTH 1920
 #define DISPLAY_HEIGHT 1080
 #define NB_ST_TILES 16
+#define NB_MV_TILES 33
 
 //Constants for C
 #define NUM_MOVABLE_PIECES 33

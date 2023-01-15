@@ -116,7 +116,7 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 }
 
 
-int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+int oneRound(Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS], ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
 
     //----MOVE ROW / COLUMN----//
     printf("\nThe extra piece is type %s\n", substituteValue.boxtype);

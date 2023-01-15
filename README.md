@@ -30,7 +30,7 @@ The project is ending on Sunday, January 15 2023.
 We are planning on following a fantasy vibe, inspired by The Lord of The Rings.
 
 ### How to install the game ?
-The game is using pictures; you will need to grab them from the "ressources" folder and drag the in the correct directory in order to make the game work (working on a fix tu use a relative path)
+The game is using pictures; you will need to grab them from the "ressources" folder and drag the in the correct directory in order to make the game work (working on a fix to use a relative path)
 
 
 ## Features

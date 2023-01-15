@@ -21,7 +21,6 @@ int printBoard(Case board[BOARDSIZE][BOARDSIZE]) {
             else  {
                 printf("___ /");
             }
-
         }
         printf("\n");
     }

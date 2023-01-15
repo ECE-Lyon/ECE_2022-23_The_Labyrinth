@@ -11,13 +11,6 @@
 #define DISPLAY_HEIGHT 1080
 #define NB_ST_TILES 16
 
-ALLEGRO_DISPLAY *display = NULL;
-ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-ALLEGRO_EVENT_QUEUE *charEventQueue = NULL;
-ALLEGRO_BITMAP *images[NB_IMAGES];
-ALLEGRO_BITMAP *charSelect[4];
-ALLEGRO_BITMAP *staticTiles[16];
-
 //Constants for C
 #define NUM_MOVABLE_PIECES 33
 #define NB_TREASURE_CARD 24

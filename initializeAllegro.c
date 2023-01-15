@@ -14,7 +14,7 @@ int current_X = 0;
 int current_Y = 0;
 
 
-void initializeAllegro() {
+int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_EVENT_QUEUE *charEventQueue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -149,7 +149,7 @@ void initializeAllegro() {
 }
 
 
-int screenUpdate(int current_screen) {
+int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
     // Ensure the current index is within bounds
     if (current_screen < 0) current_screen = 0;
     if (current_screen >= NB_IMAGES) current_screen = NB_IMAGES - 1;
@@ -177,8 +177,8 @@ int screenUpdate(int current_screen) {
 }
 
 
-void cleanUp() {
-    for (int i = 0; i < NB_IMAGES; i++) al_destroy_bitmap(images[i]);
+void cleanUp(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_EVENT_QUEUE *charEventQueue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16]) {
+for (int i = 0; i < NB_IMAGES; i++) al_destroy_bitmap(images[i]);
     for (int i = 0; i < 4; i++) al_destroy_bitmap(charSelect[i]);
     for (int i = 0; i < 16; i++) al_destroy_bitmap(staticTiles[i]);
     al_destroy_event_queue(event_queue);

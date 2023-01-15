@@ -1,16 +1,21 @@
 #include <stdio.h>
-#include "struct_macro.h"
 #include "initializeAllegro.h"
 #include "startGame.h"
 
+
 int main(void) {
 
-    printf("\nWELCOME\n\n");
+    ALLEGRO_DISPLAY *display = NULL;
+    ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+    ALLEGRO_EVENT_QUEUE *charEventQueue = NULL;
+    ALLEGRO_BITMAP *images[NB_IMAGES];
+    ALLEGRO_BITMAP *charSelect[4];
+    ALLEGRO_BITMAP *staticTiles[16];
+
+    initializeAllegro(display, event_queue, charEventQueue, images, charSelect, staticTiles);
+    screenUpdate(0, images, charSelect,  staticTiles);
 
     while (1) {
-        initializeAllegro();
-        screenUpdate(0);
-
         ALLEGRO_EVENT event;
         al_wait_for_event(event_queue, &event);
 
@@ -21,13 +26,13 @@ int main(void) {
                     startGame();
                     break;
                 case ALLEGRO_KEY_M :
-                    screenUpdate(0);
+                    screenUpdate(0, images, charSelect,  staticTiles);
                     break;
                 case ALLEGRO_KEY_A :
-                    screenUpdate(1);
+                    screenUpdate(1, images, charSelect,  staticTiles);
                     break;
                 case ALLEGRO_KEY_D :
-                    screenUpdate(2);
+                    screenUpdate(2, images, charSelect,  staticTiles);
                     break;
                 case ALLEGRO_KEY_TAB :
                     return 0;
@@ -39,6 +44,7 @@ int main(void) {
         else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             break;
         }
-        cleanUp();
+
+        cleanUp(display, event_queue, charEventQueue, images, charSelect, staticTiles);
     }
 }

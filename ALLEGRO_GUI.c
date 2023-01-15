@@ -331,7 +331,7 @@ int main(int argc, char **argv)
                   nbPlayer = 0;
                }
             }
-            if(current_index == 22)
+            if(current_index == 21)
             { 
                if (event_char.keyboard.keycode == ALLEGRO_KEY_M)
                {
@@ -368,11 +368,12 @@ int main(int argc, char **argv)
             al_flip_display();
             if (i == 15)
             {
-               printf("i reached 15"); //ici, un bug fait que l'affichage est performé 3 fois.. à régler
+               printf("i reached 15\n"); //ici, un bug fait que l'affichage est performé 3 fois.. à régler
                break;
             }
+            printf("boucle x%d\n", i); 
          }
-
+         current_index = 21;
       }
       al_flip_display();
    }

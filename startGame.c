@@ -62,7 +62,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
                 screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
                 printBoard(board);
                 board[theEmpressPawn.x][theEmpressPawn.y].theEmperess = 0;
-                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, theEmpressPawn, treasureCardTheEmpress);
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, &theEmpressPawn, treasureCardTheEmpress);
                 board[theEmpressPawn.x][theEmpressPawn.y].theEmperess = 1;
             }
             break;
@@ -73,7 +73,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
                 screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
                 printBoard(board);
                 board[theArchDruidPawn.x][theArchDruidPawn.y].theArchDruid = 0;
-                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, theArchDruidPawn, treasureCardTheArchDruid);
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, &theArchDruidPawn, treasureCardTheArchDruid);
                 board[theArchDruidPawn.x][theArchDruidPawn.y].theArchDruid = 1;
             }
             break;
@@ -84,7 +84,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
                 screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
                 printBoard(board);
                 board[theHauntedSeerPawn.x][theHauntedSeerPawn.y].theHauntedSeer = 0;
-                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, theHauntedSeerPawn, treasureCardTheHauntedSeer);
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, &theHauntedSeerPawn, treasureCardTheHauntedSeer);
                 board[theHauntedSeerPawn.x][theHauntedSeerPawn.y].theHauntedSeer = 0;
             }
             break;
@@ -95,7 +95,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
                 screenUpdate(9, images, charSelect, staticTiles, movableTiles, 0, 0);
                 printBoard(board);
                 board[theBrutalWandererPawn.x][theBrutalWandererPawn.y].theBrutalWanderer = 0;
-                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, theBrutalWandererPawn, treasureCardTheBrutalWanderer);
+                oneRound(display, event_queue, images, charSelect,  staticTiles, movableTiles, board, &substituteValue, &theBrutalWandererPawn, treasureCardTheBrutalWanderer);
                 board[theBrutalWandererPawn.x][theBrutalWandererPawn.y].theBrutalWanderer = 0;
             }
             break;

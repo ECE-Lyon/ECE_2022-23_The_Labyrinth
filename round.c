@@ -112,10 +112,10 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
 }
 
 
-int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33], Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33], Case board[BOARDSIZE][BOARDSIZE], Case *substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
     //----MOVE ROW / COLUMN----//
-    printf("\nThe extra piece is type %s\n", substituteValue.boxtype);
+    printf("\nThe extra piece is type %s\n", substituteValue->boxtype);
 
     //on ne demand pas dans quel sens on veut mettre la extra piece
 
@@ -190,16 +190,16 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
             for (int horizontal = BOARDSIZE - 1; horizontal > 0; horizontal--) {
                 board[(choice * 2) - 1][horizontal] = board[(choice * 2) - 1][horizontal - 1];
             }
-            board[(choice * 2) - 1][0] = substituteValue;
-            substituteValue = tempValue;
+            board[(choice * 2) - 1][0] = *substituteValue;
+            *substituteValue = tempValue;
         }
         else if (choice > 3) {
             tempValue = board[BOARDSIZE - 1][((choice - 3) * 2) - 1];
             for (int vertical = BOARDSIZE - 1; vertical > 0; vertical--) {
                 board[vertical][((choice - 3) * 2) - 1] = board[vertical - 1][((choice - 3) * 2) - 1];
             }
-            board[0][((choice - 3) * 2) - 1] = substituteValue;
-            substituteValue = tempValue;
+            board[0][((choice - 3) * 2) - 1] = *substituteValue;
+            *substituteValue = tempValue;
         }
     }
 
@@ -209,16 +209,16 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
             for (int horizontal = 0; horizontal < BOARDSIZE - 1; horizontal++) {
                 board[((choice - 6) * 2) - 1][horizontal] = board[((choice - 6) * 2) - 1][horizontal + 1];
             }
-            board[((choice - 6) * 2) - 1][BOARDSIZE - 1] = substituteValue;
-            substituteValue = tempValue;
+            board[((choice - 6) * 2) - 1][BOARDSIZE - 1] = *substituteValue;
+            *substituteValue = tempValue;
         }
         else if (choice > 9) {
             tempValue = board[0][((choice - 9) * 2) - 1];
             for (int vertical = 0; vertical < BOARDSIZE - 1; vertical++) {
                 board[vertical][((choice - 9) * 2) - 1] = board[vertical + 1][((choice - 9) * 2) - 1];
             }
-            board[BOARDSIZE - 1][((choice - 9) * 2) - 1]= substituteValue;
-            substituteValue = tempValue;
+            board[BOARDSIZE - 1][((choice - 9) * 2) - 1]= *substituteValue;
+            *substituteValue = tempValue;
         }
     }
 

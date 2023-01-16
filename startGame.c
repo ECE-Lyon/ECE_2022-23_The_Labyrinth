@@ -161,6 +161,10 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 if ((event.keyboard.keycode == ALLEGRO_KEY_1) && (chooseTheEmperess == 0)) {
                     chooseTheEmperess = i;
                     board[0][0].theEmperess = 1;
+                    theEmpressPawn.boxtype = "L";
+                    theEmpressPawn.boxway = 1;
+                    theEmpressPawn.x = 0;
+                    theEmpressPawn.y = 0;
                     differentCharacters = 1;
                     screenUpdate(4, images, charSelect, staticTiles, movableTiles, 0, 0);
                     al_rest(1.0);
@@ -168,6 +172,10 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 if ((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
                     chooseTheArchDruid = i;
                     board[0][BOARDSIZE - 1].theArchDruid = 1;
+                    theArchDruidPawn.boxtype = "L";
+                    theArchDruidPawn.boxway = 2;
+                    theArchDruidPawn.x = BOARDSIZE - 1;
+                    theArchDruidPawn.y = 0;
                     differentCharacters = 1;
                     screenUpdate(4, images, charSelect, staticTiles, movableTiles, 1, 0);
                     al_rest(1.0);
@@ -175,6 +183,10 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 if ((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
                     chooseTheHauntedSeer = i;
                     board[BOARDSIZE - 1][0].theHauntedSeer = 1;
+                    theHauntedSeerPawn.boxtype = "L";
+                    theHauntedSeerPawn.boxway = 0;
+                    theHauntedSeerPawn.x = 0;
+                    theHauntedSeerPawn.y = BOARDSIZE - 1;
                     differentCharacters = 1;
                     screenUpdate(4, images, charSelect, staticTiles, movableTiles, 2, 0);
                     al_rest(1.0);
@@ -182,6 +194,10 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 if ((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
                     chooseTheBrutalWanderer = i;
                     board[BOARDSIZE - 1][BOARDSIZE - 1].theBrutalWanderer = 1;
+                    theBrutalWandererPawn.boxtype = "L";
+                    theBrutalWandererPawn.boxway = 3;
+                    theBrutalWandererPawn.x = BOARDSIZE - 1;
+                    theBrutalWandererPawn.y = BOARDSIZE - 1;
                     differentCharacters = 1;
                     screenUpdate(4, images, charSelect, staticTiles, movableTiles, 3, 0);
                     al_rest(1.0);

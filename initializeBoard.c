@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "initializeBoard.h"
 
-int boxway[33] ={0};
+int boxway[33] = {0};
 
 char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHauntedSeerPawn, Pawn theBrutalWandererPawn, Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS]) {
 
@@ -11,28 +11,12 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
     //----CORNERS----//
     board[0][0].boxtype = "L";
     board[0][0].boxway = 1;
-    theEmpressPawn.boxtype = "L";
-    theEmpressPawn.boxway = 1;
-    theEmpressPawn.x = 0;
-    theEmpressPawn.y = 0;
     board[0][BOARDSIZE - 1].boxtype = "L";
     board[0][BOARDSIZE - 1].boxway = 2;
-    theArchDruidPawn.boxtype = "L";
-    theArchDruidPawn.boxway = 2;
-    theArchDruidPawn.x = BOARDSIZE - 1;
-    theArchDruidPawn.y = 0;
     board[BOARDSIZE - 1][0].boxtype = "L";
     board[BOARDSIZE - 1][0].boxway = 0;
-    theHauntedSeerPawn.boxtype = "L";
-    theHauntedSeerPawn.boxway = 0;
-    theHauntedSeerPawn.x = 0;
-    theHauntedSeerPawn.y = BOARDSIZE - 1;
     board[BOARDSIZE - 1][BOARDSIZE - 1].boxtype = "L";
     board[BOARDSIZE - 1][BOARDSIZE - 1].boxway = 3;
-    theBrutalWandererPawn.boxtype = "L";
-    theBrutalWandererPawn.boxway = 3;
-    theBrutalWandererPawn.x = BOARDSIZE - 1;
-    theBrutalWandererPawn.y = BOARDSIZE - 1;
 
 
     //----OUTLINE----//

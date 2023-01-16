@@ -5,111 +5,104 @@
 Case tempValue = {0};
 
 
-int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow){
-    int check = 0;
-    if(strcmp(board[character.x][character.y].boxtype, "T") == 1) {
-        if(board[character.x][character.y].boxway == 0) {
-            if(arrow == 1) {
-                check = 0;
-            }
-            else {
-                check = 1;
+int checkBorder(Pawn character, int check) {
+    if((character.y < 0) || (character.y > BOARDSIZE - 1) || (character.x < 0) || character.x > BOARDSIZE - 1) {
+        check = 1;
+    }
+    return check;
+}
+
+
+int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow) {
+    int check;
+    checkBorder(character, check);
+    if(check == 0) {
+        if (strcmp(board[character.y][character.x].boxtype, "T") == 1) {
+            if (board[character.y][character.x].boxway == 0) {
+                if (arrow == 1) {
+                    check = 0;
+                } else {
+                    check = 1;
+                }
+            } else if (board[character.y][character.x].boxway == 1) {
+                if (arrow == 3) {
+                    check = 0;
+                } else {
+                    check = 1;
+                }
+            } else if (board[character.y][character.x].boxway == 2) {
+                if (arrow == 2) {
+                    check = 0;
+                } else {
+                    check = 1;
+                }
+            } else if (board[character.y][character.x].boxway == 3) {
+                if (arrow == 4) {
+                    check = 0;
+                } else {
+                    check = 1;
+                }
+            } else {
+                goto error;
             }
         }
-        else if(board[character.x][character.y].boxway == 1){
-            if(arrow == 3) {
-                check = 0;
-            }
-            else {
-                check = 1;
+        else if (strcmp(board[character.y][character.x].boxtype, "L") == 1) {
+            if (board[character.x][character.y].boxway == 0) {
+                if ((arrow == 1) || (arrow == 3)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else if (board[character.y][character.x].boxway == 1) {
+                if ((arrow == 3) || (arrow == 2)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else if (board[character.y][character.x].boxway == 2) {
+                if ((arrow == 2) || (arrow == 4)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else if (board[character.y][character.x].boxway == 3) {
+                if ((arrow == 4) || (arrow == 1)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else {
+                goto error;
             }
         }
-        else if(board[character.x][character.y].boxway == 2) {
-            if(arrow == 2) {
-                check = 0;
+        else if (strcmp(board[character.y][character.x].boxtype, "I") == 1) {
+            if (board[character.x][character.y].boxway == 0) {
+                if ((arrow == 1) || (arrow == 2)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else if (board[character.y][character.x].boxway == 1) {
+                if ((arrow == 3) || (arrow == 4)) {
+                    check = 1;
+                } else {
+                    check = 0;
+                }
+            } else {
+                goto error;
             }
-            else {
-                check = 1;
-            }
-        }
-        else if(board[character.x][character.y].boxway == 3){
-            if(arrow == 4) {
-                check = 0;
-            }
-            else {
-                check = 1;
-            }
-        }
-        else {
+        } else {
             goto error;
         }
-    }
-    else if(strcmp(board[character.x][character.y].boxtype, "L") == 1) {
-        if(board[character.x][character.y].boxway == 0) {
-            if((arrow == 1) || (arrow == 3)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else if(board[character.x][character.y].boxway == 1){
-            if((arrow == 3) || (arrow == 2)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else if(board[character.x][character.y].boxway == 2) {
-            if((arrow == 2) || (arrow == 4)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else if(board[character.x][character.y].boxway == 3){
-            if((arrow == 4) || (arrow == 1)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else {
-            goto error;
-        }
-    }
-    else if(strcmp(board[character.x][character.y].boxtype, "I") == 1) {
-        if(board[character.x][character.y].boxway == 0) {
-            if((arrow == 1) || (arrow == 2)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else if(board[character.x][character.y].boxway == 1){
-            if((arrow == 3) || (arrow == 4)) {
-                check = 1;
-            }
-            else {
-                check = 0;
-            }
-        }
-        else {
-            goto error;
-        }
-    }
-    else {
-        goto error;
     }
     return check;
 
     error:
-    printf("ERROR");
+        printf("ERROR");
+        return 0;
 }
+
+//check if character on the substitute value
 
 
 int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *staticTiles[16], ALLEGRO_BITMAP *movableTiles[33], Case board[BOARDSIZE][BOARDSIZE], Case *substituteValue, Pawn character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
@@ -117,7 +110,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
     //----MOVE ROW / COLUMN----//
     printf("\nThe extra piece is type %s\n", substituteValue->boxtype);
 
-    //on ne demand pas dans quel sens on veut mettre la extra piece
+    //ask the way for the extra piece
 
     int choice = 0;
     printf("\nChoose the emplacement of the extra pieces (1 -> 12)\n");
@@ -240,7 +233,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 arrow = 1;
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
-                    character.y -= 1;
+                    character.x -= 1;
                     printBoard(board);
                 } else {
                     printf("Impossible to go top\n");
@@ -250,7 +243,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 arrow = 2;
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
-                    character.y += 1;
+                    character.x += 1;
                     printBoard(board);
                 } else {
                     printf("Impossible to go down\n");
@@ -260,7 +253,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 arrow = 3;
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
-                    character.x += 1;
+                    character.y += 1;
                     printBoard(board);
                 } else {
                     printf("Impossible to go right\n");
@@ -270,7 +263,7 @@ int oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO
                 arrow = 4;
                 int check = checkWall(board, character, arrow);
                 if (check == 1) {
-                    character.x -= 1;
+                    character.y -= 1;
                     printBoard(board);
                 } else {
                     printf("Impossible to go left\n");

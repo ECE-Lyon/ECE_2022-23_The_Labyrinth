@@ -167,18 +167,11 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
     }
 
 
-    //board allegro
+    //board allegro angle
     for(int i = 0; i < BOARDSIZE; i++) {
         for(int j = 0; j < BOARDSIZE; j++) {
             if(board[i][j].mobile == 1) {
                 boxway[i] = board[i][j].boxway;
-            }
-        }
-    }
-    for(int i = 0; i < BOARDSIZE; i++) {
-        for(int j = 0; j < BOARDSIZE; j++) {
-            if(board[i][j].mobile == 1) {
-                boxtype[i] = board[i][j].boxtype;
             }
         }
     }

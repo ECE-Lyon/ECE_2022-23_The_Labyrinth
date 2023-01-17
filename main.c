@@ -9,12 +9,11 @@ int main(void) {
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_BITMAP *images[NB_IMAGES];
     ALLEGRO_BITMAP *charSelect[4];
-    ALLEGRO_BITMAP *staticTiles[16];
-    ALLEGRO_BITMAP *movableTiles[33];
+    ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE];
 
 
-    event_queue = initializeAllegro(display, event_queue, images, charSelect, staticTiles, movableTiles);
-    screenUpdate(0, images, charSelect,  staticTiles, movableTiles, 0, 0);
+    event_queue = initializeAllegro(display, event_queue, images, charSelect, Tiles);
+    screenUpdate(0, images, charSelect,  Tiles, 0, 0);
 
     while (1) {
         ALLEGRO_EVENT event;
@@ -24,17 +23,17 @@ int main(void) {
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-                screenUpdate(3, images, charSelect, staticTiles, movableTiles, 0, 0);
-                startGame(display, event_queue, images, charSelect,  staticTiles, movableTiles);
+                screenUpdate(3, images, charSelect, Tiles, 0, 0);
+                startGame(display, event_queue, images, charSelect, Tiles);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_M) {
-                screenUpdate(0, images, charSelect,  staticTiles, movableTiles, 0, 0);
+                screenUpdate(0, images, charSelect,  Tiles, 0, 0);
             }
             if((event.keyboard.keycode == ALLEGRO_KEY_A) || (event.keyboard.keycode == ALLEGRO_KEY_R)) {
-                screenUpdate(1, images, charSelect,  staticTiles, movableTiles, 0, 0);
+                screenUpdate(1, images, charSelect,  Tiles, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(2, images, charSelect,  staticTiles, movableTiles, 0, 0);
+                screenUpdate(2, images, charSelect,  Tiles, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
                 return 0;
@@ -45,7 +44,7 @@ int main(void) {
         }
     }
 
-    cleanUp(display, event_queue, images, charSelect, staticTiles, movableTiles);
+    cleanUp(display, event_queue, images, charSelect, Tiles);
 
     return 0;
 }

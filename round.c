@@ -6,7 +6,7 @@ Case tempValue = {0};
 
 
 int checkBorder(Pawn **character, int check) {
-    if((character->y < 0) || (character->y > BOARDSIZE - 1) || (character->x < 0) || character->x > BOARDSIZE - 1) {
+    if(((*character)->y < 0) || ((*character)->y > BOARDSIZE - 1) || ((*character)->x < 0) || ((*character)->x > BOARDSIZE - 1)) {
         check = 1;
     }
     return check;

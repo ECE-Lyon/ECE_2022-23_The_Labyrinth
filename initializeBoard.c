@@ -3,7 +3,6 @@
 #include "initializeBoard.h"
 
 int boxway[33] = {0};
-char *boxtype[33] = {0};
 
 char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHauntedSeerPawn, Pawn theBrutalWandererPawn, Case board[BOARDSIZE][BOARDSIZE], Case substituteValue, char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS]) {
 

@@ -22,7 +22,6 @@ char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"salamand
 char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"book", "golden hood", "map", "crown", "keys", "skull"};
 char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
-Case board[BOARDSIZE][BOARDSIZE] = {{0}};
 
 Case substituteValue = {0};
 
@@ -52,13 +51,13 @@ void soughtAfterTreasures(char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETT
 }
 
 
-void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE]) {
+void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE]) {
     switch (var) {
         case 0:
             if (chooseTheEmperess != 0) {
                 printf("\nIt's the turn of the Empress\n");
                 soughtAfterTreasures(treasureCardTheEmpress, theEmpressPawn);
-                screenUpdate(9, images, charSelect, Tiles, 0, 0);
+                screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                 printBoard(board);
                 board[theEmpressPawn.x][theEmpressPawn.y].theEmperess = 0;
                 oneRound(display, event_queue, images, charSelect, Tiles, board, &substituteValue, &theEmpressPawn, treasureCardTheEmpress);
@@ -69,7 +68,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
             if (chooseTheArchDruid != 0) {
                 printf("\nIt's the turn of the Arch Druid\n");
                 soughtAfterTreasures(treasureCardTheArchDruid, theArchDruidPawn);
-                screenUpdate(9, images, charSelect, Tiles, 0, 0);
+                screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                 printBoard(board);
                 board[theArchDruidPawn.x][theArchDruidPawn.y].theArchDruid = 0;
                 oneRound(display, event_queue, images, charSelect, Tiles, board, &substituteValue, &theArchDruidPawn, treasureCardTheArchDruid);
@@ -80,7 +79,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
             if (chooseTheHauntedSeer != 0) {
                 printf("\nIt's the turn of the Haunted Seer\n");
                 soughtAfterTreasures(treasureCardTheHauntedSeer, theHauntedSeerPawn);
-                screenUpdate(9, images, charSelect, Tiles, 0, 0);
+                screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                 printBoard(board);
                 board[theHauntedSeerPawn.x][theHauntedSeerPawn.y].theHauntedSeer = 0;
                 oneRound(display, event_queue, images, charSelect, Tiles, board, &substituteValue, &theHauntedSeerPawn, treasureCardTheHauntedSeer);
@@ -91,7 +90,7 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
             if (chooseTheBrutalWanderer != 0) {
                 printf("\nIt's the turn of the Brutal Wanderer\n");
                 soughtAfterTreasures(treasureCardTheBrutalWanderer, theBrutalWandererPawn);
-                screenUpdate(9, images, charSelect, Tiles, 0, 0);
+                screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                 printBoard(board);
                 board[theBrutalWandererPawn.x][theBrutalWandererPawn.y].theBrutalWanderer = 0;
                 oneRound(display, event_queue, images, charSelect, Tiles, board, &substituteValue, &theBrutalWandererPawn, treasureCardTheBrutalWanderer);
@@ -110,10 +109,10 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
 }
 
 
-int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE]) {
+int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE]) {
     srand(time(NULL));
 
-    screenUpdate(3, images, charSelect, Tiles, 0, 0);
+    screenUpdate(3, images, charSelect, Tiles, board, 0, 0);
 
     //----PLAYERS----//
     printf("How many player are you ?\n");
@@ -141,12 +140,12 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
             if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
                 return 0;
             } else {
-                screenUpdate(7, images, charSelect, Tiles, 0, 0);
+                screenUpdate(7, images, charSelect, Tiles, board, 0, 0);
             }
         }
     }
 
-    screenUpdate(4, images, charSelect, Tiles, 5, 1);
+    screenUpdate(4, images, charSelect, Tiles, board, 5, 1);
 
     for (int i = 1; i < nbPlayer + 1; i++) {
         int differentCharacters = 0;
@@ -167,7 +166,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     theEmpressPawn.x = 0;
                     theEmpressPawn.y = 0;
                     differentCharacters = 1;
-                    screenUpdate(4, images, charSelect, Tiles, 0, 0);
+                    screenUpdate(4, images, charSelect, Tiles, board, 0, 0);
                     al_rest(1.0);
                 }
                 if ((event.keyboard.keycode == ALLEGRO_KEY_2) && (chooseTheArchDruid == 0)) {
@@ -178,7 +177,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     theArchDruidPawn.x = BOARDSIZE - 1;
                     theArchDruidPawn.y = 0;
                     differentCharacters = 1;
-                    screenUpdate(4, images, charSelect, Tiles, 1, 0);
+                    screenUpdate(4, images, charSelect, Tiles, board, 1, 0);
                     al_rest(1.0);
                 }
                 if ((event.keyboard.keycode == ALLEGRO_KEY_3) && (chooseTheHauntedSeer == 0)) {
@@ -189,7 +188,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     theHauntedSeerPawn.x = 0;
                     theHauntedSeerPawn.y = BOARDSIZE - 1;
                     differentCharacters = 1;
-                    screenUpdate(4, images, charSelect, Tiles, 2, 0);
+                    screenUpdate(4, images, charSelect, Tiles, board, 2, 0);
                     al_rest(1.0);
                 }
                 if ((event.keyboard.keycode == ALLEGRO_KEY_4) && (chooseTheBrutalWanderer == 0)) {
@@ -200,7 +199,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     theBrutalWandererPawn.x = BOARDSIZE - 1;
                     theBrutalWandererPawn.y = BOARDSIZE - 1;
                     differentCharacters = 1;
-                    screenUpdate(4, images, charSelect, Tiles, 3, 0);
+                    screenUpdate(4, images, charSelect, Tiles, board, 3, 0);
                     al_rest(1.0);
                 }
                 if (event.keyboard.keycode == ALLEGRO_KEY_M) {
@@ -213,7 +212,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         }
     }
 
-    screenUpdate(5, images, charSelect, Tiles, 0, 0);
+    screenUpdate(5, images, charSelect, Tiles, board, 0, 0);
 
 
     //----TREASURES / CARDS----//
@@ -233,7 +232,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
 
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if (event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(9, images, charSelect, Tiles, 0, 1);
+                screenUpdate(9, images, charSelect, Tiles, board, 0, 1);
                 k = 1;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
@@ -248,7 +247,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
     int firstPlayer = rand() % nbPlayer;
     while (firstPlayer < nbPlayer) {
 
-        loop(firstPlayer, display, event_queue, images, charSelect, Tiles);
+        loop(firstPlayer, display, event_queue, images, charSelect, Tiles, board);
 
         firstPlayer++;
     }
@@ -256,7 +255,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
     while (1) {
         for (player = 0; player < nbPlayer; player++) {
 
-            loop(player, display, event_queue, images, charSelect, Tiles);
+            loop(player, display, event_queue, images, charSelect, Tiles, board);
 
             if (((theEmpressPawn.treasure == NB_CARD_BY_PERSON) && (theEmpressPawn.x == 0) &&
                  (theEmpressPawn.y == 0)) ||

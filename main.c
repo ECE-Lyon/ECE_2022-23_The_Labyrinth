@@ -5,6 +5,8 @@
 
 int main(void) {
 
+    Case board[BOARDSIZE][BOARDSIZE] = {{0}};
+
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *event_queue = NULL;
     ALLEGRO_BITMAP *images[NB_IMAGES];
@@ -13,7 +15,7 @@ int main(void) {
 
 
     event_queue = initializeAllegro(display, event_queue, images, charSelect, Tiles);
-    screenUpdate(0, images, charSelect,  Tiles, 0, 0);
+    screenUpdate(0, images, charSelect,  Tiles, board, 0, 0);
 
     while (1) {
         ALLEGRO_EVENT event;
@@ -23,17 +25,17 @@ int main(void) {
         // Check for events
         if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             if(event.keyboard.keycode == ALLEGRO_KEY_ENTER) {
-                screenUpdate(3, images, charSelect, Tiles, 0, 0);
-                startGame(display, event_queue, images, charSelect, Tiles);
+                screenUpdate(3, images, charSelect, Tiles, board, 0, 0);
+                startGame(display, event_queue, images, charSelect, Tiles, board);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_M) {
-                screenUpdate(0, images, charSelect,  Tiles, 0, 0);
+                screenUpdate(0, images, charSelect, Tiles, board, 0, 0);
             }
             if((event.keyboard.keycode == ALLEGRO_KEY_A) || (event.keyboard.keycode == ALLEGRO_KEY_R)) {
-                screenUpdate(1, images, charSelect,  Tiles, 0, 0);
+                screenUpdate(1, images, charSelect, Tiles, board, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_D) {
-                screenUpdate(2, images, charSelect,  Tiles, 0, 0);
+                screenUpdate(2, images, charSelect, Tiles, board, 0, 0);
             }
             if(event.keyboard.keycode == ALLEGRO_KEY_TAB) {
                 return 0;

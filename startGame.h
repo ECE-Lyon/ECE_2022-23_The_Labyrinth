@@ -7,6 +7,6 @@
 #include "initializeBoard.h"
 #include "round.h"
 
-void startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE]);
+void startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], ALLEGRO_BITMAP *pawn_logo[4], Case board[BOARDSIZE][BOARDSIZE]);
 
 #endif //PROJET_STARTGAME_H

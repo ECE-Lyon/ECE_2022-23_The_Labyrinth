@@ -4,7 +4,6 @@
 
 Case tempValue = {0};
 
-
 int checkBorder(Pawn character, int check) {
     if((character.y < 0) || (character.y > BOARDSIZE - 1) || (character.x < 0) || (character.x > BOARDSIZE - 1)) {
         check = 1;
@@ -105,7 +104,7 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow) {
 //check if character on the substitute value
 
 
-void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE], Case *substituteValue, Pawn *character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
+void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], ALLEGRO_BITMAP *pawn_logo[4], Case board[BOARDSIZE][BOARDSIZE], Case *substituteValue, Pawn *character, char treasureCardCharacter[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS]) {
 
     //----MOVE ROW / COLUMN----//
     printf("\nThe extra piece is type %s\n", substituteValue->boxtype);
@@ -213,7 +212,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         }
     }
 
-    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
+    screenUpdate(9, images, charSelect, Tiles, pawn_logo, board, 0, 0);
     printBoard(board);
 
     //----MOVE PAWN----//
@@ -233,7 +232,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->x -= 1;
-                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
+                    screenUpdate(9, images, charSelect, Tiles, pawn_logo, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go top\n");
@@ -244,7 +243,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->x += 1;
-                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
+                    screenUpdate(9, images, charSelect, Tiles, pawn_logo, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go down\n");
@@ -255,7 +254,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->y += 1;
-                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
+                    screenUpdate(9, images, charSelect, Tiles, pawn_logo, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go right\n");
@@ -266,7 +265,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->y -= 1;
-                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
+                    screenUpdate(9, images, charSelect, Tiles, pawn_logo, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go left\n");

@@ -9,8 +9,15 @@ int coordx[BOARDSIZE][BOARDSIZE];   //tiles
 int coordy[BOARDSIZE][BOARDSIZE];
 ALLEGRO_BITMAP *initTiles[NB_DIFF_TILES];
 
+float boxway[33] = {0};
+float angleNull= 0;
+float angle90Right = ALLEGRO_PI / 2;
+float angle90Left = -ALLEGRO_PI / 2;
+float angle180Right = ALLEGRO_PI / 4;
+float angle180Left = -ALLEGRO_PI /4;
 
-int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE]) {
+
+int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], ALLEGRO_BITMAP *pawn_logo[4]) {
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -205,6 +212,12 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     coordy[6][5] = 792;
 
 
+    pawn_logo[0] = al_load_bitmap("pawn_logo_pink.png"); // load the pawn logo image (EMPERESS)
+    pawn_logo[1] = al_load_bitmap("pawn_logo_blue.png"); // load the pawn logo image (ARCH-DRUID)
+    pawn_logo[2] = al_load_bitmap("pawn_logo_green.png"); // load the pawn logo image (WANDERER)
+    pawn_logo[3] = al_load_bitmap("pawn_logo_beige.png"); // load the pawn logo image (SEER)
+
+
     // Register event sources for the queue
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -213,7 +226,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
 }
 
 
-void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE], int current_char, int first) {
+void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], ALLEGRO_BITMAP *pawn_logo[4], Case board[BOARDSIZE][BOARDSIZE], int current_char, int first) {
     // Ensure the current index is within bounds
     if (current_screen < 0) current_screen = 0;
     if (current_screen >= NB_IMAGES) current_screen = NB_IMAGES - 1;
@@ -232,7 +245,14 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
     else if (current_screen == 9) {
         al_draw_bitmap(images[current_screen], 0, 0, 0);
 
-
+        //board allegro angle
+        for(int i = 0; i < BOARDSIZE; i++) {
+            for(int j = 0; j < BOARDSIZE; j++) {
+                if(board[i][j].mobile == 1) {
+                    boxway[i] = board[i][j].boxway;
+                }
+            }
+        }
         // Get data for the board
         for (int i = 0; i < BOARDSIZE; i++) {
             for (int j = 0; j < BOARDSIZE; j++) {
@@ -301,17 +321,39 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
 
 
         for (int i = 0; i < BOARDSIZE; i++) {
-            for (int j = 0; j < BOARDSIZE; j++){
-                if (Tiles[i][j] == NULL) {
-                    printf("TILES : Error occured while loading image %d %d \n", i, j);
+            for (int j = 0; j < BOARDSIZE; j++) {
+                switch (board[i][j].boxway) {
+                    case 0:
+                        boxway[i] = angleNull;
+                        break;
+                    case 1:
+                        boxway[i] = angle90Right;
+                        break;
+                    case 2:
+                        boxway[i] = angle180Right;
+                        break;
+                    case 3:
+                        boxway[i] = angle90Left;
+                        break;
+                    default:
+                        boxway[i] = 0;
                 }
             }
         }
 
 
+        /*
+        // Calculate the position of the pawn logo on the tile
+        int pawn_x = coordx[player_x][player_y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo)/2;
+        int pawn_y = coordy[player_x][player_y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo)/2;
+
+        // Draw the pawn logo on the tile
+        al_draw_bitmap(pawn_logo, pawn_x, pawn_y, 0);*/
+
+
         for (int i = 0; i < BOARDSIZE; i++) {
             for (int j = 0; j < BOARDSIZE; j++) {
-                al_draw_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0);
+                al_draw_rotated_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0, 0, boxway[i], 0);
                 if(first == 1) {
                     al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
                     al_flip_display();

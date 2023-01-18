@@ -320,24 +320,26 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
         }
 
 
+        int k = 0;
         for (int i = 0; i < BOARDSIZE; i++) {
             for (int j = 0; j < BOARDSIZE; j++) {
                 switch (board[i][j].boxway) {
                     case 0:
-                        boxway[i] = angleNull;
+                        boxway[k] = angleNull;
                         break;
                     case 1:
-                        boxway[i] = angle90Right;
+                        boxway[k] = angle90Right;
                         break;
                     case 2:
-                        boxway[i] = angle180Right;
+                        boxway[k] = angle180Right;
                         break;
                     case 3:
-                        boxway[i] = angle90Left;
+                        boxway[k] = angle90Left;
                         break;
                     default:
-                        boxway[i] = 0;
+                        boxway[k] = 0;
                 }
+                k++;
             }
         }
 
@@ -351,13 +353,15 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
         al_draw_bitmap(pawn_logo, pawn_x, pawn_y, 0);*/
 
 
+        k = 0;
         for (int i = 0; i < BOARDSIZE; i++) {
             for (int j = 0; j < BOARDSIZE; j++) {
-                al_draw_rotated_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0, 0, boxway[i], 0);
+                al_draw_rotated_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0, 0, boxway[k], 0);
                 if(first == 1) {
                     al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)
                     al_flip_display();
                 }
+                k++;
             }
         }
     }

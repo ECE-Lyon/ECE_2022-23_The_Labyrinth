@@ -229,7 +229,7 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
                 }
                 else if(strcmp(board[i][j].boxtype, "L")) {
                     printf("L\n");
-                    /*if(strcmp(board[i][j].treasure, "fairy")){
+                    if(strcmp(board[i][j].treasure, "fairy")){
                         printf("fairy\n");
                         Tiles[i][j] = initTiles[0][1];
                     }
@@ -239,18 +239,18 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
                     else if(strcmp(board[i][j].treasure, "dragon")){
                         Tiles[i][j] = initTiles[0][5];
                     }
-                    else if(strcmp(board[i][j].treasure, "genie")){
+                    else if(strcmp(board[i][j].treasure, "djinn")){
                         Tiles[i][j] = initTiles[1][0];
                     }
                     else if(strcmp(board[i][j].treasure, "ghost")){
                         Tiles[i][j] = initTiles[1][1];
                     }
-                    else if(strcmp(board[i][j].treasure, "ogre")){
+                    else if(strcmp(board[i][j].treasure, "ork")){
                         Tiles[i][j] = initTiles[1][2];
                     }
-                    else {*/
-                    Tiles[i][j] = initTiles[2][5];
-                    //}
+                    else {
+                        Tiles[i][j] = initTiles[2][5];
+                    }
                 }
                 else if(strcmp(board[i][j].boxtype, "T")) {
                     printf("T\n");

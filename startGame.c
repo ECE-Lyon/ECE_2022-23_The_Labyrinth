@@ -12,12 +12,12 @@ Pawn theArchDruidPawn = {0};
 Pawn theHauntedSeerPawn = {0};
 Pawn theBrutalWandererPawn = {0};
 
-char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre",
+char treasures[NB_TREASURE_CARD][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "djinn", "ghost", "ork",
                                                        "salamander", "spider", "mouse", "owl", "beetle", "moth",
                                                        "book", "golden hood", "map", "crown", "keys", "skull",
                                                        "ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};
 
-char treasureCardTheEmpress[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "genie", "ghost", "ogre"};
+char treasureCardTheEmpress[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"fairy", "bat", "dragon", "djinn", "ghost", "ork"};
 char treasureCardTheArchDruid[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"salamander", "spider", "mouse", "owl", "beetle", "moth"};
 char treasureCardTheHauntedSeer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"book", "golden hood", "map", "crown", "keys", "skull"};
 char treasureCardTheBrutalWanderer[NB_CARD_BY_PERSON][MAX_LETTERS_WORDS] = {"ring", "golden chest", "gemstone", "swordfish", "candlestick", "helmet"};

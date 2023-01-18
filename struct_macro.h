@@ -9,11 +9,8 @@
 #define NB_IMAGES 11
 #define DISPLAY_WIDTH 1920
 #define DISPLAY_HEIGHT 1080
-#define NB_ST_TILES 16
-#define NB_MV_TILES 33
 
 //Constants for C
-#define NUM_MOVABLE_PIECES 33
 #define NB_TREASURE_CARD 24
 #define NB_CARD_BY_PERSON 6
 #define MAX_LETTERS_WORDS 50

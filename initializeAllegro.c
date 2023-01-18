@@ -164,7 +164,7 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     initTiles[13] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV14.jpg");
     coordx[3][0] = 250;
     coordy[3][0] = 488;
-    initTiles[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV15.jpg");
+    initTiles[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV15.png");
     coordx[3][1] = 352;
     coordy[3][1] = 488;
     coordx[3][2] = 453;
@@ -233,25 +233,16 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
         al_draw_bitmap(images[current_screen], 0, 0, 0);
 
 
-        for (int i = 0; i < BOARDSIZE; i++) {
-            for (int j = 0; j < BOARDSIZE; j++){
-                if (Tiles[i][j] == NULL) {
-                    printf("TILES : Error occured while loading image %d %d \n", i, j);
-                }
-            }
-        }
-
-
         // Get data for the board
         for (int i = 0; i < BOARDSIZE; i++) {
             for (int j = 0; j < BOARDSIZE; j++) {
                 if(board[i][j].mobile == 1){
                     if(strcmp(board[i][j].boxtype, "I") == 0) {
-                        printf("I\n");
+                        printf("I ");
                         Tiles[i][j] = initTiles[13];
                     }
                     else if(strcmp(board[i][j].boxtype, "L") == 0) {
-                        printf("L\n");
+                        printf("L ");
                         /*if((strcmp(board[i][j].treasure, "fairy")) == 1){
                             printf("fairy\n");
                             Tiles[i][j] = initTiles[0][1];
@@ -276,7 +267,7 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
                         //}
                     }
                     else if(strcmp(board[i][j].boxtype, "T") == 0) {
-                        printf("T\n");
+                        printf("T ");
                         /*if(strcmp(board[i][j].treasure, "salamander")){
                             printf("salamender\n");
                             Tiles[i][j] = initTiles[1][3];
@@ -305,11 +296,21 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
                     }
                 }
             }
+            printf("\n");
         }
 
 
-        for (int i = 2; i < BOARDSIZE; i++) {
-            for (int j = 2; j < BOARDSIZE; j++) {
+        for (int i = 0; i < BOARDSIZE; i++) {
+            for (int j = 0; j < BOARDSIZE; j++){
+                if (Tiles[i][j] == NULL) {
+                    printf("TILES : Error occured while loading image %d %d \n", i, j);
+                }
+            }
+        }
+
+
+        for (int i = 0; i < BOARDSIZE; i++) {
+            for (int j = 0; j < BOARDSIZE; j++) {
                 al_draw_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0);
                 if(first == 1) {
                     al_rest(0.07); //set to 0.07 in order to skip the THREE-TIMES-DISPLAY bug (usually 0.5s)

@@ -14,7 +14,7 @@ int main(void) {
     ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE];
 
 
-    event_queue = initializeAllegro(display, event_queue, images, charSelect, Tiles);
+    event_queue = initializeAllegro(display, event_queue, images, charSelect);
     screenUpdate(0, images, charSelect,  Tiles, board, 0, 0);
 
     while (1) {

@@ -2,14 +2,15 @@
 #include "initializeAllegro.h"
 #include "struct_macro.h"
 
-int coordX[3];
+int coordX[3];  //characters
 int coordY[3];
-int coordx[BOARDSIZE][BOARDSIZE];
+
+int coordx[BOARDSIZE][BOARDSIZE];   //tiles
 int coordy[BOARDSIZE][BOARDSIZE];
 ALLEGRO_BITMAP *initTiles[BOARDSIZE][BOARDSIZE];
 
 
-int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE]) {
+int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4]) {
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -228,7 +229,8 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
                 }
                 else if(strcmp(board[i][j].boxtype, "L")) {
                     printf("L\n");
-                    if(strcmp(board[i][j].treasure, "fairy")){
+                    /*if(strcmp(board[i][j].treasure, "fairy")){
+                        printf("fairy\n");
                         Tiles[i][j] = initTiles[0][1];
                     }
                     else if(strcmp(board[i][j].treasure, "bat")){
@@ -246,13 +248,14 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
                     else if(strcmp(board[i][j].treasure, "ogre")){
                         Tiles[i][j] = initTiles[1][2];
                     }
-                    else {
-                        Tiles[i][j] = initTiles[2][5];
-                    }
+                    else {*/
+                    Tiles[i][j] = initTiles[2][5];
+                    //}
                 }
                 else if(strcmp(board[i][j].boxtype, "T")) {
                     printf("T\n");
-                    if(strcmp(board[i][j].treasure, "salamander")){
+                    /*if(strcmp(board[i][j].treasure, "salamander")){
+                        printf("salamender\n");
                         Tiles[i][j] = initTiles[1][3];
                     }
                     else if(strcmp(board[i][j].treasure, "spider")){
@@ -270,9 +273,9 @@ int screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_
                     else if(strcmp(board[i][j].treasure, "moth")){
                         Tiles[i][j] = initTiles[2][3];
                     }
-                    else {
-                        Tiles[i][j] = initTiles[3][1];
-                    }
+                    else {*/
+                    Tiles[i][j] = initTiles[3][1];
+                    //}
                 }
                 else {
                     printf("DISPLAY ERROR");
@@ -321,7 +324,6 @@ for (int i = 0; i < NB_IMAGES; i++) al_destroy_bitmap(images[i]);
         for (int j = 0; j < BOARDSIZE; j++) {al_destroy_bitmap(Tiles[i][j]);}
     }
     al_destroy_event_queue(event_queue);
-    //al_destroy_event_queue(charEventQueue);
     al_destroy_display(display);
 
     return 0;

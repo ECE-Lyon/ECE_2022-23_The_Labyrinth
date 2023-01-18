@@ -134,13 +134,13 @@ char* initializeBoard(Pawn theEmpressPawn, Pawn theArchDruidPawn, Pawn theHaunte
     // For the substituteValue
     int index1 = rand() % NUM_MOVABLE_PIECES;
     int index2 = rand() % NUM_MOVABLE_PIECES;
-    while (board[index1][index2].mobile != 1) {
+    while (board[index1][index2].mobile == 0) {
         index1 = rand() % NUM_MOVABLE_PIECES;
         index2 = rand() % NUM_MOVABLE_PIECES;
     }
-    Case temp = board[index1][index2];
+    /*Case temp = board[index1][index2];
     board[index1][index2] = substituteValue;
-    substituteValue = temp;
+    substituteValue = temp;*/
 
     // For the board
     for (int i = 0; i < NUM_MOVABLE_PIECES * 2; i++) {

@@ -43,7 +43,8 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow) {
                     check = 1;
                 }
             } else {
-                goto error;
+                printf("ERROR");
+                return 0;
             }
         }
         else if (strcmp(board[character.y][character.x].boxtype, "L") == 1) {
@@ -72,7 +73,8 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow) {
                     check = 0;
                 }
             } else {
-                goto error;
+                printf("ERROR");
+                return 0;
             }
         }
         else if (strcmp(board[character.y][character.x].boxtype, "I") == 1) {
@@ -89,17 +91,15 @@ int checkWall(Case board[BOARDSIZE][BOARDSIZE], Pawn character, int arrow) {
                     check = 0;
                 }
             } else {
-                goto error;
+                printf("ERROR");
+                return 0;
             }
         } else {
-            goto error;
+            printf("ERROR");
+            return 0;
         }
     }
     return check;
-
-    error:
-        printf("ERROR");
-        return 0;
 }
 
 //check if character on the substitute value
@@ -170,7 +170,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     printf("%d", choice);
                     break;
                 case ALLEGRO_KEY_M :
-                    goto returnMainMenu;
+                    return;
             }
         }
     }
@@ -213,6 +213,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
         }
     }
 
+    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
     printBoard(board);
 
     //----MOVE PAWN----//
@@ -232,6 +233,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->x -= 1;
+                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go top\n");
@@ -242,6 +244,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->x += 1;
+                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go down\n");
@@ -252,6 +255,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->y += 1;
+                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go right\n");
@@ -262,6 +266,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 int check = checkWall(board, *character, arrow);
                 if (check == 1) {
                     character->y -= 1;
+                    screenUpdate(9, images, charSelect, Tiles, board, 0, 0);
                     printBoard(board);
                 } else {
                     printf("Impossible to go left\n");
@@ -271,7 +276,7 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 k = 1;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
-                goto returnMainMenu;
+                return;
             }
         }
     }
@@ -288,9 +293,4 @@ void oneRound(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
             printf("Now, you are looking for %s\n", treasureCardCharacter[character->treasure]);
         }
     }
-
-
-    returnMainMenu:
-        printf("\nERROR\n");
-        al_rest(2.2);
 }

@@ -98,18 +98,14 @@ void loop(int var, ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, A
             }
             break;
         default :
-            goto returnMainMenu;
+            printf("\nERROR\n");
+            al_rest(2.2);
+            return;
     }
-
-    printf("End round\n");
-
-    returnMainMenu:
-        printf("\nERROR\n");
-        al_rest(2.2);
 }
 
 
-int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE]) {
+void startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE], Case board[BOARDSIZE][BOARDSIZE]) {
     srand(time(NULL));
 
     screenUpdate(3, images, charSelect, Tiles, board, 0, 0);
@@ -135,11 +131,9 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 nbPlayer = 4;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
-                goto returnMainMenu;
+                return;
             }
-            if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
-                return 0;
-            } else {
+            else {
                 screenUpdate(7, images, charSelect, Tiles, board, 0, 0);
             }
         }
@@ -203,10 +197,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                     al_rest(1.0);
                 }
                 if (event.keyboard.keycode == ALLEGRO_KEY_M) {
-                    goto returnMainMenu;
-                }
-                if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
-                    return 0;
+                    return;
                 }
             }
         }
@@ -236,10 +227,7 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
                 k = 1;
             }
             if (event.keyboard.keycode == ALLEGRO_KEY_M) {
-                goto returnMainMenu;
-            }
-            if (event.keyboard.keycode == ALLEGRO_KEY_TAB) {
-                return 0;
+                return;
             }
         }
     }
@@ -269,8 +257,4 @@ int startGame(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGR
             }
         }
     }
-    returnMainMenu:
-        printf("\nERROR\n");
-        al_rest(2.2);
-        return 0;
 }

@@ -7,10 +7,10 @@ int coordY[4];
 
 int coordx[BOARDSIZE][BOARDSIZE];   //tiles
 int coordy[BOARDSIZE][BOARDSIZE];
-ALLEGRO_BITMAP *initTiles[BOARDSIZE][BOARDSIZE];
+ALLEGRO_BITMAP *initTiles[NB_DIFF_TILES];
 
 
-int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4]) {
+int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO_BITMAP *charSelect[4], ALLEGRO_BITMAP *Tiles[BOARDSIZE][BOARDSIZE]) {
     // Initialize Allegro
     al_init();
     al_init_image_addon();
@@ -72,99 +72,99 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
 
 
     //Load the images needed for the board initialization as well as their coordinates
-    initTiles[0][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST1.jpg");
+    Tiles[0][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST1.jpg");
     coordx[0][0] = 250;
     coordy[0][0] = 183;
-    initTiles[0][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST2.jpg");
+    Tiles[0][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST2.jpg");
     coordx[0][2] = 453;
     coordy[0][2] = 183;
-    initTiles[0][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST3.jpg");
+    Tiles[0][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST3.jpg");
     coordx[0][4] = 656;
     coordy[0][4] = 183;
-    initTiles[0][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST4.jpg");
+    Tiles[0][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST4.jpg");
     coordx[0][6] = 859;
     coordy[0][6] = 183;
-    initTiles[2][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST5.jpg");
+    Tiles[2][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST5.jpg");
     coordx[2][0] = 250;
     coordy[2][0] = 386;
-    initTiles[2][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST6.jpg");
+    Tiles[2][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST6.jpg");
     coordx[2][2] = 454;
     coordy[2][2] = 386;
-    initTiles[2][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST7.jpg");
+    Tiles[2][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST7.jpg");
     coordx[2][4] = 657;
     coordy[2][4] = 386;
-    initTiles[2][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST8.jpg");
+    Tiles[2][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST8.jpg");
     coordx[2][6] = 859;
     coordy[2][6] = 386;
-    initTiles[4][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST9.jpg");
+    Tiles[4][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST9.jpg");
     coordx[4][0] = 250;
     coordy[4][0] = 589;
-    initTiles[4][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST10.jpg");
+    Tiles[4][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST10.jpg");
     coordx[4][2] = 453;
     coordy[4][2] = 589;
-    initTiles[4][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST11.jpg");
+    Tiles[4][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST11.jpg");
     coordx[4][4] = 656;
     coordy[4][4] = 589;
-    initTiles[4][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST12.jpg");
+    Tiles[4][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST12.jpg");
     coordx[4][6] = 859;
     coordy[4][6] = 589;
-    initTiles[6][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST13.jpg");
+    Tiles[6][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST13.jpg");
     coordx[6][0] = 250;
     coordy[6][0] = 792;
-    initTiles[6][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST14.jpg");
+    Tiles[6][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST14.jpg");
     coordx[6][2] = 452;
     coordy[6][2] = 792;
-    initTiles[6][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST15.jpg");
+    Tiles[6][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST15.jpg");
     coordx[6][4] = 656;
     coordy[6][4] = 792;
-    initTiles[6][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST16.jpg");
+    Tiles[6][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/tst/ST16.jpg");
     coordx[6][6] = 858;
     coordy[6][6] = 792;
 
 
-    initTiles[0][1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV1.jpg");
+    initTiles[0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV1.jpg");
     coordx[0][1] = 352;
     coordy[0][1] = 183;
-    initTiles[0][3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV2.jpg");
+    initTiles[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV2.jpg");
     coordx[0][3] = 555;
     coordy[0][3] = 183;
-    initTiles[0][5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV3.jpg");
+    initTiles[2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV3.jpg");
     coordx[0][5] = 758;
     coordy[0][5] = 183;
-    initTiles[1][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV4.jpg");
+    initTiles[3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV4.jpg");
     coordx[1][0] = 250;
     coordy[1][0] = 285;
-    initTiles[1][1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV5.jpg");
+    initTiles[4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV5.jpg");
     coordx[1][1] = 352;
     coordy[1][1] = 285;
-    initTiles[1][2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV6.jpg");
+    initTiles[5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV6.jpg");
     coordx[1][2] = 453;
     coordy[1][2] = 285;
-    initTiles[1][3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV11.jpg");
+    initTiles[6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV11.jpg");
     coordx[1][3] = 555;
     coordy[1][3] = 285;
-    initTiles[1][4] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV7.jpg");
+    initTiles[7] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV7.jpg");
     coordx[1][4] = 656;
     coordy[1][4] = 285;
-    initTiles[1][5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV8.jpg");
+    initTiles[8] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV8.jpg");
     coordx[1][5] = 758;
     coordy[1][5] = 285;
-    initTiles[1][6] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV9.jpg");
+    initTiles[9] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV9.jpg");
     coordx[1][6] = 859;
     coordy[1][6] = 285;
-    initTiles[2][1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV10.jpg");
+    initTiles[10] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV10.jpg");
     coordx[2][1] = 352;
     coordy[2][1] = 386;
-    initTiles[2][3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV12.jpg");
+    initTiles[11] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV12.jpg");
     coordx[2][3] = 555;
     coordy[2][3] = 386;
-    initTiles[2][5] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV13.jpg");
+    initTiles[12] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV13.jpg");
     coordx[2][5] = 758;
     coordy[2][5] = 386;
-    initTiles[3][0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV14.jpg");
+    initTiles[13] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV14.jpg");
     coordx[3][0] = 250;
     coordy[3][0] = 488;
-    initTiles[3][1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV15.jpg");
+    initTiles[14] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/mv/MV15.jpg");
     coordx[3][1] = 352;
     coordy[3][1] = 488;
     coordx[3][2] = 453;
@@ -205,7 +205,6 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     coordy[6][5] = 792;
 
 
-
     // Register event sources for the queue
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -220,80 +219,6 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
     if (current_screen >= NB_IMAGES) current_screen = NB_IMAGES - 1;
 
 
-    // Get data for the board
-    for (int i = 0; i < BOARDSIZE; i++) {
-        for (int j = 0; j < BOARDSIZE; j++) {
-            if(board[i][j].mobile == 1){
-                if(strcmp(board[i][j].boxtype, "I") == 0) {
-                    printf("I\n");
-                    Tiles[i][j] = initTiles[3][0];
-                }
-                else if(strcmp(board[i][j].boxtype, "L") == 0) {
-                    printf("L\n");
-                    /*if((strcmp(board[i][j].treasure, "fairy")) == 1){
-                        printf("fairy\n");
-                        Tiles[i][j] = initTiles[0][1];
-                    }
-                    else if(strcmp(board[i][j].treasure, "bat")){
-                        Tiles[i][j] = initTiles[0][3];
-                    }
-                    else if(strcmp(board[i][j].treasure, "dragon")){
-                        Tiles[i][j] = initTiles[0][5];
-                    }
-                    else if(strcmp(board[i][j].treasure, "djinn")){
-                        Tiles[i][j] = initTiles[1][0];
-                    }
-                    else if(strcmp(board[i][j].treasure, "ghost")){
-                        Tiles[i][j] = initTiles[1][1];
-                    }
-                    else if(strcmp(board[i][j].treasure, "ork")){
-                        Tiles[i][j] = initTiles[1][2];
-                    }
-                    else {*/
-                    Tiles[i][j] = initTiles[2][5];
-                    //}
-                }
-                else if(strcmp(board[i][j].boxtype, "T") == 0) {
-                    printf("T\n");
-                    /*if(strcmp(board[i][j].treasure, "salamander")){
-                        printf("salamender\n");
-                        Tiles[i][j] = initTiles[1][3];
-                    }
-                    else if(strcmp(board[i][j].treasure, "spider")){
-                        Tiles[i][j] = initTiles[1][4];
-                    }
-                    else if(strcmp(board[i][j].treasure, "mouse")){
-                        Tiles[i][j] = initTiles[1][5];
-                    }
-                    else if(strcmp(board[i][j].treasure, "owl")){
-                        Tiles[i][j] = initTiles[1][6];
-                    }
-                    else if(strcmp(board[i][j].treasure, "beetle")){
-                        Tiles[i][j] = initTiles[2][1];
-                    }
-                    else if(strcmp(board[i][j].treasure, "moth")){
-                        Tiles[i][j] = initTiles[2][3];
-                    }
-                    else {*/
-                    Tiles[i][j] = initTiles[3][1];
-                    //}
-                }
-                else {
-                    printf("DISPLAY ERROR");
-                }
-            }
-        }
-    }
-
-    for (int i = 0; i < BOARDSIZE; i++) {
-        for (int j=0; j<BOARDSIZE; j++){
-            if (Tiles[i][j] == NULL) {
-                printf("TILES : Error occured while loading image %d %d \n", i, j);
-            }
-        }
-    }
-
-
     // Render the current image
     // check if a character is being selected, and grey it if so
     if (current_screen == 4) {
@@ -306,6 +231,83 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
     }
     else if (current_screen == 9) {
         al_draw_bitmap(images[current_screen], 0, 0, 0);
+
+
+        for (int i = 0; i < BOARDSIZE; i++) {
+            for (int j = 0; j < BOARDSIZE; j++){
+                if (Tiles[i][j] == NULL) {
+                    printf("TILES : Error occured while loading image %d %d \n", i, j);
+                }
+            }
+        }
+
+
+        // Get data for the board
+        for (int i = 0; i < BOARDSIZE; i++) {
+            for (int j = 0; j < BOARDSIZE; j++) {
+                if(board[i][j].mobile == 1){
+                    if(strcmp(board[i][j].boxtype, "I") == 0) {
+                        printf("I\n");
+                        Tiles[i][j] = initTiles[13];
+                    }
+                    else if(strcmp(board[i][j].boxtype, "L") == 0) {
+                        printf("L\n");
+                        /*if((strcmp(board[i][j].treasure, "fairy")) == 1){
+                            printf("fairy\n");
+                            Tiles[i][j] = initTiles[0][1];
+                        }
+                        else if(strcmp(board[i][j].treasure, "bat")){
+                            Tiles[i][j] = initTiles[0][3];
+                        }
+                        else if(strcmp(board[i][j].treasure, "dragon")){
+                            Tiles[i][j] = initTiles[0][5];
+                        }
+                        else if(strcmp(board[i][j].treasure, "djinn")){
+                            Tiles[i][j] = initTiles[1][0];
+                        }
+                        else if(strcmp(board[i][j].treasure, "ghost")){
+                            Tiles[i][j] = initTiles[1][1];
+                        }
+                        else if(strcmp(board[i][j].treasure, "ork")){
+                            Tiles[i][j] = initTiles[1][2];
+                        }
+                        else {*/
+                        Tiles[i][j] = initTiles[12];
+                        //}
+                    }
+                    else if(strcmp(board[i][j].boxtype, "T") == 0) {
+                        printf("T\n");
+                        /*if(strcmp(board[i][j].treasure, "salamander")){
+                            printf("salamender\n");
+                            Tiles[i][j] = initTiles[1][3];
+                        }
+                        else if(strcmp(board[i][j].treasure, "spider")){
+                            Tiles[i][j] = initTiles[1][4];
+                        }
+                        else if(strcmp(board[i][j].treasure, "mouse")){
+                            Tiles[i][j] = initTiles[1][5];
+                        }
+                        else if(strcmp(board[i][j].treasure, "owl")){
+                            Tiles[i][j] = initTiles[1][6];
+                        }
+                        else if(strcmp(board[i][j].treasure, "beetle")){
+                            Tiles[i][j] = initTiles[2][1];
+                        }
+                        else if(strcmp(board[i][j].treasure, "moth")){
+                            Tiles[i][j] = initTiles[2][3];
+                        }
+                        else {*/
+                        Tiles[i][j] = initTiles[14];
+                        //}
+                    }
+                    else {
+                        printf("DISPLAY ERROR");
+                    }
+                }
+            }
+        }
+
+
         for (int i = 2; i < BOARDSIZE; i++) {
             for (int j = 2; j < BOARDSIZE; j++) {
                 al_draw_bitmap(Tiles[i][j], coordx[i][j], coordy[i][j], 0);

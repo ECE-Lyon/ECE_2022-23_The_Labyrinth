@@ -7,6 +7,7 @@
 
 //Constants for Allegro
 #define NB_IMAGES 11
+#define NB_DIFF_TILES 16
 #define DISPLAY_WIDTH 1920
 #define DISPLAY_HEIGHT 1080
 

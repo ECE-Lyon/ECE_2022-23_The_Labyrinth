@@ -252,10 +252,10 @@ int initializeAllegro(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *event_queue
     coordy[6][5] = 792;
 
 
-    pawn_logo[0] = al_load_bitmap("pawn_logo_pink.png"); // load the pawn logo image (EMPERESS)
-    pawn_logo[1] = al_load_bitmap("pawn_logo_blue.png"); // load the pawn logo image (ARCH-DRUID)
-    pawn_logo[2] = al_load_bitmap("pawn_logo_green.png"); // load the pawn logo image (WANDERER)
-    pawn_logo[3] = al_load_bitmap("pawn_logo_beige.png"); // load the pawn logo image (SEER)
+    pawn_logo[0] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/pawn_logo_pink.png"); // load the pawn logo image (EMPERESS)
+    pawn_logo[1] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/pawn_logo_blue.png"); // load the pawn logo image (ARCH-DRUID)
+    pawn_logo[2] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/pawn_logo_brown.png"); // load the pawn logo image (WANDERER)
+    pawn_logo[3] = al_load_bitmap("C:/Users/jadep/Downloads/ALLEGRO_LABYRINTH/pawn_logo_beige.png"); // load the pawn logo image (SEER)
 
 
     // Register event sources for the queue
@@ -370,13 +370,26 @@ void screenUpdate(int current_screen, ALLEGRO_BITMAP *images[NB_IMAGES], ALLEGRO
         }
 
 
-        /*
+
         // Calculate the position of the pawn logo on the tile
-        int pawn_x = coordx[player_x][player_y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo)/2;
-        int pawn_y = coordy[player_x][player_y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo)/2;
+        int pawn_x[4] = {0}, pawn_y[4] = {0};
+        // For the Empress
+        pawn_x[0] = coordx[theEmpressPawn.x][theEmpressPawn.y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo[0])/2;
+        pawn_y[0] = coordy[theEmpressPawn.x][theEmpressPawn.y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo[0])/2;
+        // For the Arch Druid
+        pawn_x[0] = coordx[theArchDruidPawn.x][theArchDruidPawn.y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo[0])/2;
+        pawn_y[0] = coordy[theArchDruidPawn.x][theArchDruidPawn.y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo[0])/2;
+        // For the Haunted Seer
+        pawn_x[0] = coordx[theHauntedSeerPawn.x][theHauntedSeerPawn.y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo[0])/2;
+        pawn_y[0] = coordy[theHauntedSeerPawn.x][theHauntedSeerPawn.y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo[0])/2;
+        // For the Brutal Wanderer
+        pawn_x[0] = coordx[theBrutalWandererPawn.x][theBrutalWandererPawn.y] + TILE_WIDTH/2 - al_get_bitmap_width(pawn_logo[0])/2;
+        pawn_y[0] = coordy[theBrutalWandererPawn.x][theBrutalWandererPawn.y] + TILE_HEIGHT/2 - al_get_bitmap_height(pawn_logo[0])/2;
 
         // Draw the pawn logo on the tile
-        al_draw_bitmap(pawn_logo, pawn_x, pawn_y, 0);*/
+        for(int i = 0; i < 4; i++) {
+            al_draw_bitmap(pawn_logo[i], pawn_x[i], pawn_y[i], 0);
+        }
 
 
         k = 0;
